@@ -10,8 +10,14 @@
 *,
 *::after,
 *::before {
-	font-family: 'Times New Roman';
+	font-family: 'Nunito Sans';
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0;
+}
+
+@layer components {
+	.after {
+		@apply after:bg-after after:absolute after:opacity-50 after:rounded-full  after:blur-3xl after:content-[""];
+	}
 }

@@ -33,16 +33,18 @@ export default {
 				purple: '#9529AA',
 				'light-blue': '#24A1E0',
 				'dark-blue': '#230E32',
-			},
-			boxShadow: {
-				'3xl': '0 10px 40px rgba(0, 0, 0, 0.1)',
+				yellow: '#ffdd3c',
+				'separator-bg': '#E61685',
+				after: '#7301ff',
+				'challenge-bg': '#621dbf',
+				'enjoy-start-gradient': '#6e00e9',
+				'enjoy-end-gradient': '#c3267a',
 			},
 			backgroundImage: {
-				hero: "url('assets/images/collection-background.svg')",
-				card: "url('assets/images/thumbnail-background.svg')",
-			},
-			screens: {
-				wide: '1440px',
+				'start-today': "url('./assets/images/landing/start-today-bg.svg')",
+				'start-today-after':
+					"url('./assets/images/landing/start-today-vectors.svg')",
+				'enjoy-after': "url('./assets/images/landing/enjoy-vectors.svg')",
 			},
 		},
 	},
