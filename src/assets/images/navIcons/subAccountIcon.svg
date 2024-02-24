@@ -1,0 +1,14 @@
+<svg width="50.000000" height="50.000000" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip21_2129">
+			<rect id="ic:round-supervisor-account" rx="5.000000" width="49.000000" height="49.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip21_2129)">
+		<path id="Vector" d="M29.5 25C30.8799 25 31.9902 23.8799 31.9902 22.5C31.9902 21.1201 30.8799 20 29.5 20C28.8369 20 28.2012 20.2634 27.7324 20.7322C27.2632 21.2012 27 21.8369 27 22.5C27 23.1631 27.2632 23.7988 27.7324 24.2678C28.2012 24.7366 28.8369 25 29.5 25ZM22 24C23.6602 24 24.9902 22.6599 24.9902 21C24.9902 19.3401 23.6602 18 22 18C20.3398 18 19 19.3401 19 21C19 22.6599 20.3398 24 22 24ZM29.5 27C27.6699 27 24 27.9199 24 29.75L24 31C24 31.55 24.4502 32 25 32L34 32C34.5498 32 35 31.55 35 31L35 29.75C35 27.9199 31.3301 27 29.5 27ZM22 26C19.6699 26 15 27.1699 15 29.5L15 31C15 31.55 15.4502 32 16 32L22 32L22 29.75C22 28.8999 22.3301 27.4099 24.3701 26.28C23.5 26.1001 22.6602 26 22 26Z" fill="#FEFEFE" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+	<rect id="ic:round-supervisor-account" rx="5.000000" width="49.000000" height="49.000000" transform="translate(0.500000 0.500000)" stroke="#FEFEFE" stroke-opacity="1.000000" stroke-width="1.000000"/>
+</svg>

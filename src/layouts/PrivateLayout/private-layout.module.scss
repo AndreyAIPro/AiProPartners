@@ -1,6 +1,12 @@
 /** @format */
+@import '../../assets/styles/variable';
 
 .private__layout {
+	height: 100vh;
+
+	color: #fff;
+
 	display: flex;
 	justify-content: space-between;
+	background-color: var(--main-bg);
 }

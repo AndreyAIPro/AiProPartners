@@ -1,0 +1,26 @@
+/** @format */
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 52px;
+
+	padding: 20px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 0 20px;
+	&__text {
+		display: flex;
+		flex-direction: column;
+		font-size: 24px;
+		margin: 0;
+
+		span {
+			color: #b4b4b4;
+			font-weight: 400;
+		}
+	}
+}

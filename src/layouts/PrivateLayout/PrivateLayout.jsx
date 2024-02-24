@@ -1,15 +1,15 @@
 /** @format */
 
-import LeftSidebar from '../../components/LeftSidebar';
-import RightSidebar from '../../components/RightSidebar';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../../components/Sidebar';
 import styles from './private-layout.module.scss';
 
-const PrivateLayout = ({ children }) => {
+const PrivateLayout = () => {
 	return (
 		<div className={styles.private__layout}>
-			<LeftSidebar />
-			{children}
-			<RightSidebar />
+			<Sidebar isLeftSidebar />
+			<Outlet />
+			<Sidebar />
 		</div>
 	);
 };

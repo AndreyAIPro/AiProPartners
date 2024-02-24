@@ -1,0 +1,23 @@
+/** @format */
+@import '/src/assets/styles/variable';
+
+.link__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	color: var(--main-text-color);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	svg {
+		scale: 0.5;
+	}
+}
