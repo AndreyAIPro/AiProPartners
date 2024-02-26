@@ -4,7 +4,7 @@ import SubaccountTable from "./SubaccountTable/SubaccountTable";
 
 const Subaccount = () => {
     return (
-        <div className="w-full flex flex-row  bg-black ">
+        <div className="flex flex-row  bg-black ">
             <div className="w-2/5">
                 <h2 className="text-title px-12 py-6">Субаккаунт</h2>
 

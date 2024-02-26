@@ -1,2 +1,16 @@
 @import '../../../assets/styles/variable.css';
 
+.custom-button {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 0.5rem 1rem; /* Padding */
+    border: none; /* No border */
+    border-radius: 1rem;/* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    
+    
+}
+
+.blur-background {
+    filter: blur(4px); /* Adjust the blur amount as needed */
+}
