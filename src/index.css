@@ -10,7 +10,7 @@
 *,
 *::after,
 *::before {
-	font-family: 'Times New Roman';
+	font-family: 'Nunito sans'; /*було Times New Roman*/
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0;
