@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variable.css';
 
 .custom-button {
-    background-color: #007bff; /* Blue background color */
+    background-color: #24a1e0; /* Blue background color */
     color: #fff; /* White text color */
     padding: 0.5rem 1rem; /* Padding */
     border: none; /* No border */
@@ -9,8 +9,11 @@
     cursor: pointer; /* Cursor style */
     
     
+    
 }
 
-.blur-background {
-    filter: blur(4px); /* Adjust the blur amount as needed */
+
+
+.table-gradient{
+    background: linear-gradient(315deg, #414141 0%, #040404 100%);
 }

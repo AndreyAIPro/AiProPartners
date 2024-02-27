@@ -32,7 +32,7 @@ const SubaccountTable = () => {
         if (accountName.length !== 0) {
             const newRow = {
                 id: rows.length + 1,
-                className: "border-2 border-gray p-1",
+                className: "border-2 border-gray p-1 font-nunito-sans px-2",
                 accountName: accountName,
                 ref: "REF PLACEHOLDER",
             };
@@ -84,11 +84,11 @@ const SubaccountTable = () => {
                     name="accountName"
                     type="text"
                     onChange={handleNewSubaccount}
-                    className="w-full h-full text-black px-2 rounded-md my-3"
+                    className="w-full h-full text-black px-2 text-title3 rounded-md my-4 font-nunito-sans"
                     value={accountName}
                 />
                 <button
-                    className="custom-button"
+                    className="custom-button font-nunito-sans"
                     onClick={handleFormSubmit}
                 >
                     Сохранить
@@ -101,34 +101,34 @@ const SubaccountTable = () => {
                 onCancel={hideDeleteModal}
                 footer={null}
             >
-                <div className="p-2 ">
+                <div className="p-2 flex justify-start">
                     <button
-                        className="custom-button mx-4"
+                        className="custom-button mx-2 px-8 font-nunito-sans"
                         onClick={() => handleDelete(selectedRow.id)}
                     >
                         ДА
                     </button>
                     <button
-                        className="custom-button mx-4"
+                        className="custom-button mx-2 px-8 font-nunito-sans"
                         onClick={hideDeleteModal}
                     >
                         Нет
                     </button>
                 </div>
             </Modal>
-            <div className="flex w-11/12 py-16 justify-items-center">
-                <div className="flex flex-col  w-full content-end">
-                    <div className="flex justify-end my-3   ">
+            <div className="flex w-full py-16 justify-items-center">
+                <div className="flex flex-col  w-full content-end ">
+                    <div className="flex justify-end my-3  py-3 ">
                         <input
                             type="text"
                             onChange={handleNewSubaccount}
                             placeholder="Назовите Субаккаунт"
-                            className="w-full text-text2  text-black px-4 rounded-md "
+                            className="w-full text-text2  text-black px-2 rounded-md font-nunito-sans"
                             value={accountName}
                         />
                         <div className="px-3 flex justify-center">
                             <button
-                                className="custom-button text-nowrap"
+                                className="custom-button text-nowrap font-nunito-sans"
                                 onClick={addRow}
                             >
                                 Создать Субаккаунт
@@ -138,22 +138,17 @@ const SubaccountTable = () => {
                     <table className=" bg-black">
                         <thead>
                             <tr>
-                                <th className="w-2/5 bg-gradient-to-r from-gray to-white-200 ... border-gray border-2 p-1">
-                                    Название Субаккаунта
-                                </th>
-                                <th className="2-2/5 bg-gradient-to-r from-gray to-white-200 ... ">Ссылка</th>
-                                <td className="w-1/5 text-center">Управление</td>
+                                <th className="w-2/5 table-gradient border-gray border-2 p-1 font-nunito-sans">Название Субаккаунта</th>
+                                <th className="2-2/5 table-gradient border-gray border-2 p-1 font-nunito-sans">Ссылка</th>
+                                <td className="w-1/5 text-center font-nunito-sans"></td>
                             </tr>
                         </thead>
                         <tbody>
                             {rows.map(row => (
-                                <tr
-                                    key={row.id}
-                                    className={row.className}
-                                >
+                                <tr key={row.id}>
                                     <td className={row.className}>{row.accountName}</td>
-                                    <td>{row.ref}</td>
-                                    <td className="flex justify-end p-1">
+                                    <td className={row.className}>{row.ref}</td>
+                                    <td className="flex justify-end p-1 border-none">
                                         <img
                                             className="cursor-pointer mx-2"
                                             src={editIcon}
@@ -167,7 +162,7 @@ const SubaccountTable = () => {
                                             onClick={() => openDeleteModal(row)}
                                         ></img>
                                         <span
-                                            className="cursor-pointer mx-2"
+                                            className="cursor-pointer mx-2 font-nunito-sans"
                                             onClick={() => handleRef(row)}
                                             alt="Copy"
                                         >
