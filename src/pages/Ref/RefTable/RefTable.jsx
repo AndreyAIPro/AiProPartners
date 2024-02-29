@@ -8,8 +8,8 @@ import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
 
 const RefTable = () => {
     const [rows, setRows] = useState([
-        { id: 1, className: "border-2 border-gray p-1 font-nunito-sans px-2", accountID: "ID", partnerName: "Name PLACEHOLDER" },
-        { id: 2, className: "border-2 border-gray p-1 font-nunito-sans px-2", accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+        { id: 1, className: "border-2 border-gray p-1  px-2", accountID: "ID", partnerName: "Name PLACEHOLDER" },
+        { id: 2, className: "border-2 border-gray p-1  px-2", accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
     ]);
     // //Holds account name
     // const [accountName, setAccountName] = useState("");
@@ -71,7 +71,7 @@ const RefTable = () => {
     // };
 
     return (
-        <div className={"flex w-11/12 py-16 justify-items-center "}>
+        <div className={"flex w-11/12  justify-items-center "}>
             {/* Edit Modal */}
             {/* <Modal
                 title="Редактировать"
@@ -102,39 +102,37 @@ const RefTable = () => {
             >
                 <div className="p-2 flex justify-start">
                     <button
-                        className="custom-button mx-2 px-8 font-nunito-sans"
+                        className="bg-light-blue mx-4 px-8 py-2 rounded-full"
                         onClick={() => handleDelete(selectedRow.id)}
                     >
                         ДА
                     </button>
                     <button
-                        className="custom-button mx-2 px-8 font-nunito-sans"
+                        className="bg-light-blue mx-4 px-8 py-2 rounded-full"
                         onClick={hideDeleteModal}
                     >
                         Нет
                     </button>
                 </div>
             </Modal>
-            <div className="flex w-11/12 py-16 justify-items-center">
+            <div className="flex w-full  justify-items-center">
                 <div className="flex flex-col  w-full content-end">
-                    <div className="flex justify-end my-6 h-8 ">
-                        <div className="px-3 flex button-color justify-center h-full rounded-l-md">
-                            <button className="  text-nowrap text-text3 font-nunito-sans">Ваша реферальная ссылка</button>
+                    <div className="flex justify-end my-6  ">
+                        <div className=" flex  justify-center  ">
+                            <button className="custom-button rounded-l-md text-nowrap text-text3 ">Ваша реферальная ссылка</button>
                         </div>
                         <input
                             type="text"
                             placeholder="Де це брати цю фігню пане бек ендери?"
-                            className="w-full text-text2  text-black px-4 rounded-r-md font-nunito-sans"
+                            className="w-full text-text2  text-black px-4 rounded-r-md "
                         />
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th className="w-1/5 table-gradient border-gray border-2 p-1 text-text4 font-nunito-sans">ID партнера</th>
-                                <th className="2-3/5 table-gradient border-gray border-2 p-1 text-text4 font-nunito-sans">
-                                    Название партнера
-                                </th>
-                                <td className="w-20 text-center text-text4 font-nunito-sans"></td>
+                                <th className="w-1/5 table-gradient border-gray border-2 p-1 text-text4 ">ID партнера</th>
+                                <th className="2-3/5 table-gradient border-gray border-2 p-1 text-text4 ">Название партнера</th>
+                                <td className="w-20 text-center text-text4 "></td>
                             </tr>
                         </thead>
                         <tbody>

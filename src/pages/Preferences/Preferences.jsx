@@ -70,70 +70,118 @@ const Preferences = () => {
 
     return (
         <>
-            <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-                <div className="flex flex-col w-4/5">
-                    <h2 className="w-full text-title px-5  font-nunito-sans font-bold my-1">Настройки</h2>
+            <ConfigProvider
+                theme={{
+                    algorithm: theme.darkAlgorithm,
+
+                    components: {
+                        Checkbox: {
+                            colorPrimary: "#24A1E0",
+                            colorBgContainer: "white",
+                            colorBgBase: "white",
+                        },
+                        Input: {
+                            colorBgContainer: "white",
+                            colorText: "black",
+                            colorTextPlaceholder: "gray",
+                            colorIcon: "gray",
+                        },
+                        Form: {
+                            labelFontSize: 12,
+                            paddingContentVertical: 0,
+                        },
+                        TextArea: {
+                            colorTextPlaceholder: "gray",
+                        },
+                        Select: {
+                            colorBorder: "white",
+                        },
+                        Table: {
+                            fontSize: 12,
+                        },
+                    },
+                }}
+            >
+                <div className="flex-1 flex-col ">
+                    <h2 className="w-full text-title px-8 mt-4 font-bold ">Настройки</h2>
                     <div className="flex flex-wrap w-full  ">
                         <div className="w-1/2 flex justify-center">
                             <Plate title={"Учетная запись"}>
                                 <div className="w-full ">
-                                    <Form
-                                        layout="vertical"
-                                        className="font-nunito-sans"
-                                    >
+                                    <Form layout="vertical">
                                         <Form.Item
                                             name="Reference"
                                             label="Реферальная ссылка"
+                                            style={{ margin: 0 }}
                                         >
-                                            <Input></Input>
+                                            <Input
+                                                size="small"
+                                                placeholder="REF"
+                                            ></Input>
                                         </Form.Item>
                                         <Form.Item
                                             name="RegistrationDate"
                                             label="Дата регистрации"
+                                            style={{ marginBottom: 0 }}
                                         >
-                                            <Input></Input>
+                                            <Input
+                                                size="small"
+                                                placeholder={"10.10.2024"}
+                                            ></Input>
                                         </Form.Item>
-                                        <Form.Item>
+                                        <Form.Item
+                                            style={{ marginBottom: 0 }}
+                                            label="Страна"
+                                        >
                                             <Select
                                                 defaultValue="Страна"
                                                 onChange={handleChange}
                                                 options={[...countries]}
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
                                             name="name"
                                             label="Имя"
+                                            style={{ marginBottom: 0 }}
                                         >
                                             <Input
                                                 type="text"
                                                 placeholder="Имя"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
                                             name="telephoneNumber"
                                             label="Номер телефона"
+                                            style={{ marginBottom: 0 }}
                                         >
                                             <Input
                                                 type="text"
                                                 placeholder="+380 123 12 12"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
                                             name="email"
                                             label="Email"
+                                            style={{ marginBottom: 0 }}
                                         >
                                             <Input
                                                 type="email"
                                                 placeholder="Email"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
                                             name="telegram"
                                             label="Telegram"
+                                            style={{ marginBottom: 0 }}
                                         >
                                             <Input
                                                 type="text"
                                                 placeholder="@telegram"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
@@ -143,6 +191,7 @@ const Preferences = () => {
                                             <Input
                                                 type="text"
                                                 placeholder="@discord"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
@@ -153,7 +202,7 @@ const Preferences = () => {
                                             }}
                                         >
                                             <p>Источники трафика</p>
-                                            <Checkbox className="p-0.5">Сайт</Checkbox>
+                                            <Checkbox className="p-0.5 ">Сайт</Checkbox>
                                             <br />
                                             <Checkbox className="p-0.5">Социальные сети</Checkbox>
                                             <h2>Арбитражный трафик</h2>
@@ -167,7 +216,11 @@ const Preferences = () => {
 
                                             <Form.Item>
                                                 <Checkbox className="p-0.5">Другое :</Checkbox>
-                                                <TextArea rows={3} />
+                                                <TextArea
+                                                    rows={3}
+                                                    size="small"
+                                                    placeholder="Напишите ваш источник трафика"
+                                                />
                                             </Form.Item>
                                         </Form.Item>
                                     </Form>
@@ -192,13 +245,14 @@ const Preferences = () => {
                                             ]}
                                             style={{
                                                 width: "100%",
-                                                marginBottom: "10px",
+                                                marginBottom: "0px",
                                             }}
                                         >
                                             <Input.Password
                                                 autoComplete="off"
                                                 type="password"
-                                                placeholder="Страрый пароль"
+                                                placeholder="********"
+                                                size="small"
                                             />
                                         </Form.Item>
                                         <Form.Item
@@ -215,13 +269,14 @@ const Preferences = () => {
                                             ]}
                                             style={{
                                                 width: "100%",
-                                                marginBottom: "10px",
+                                                marginBottom: "0px",
                                             }}
                                         >
                                             <Input.Password
                                                 autoComplete="off"
                                                 type="password"
-                                                placeholder="Введите новый пароль"
+                                                placeholder="********"
+                                                size="small"
                                             />
                                         </Form.Item>
 
@@ -231,7 +286,6 @@ const Preferences = () => {
                                             dependencies={["New password"]}
                                             style={{
                                                 width: "100%",
-                                                marginBottom: "10px",
                                             }}
                                             rules={[
                                                 {
@@ -244,7 +298,7 @@ const Preferences = () => {
                                                         if (!value || getFieldValue("New password") === value) {
                                                             return Promise.resolve();
                                                         }
-                                                        return Promise.reject(new Error("Парорль что вы ввели не совпал!"));
+                                                        return Promise.reject(new Error("Пароль что вы ввели не совпал!"));
                                                     },
                                                 }),
                                             ]}
@@ -252,7 +306,8 @@ const Preferences = () => {
                                             <Input.Password
                                                 autoComplete="off"
                                                 type="password"
-                                                placeholder="Повторите новый пароль"
+                                                placeholder="********"
+                                                size="small"
                                             />
                                         </Form.Item>
                                     </Form>
