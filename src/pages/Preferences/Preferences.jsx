@@ -1,6 +1,6 @@
 /** @format */
 import Plate from "./Plate/Plate";
-import { Form, Input, Table, Checkbox, ConfigProvider, theme, Select } from "antd";
+import { Form, Input, Table, Checkbox, ConfigProvider, theme, Select, Typography } from "antd";
 
 const Preferences = () => {
     // // For next backend implementation
@@ -103,9 +103,9 @@ const Preferences = () => {
                 }}
             >
                 <div className="flex-1 flex-col ">
-                    <h2 className="w-full text-title px-8 mt-4 font-bold ">Настройки</h2>
-                    <div className="flex flex-wrap w-full  ">
-                        <div className="w-1/2 flex justify-center">
+                    <h2 className=" text-title px-8 mt-4 font-bold ">Настройки</h2>
+                    <div className="flex justify-evenly  flex-wrap ">
+                        <div className="preference-halfsizer justify-center">
                             <Plate title={"Учетная запись"}>
                                 <div className="w-full ">
                                     <Form layout="vertical">
@@ -114,20 +114,29 @@ const Preferences = () => {
                                             label="Реферальная ссылка"
                                             style={{ margin: 0 }}
                                         >
-                                            <Input
+                                            <Typography size="small">
+                                                <pre>REF</pre>
+                                            </Typography>
+                                            {/* <Input
                                                 size="small"
-                                                placeholder="REF"
-                                            ></Input>
+                                                placeholder=""
+                                                variant="filled"
+                                                disabled
+                                            ></Input> */}
                                         </Form.Item>
                                         <Form.Item
                                             name="RegistrationDate"
                                             label="Дата регистрации"
                                             style={{ marginBottom: 0 }}
                                         >
-                                            <Input
+                                            <Typography size="small">
+                                                <pre>10.10.2024</pre>
+                                            </Typography>
+                                            {/* <Input
                                                 size="small"
-                                                placeholder={"10.10.2024"}
-                                            ></Input>
+                                                variant="filled"
+                                                defaultValue={""}
+                                            ></Input> */}
                                         </Form.Item>
                                         <Form.Item
                                             style={{ marginBottom: 0 }}
@@ -227,7 +236,7 @@ const Preferences = () => {
                                 </div>
                             </Plate>
                         </div>
-                        <div className="w-1/2  flex justify-center content-start flex-wrap">
+                        <div className="preference-halfsizer  flex h-max  flex-col ">
                             <Plate title={"Смена пароля"}>
                                 <div>
                                     <Form layout="vertical">
@@ -314,11 +323,12 @@ const Preferences = () => {
                                 </div>
                             </Plate>
                             <Plate title={"Тарифы"}>
-                                <div>
+                                <div className="pb-8">
                                     <Table
                                         dataSource={dataSource}
                                         columns={columns}
                                         size="small"
+                                        pagination={false}
                                     />
                                 </div>
                             </Plate>

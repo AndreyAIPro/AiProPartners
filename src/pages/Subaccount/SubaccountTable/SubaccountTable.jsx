@@ -4,6 +4,8 @@ import "./SubaccountTable.scss";
 import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
 import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
 import Modal from "../SubaccountModal/SubaccountModal";
+import { CopyOutlined } from "@ant-design/icons";
+import { message } from "antd";
 
 const SubaccountTable = () => {
     // variable that hold all rows
@@ -25,6 +27,7 @@ const SubaccountTable = () => {
     const handleRef = row => {
         const refToCopy = row.ref;
         copy(refToCopy);
+        message.success("Ссылка скопирована в кеш");
     };
 
     //adding new row to the table
@@ -84,11 +87,11 @@ const SubaccountTable = () => {
                     name="accountName"
                     type="text"
                     onChange={handleNewSubaccount}
-                    className="w-full h-full text-black px-2 text-title3 rounded-md my-4 "
+                    className="w-full h-full text-black px-2 text-title3 rounded-md  my-5"
                     value={accountName}
                 />
                 <button
-                    className="bg-light-blue my-4  px-8 py-2 rounded-full"
+                    className="bg-light-blue  px-8 py-2 rounded-full "
                     onClick={handleFormSubmit}
                 >
                     Сохранить
@@ -162,11 +165,11 @@ const SubaccountTable = () => {
                                             onClick={() => openDeleteModal(row)}
                                         ></img>
                                         <span
-                                            className="cursor-pointer mx-2 "
+                                            className="cursor-pointer mx-2 flex justify-center"
                                             onClick={() => handleRef(row)}
                                             alt="Copy"
                                         >
-                                            copy
+                                            <CopyOutlined />
                                         </span>
                                     </td>
                                 </tr>
