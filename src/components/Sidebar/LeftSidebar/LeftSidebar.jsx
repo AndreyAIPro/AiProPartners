@@ -7,12 +7,12 @@ import LeftSidebarHeader from './LeftSidebarHeader';
 
 const LeftSidebar = () => {
 	return (
-		<>
+		<aside className='w-[319px]'>
 			<LeftSidebarHeader />
 			<SidebarNavMenu />
 			<TelegramLink />
 			<SocialLinksList />
-		</>
+		</aside>
 	);
 };
 

@@ -1,7 +1,7 @@
 /** @format */
 
 const Charts = () => {
-	return <h1>HELLO CHARTS!</h1>;
+	return <section className='w-full'>HELLO CHARTS!</section>;
 };
 
 export default Charts;

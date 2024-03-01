@@ -1,9 +1,14 @@
 /** @format */
 
-const LandingSectionHeading = ({ title, subtitle }) => {
+const LandingSectionHeading = ({ title, subtitle, isUpper, dataAos }) => {
 	return (
-		<div className='flex flex-col justify-center items-center gap-6'>
-			<h2 className='font-extrabold font-nunito-sans text-center text-white text-[34px]'>
+		<div
+			className='flex flex-col justify-center items-center gap-6 max-sm:text-center'
+			data-aos={dataAos}
+		>
+			<h2
+				className={`font-extrabold font-nunito-sans text-center text-white text-[34px] ${isUpper ? 'uppercase' : null}`}
+			>
 				{title}
 			</h2>
 			{subtitle ? (

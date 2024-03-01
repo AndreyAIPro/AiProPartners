@@ -39,12 +39,27 @@ export default {
 				'challenge-bg': '#621dbf',
 				'enjoy-start-gradient': '#6e00e9',
 				'enjoy-end-gradient': '#c3267a',
+				article: '#34144e',
+				'table-border': '#4F008D',
+				'article-text': '#DFBAF4',
+				'in-touch-bg': '#381851',
+				'in-touch-border': '#1A1A1A',
 			},
 			backgroundImage: {
-				'start-today': "url('./assets/images/landing/start-today-bg.svg')",
+				'reuse-bg': "url('./assets/images/landing/reuse-bg.svg')",
 				'start-today-after':
 					"url('./assets/images/landing/start-today-vectors.svg')",
+				'start-today-mobile':
+					"url('./assets/images/landing/mobile/start-today-bg.svg')",
+				'start-today-mobile-vectors':
+					"url('./assets/images/landing/mobile/start-today-after.svg')",
 				'enjoy-after': "url('./assets/images/landing/enjoy-vectors.svg')",
+				'separator-how-start': "url('./assets/images/landing/separator.svg')",
+				'arrow-how-start': "url('./assets/images/landing/separatorArrow.svg')",
+				'partner-program':
+					"url('./assets/images/landing/partner-program-bg.svg')",
+				'in-touch': 'url("./assets/images/landing/alwaysInTouch/vectors.svg")',
+				'mobile-footer': 'url("./assets/images/landing/mobile/footer.svg")',
 			},
 		},
 	},
