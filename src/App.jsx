@@ -1,12 +1,12 @@
 /** @format */
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
-import PrivateLayout from './layouts/PrivateLayout/PrivateLayout';
-import routes from './router/routes';
-import Auth from './pages/Auth/Auth';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
+import Auth from "./pages/Auth/Auth";
+import routes from "./router/routes";
 
 function App() {
 	AOS.init({
@@ -20,12 +20,12 @@ function App() {
 			children: routes,
 		},
 		{
-			path: '/login',
-			element: <Auth />
+			path: "/login",
+			element: <Auth />,
 		},
 		{
-			path: '/signup',
-			element: <Auth />
+			path: "/signup",
+			element: <Auth />,
 		},
 	]);
 
