@@ -1,4 +1,6 @@
 /** @format */
+import Community from '../components/common/Community/Community';
+import UsuallyArticles from '../components/common/UsuallyArticles/UsuallyArticles';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Finances from '../pages/Finances/Finances';
 import Landing from '../pages/Landing/Landing';
@@ -32,6 +34,16 @@ const routes = [
 	{
 		path: PathConstants.STUDY,
 		element: <Study />,
+		children: [
+			{
+				path: '/study/articles',
+				element: <UsuallyArticles />,
+			},
+			{
+				path: '/study/community',
+				element: <Community />,
+			},
+		],
 	},
 ];
 

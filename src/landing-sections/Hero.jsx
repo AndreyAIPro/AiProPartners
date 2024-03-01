@@ -4,7 +4,7 @@ import LandingButton from '../components/common/LandingButton/LandingButton';
 
 const Hero = () => {
 	return (
-		<section className='font-nunito-sans relative w-full h-full text-white flex items-center justify-around max-sm:flex-col-reverse max-sm:after:h-full max-sm:after:absolute max-sm:after:w-full max-sm:after:bottom-0 max-sm:after:left-0 max-sm:after:z-[1] max-sm:after:bg-gradient-to-t  max-sm:after:from-dark-blue max-sm:px-[30px] max-sm:pt-[10px]'>
+		<section className='font-nunito-sans relative w-full h-full text-white flex items-center justify-around max-sm:flex-col-reverse after-adaptive'>
 			<div className='flex flex-col z-10 gap-7 max-sm:px-[30px] max-sm:items-center max-sm:z-40 max-md:mt-8'>
 				<h1
 					className='text-[64px] leading-[72px] font-nunito-sans font-black text-left max-w-[661px] max-sm:text-center max-sm:text-title max-[1400px]:leading-[45px] max-[1400px]:text-[40px] max-md:text-[32px]'
@@ -33,7 +33,7 @@ const Hero = () => {
 				data-aos='fade-left'
 			>
 				<img
-					src='src	/assets/images/landing/landing-hero-img.svg'
+					src='src/assets/images/landing/landing-hero-img.svg'
 					className='z-30 max-sm:max-w-[270px] max-sm:object-cover'
 				/>
 				<h2 className='text-[36px] font-nunito-sans max-w-[596px] text-center max-sm:hidden max-md:text-text2 z-30'>

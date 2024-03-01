@@ -20,4 +20,7 @@
 	.after {
 		@apply after:bg-after after:absolute after:opacity-50 after:rounded-full  after:blur-3xl after:content-[""];
 	}
+	.after-adaptive {
+		@apply max-sm:after:h-full max-sm:after:absolute max-sm:after:w-full max-sm:after:bottom-0 max-sm:after:left-0 max-sm:after:z-[1] max-sm:after:bg-gradient-to-t  max-sm:after:from-dark-blue max-sm:px-[30px] max-sm:pt-[10px];
+	}
 }
