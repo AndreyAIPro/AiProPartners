@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import PrivateLayout from './layouts/PrivateLayout/PrivateLayout';
 import routes from './router/routes';
+import Auth from './pages/Auth/Auth';
 
 function App() {
 	AOS.init({
@@ -17,6 +18,14 @@ function App() {
 		{
 			element: <PrivateLayout />,
 			children: routes,
+		},
+		{
+			path: '/login',
+			element: <Auth />
+		},
+		{
+			path: '/signup',
+			element: <Auth />
 		},
 	]);
 
