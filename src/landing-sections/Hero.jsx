@@ -4,7 +4,7 @@ import LandingButton from "../components/common/LandingButton/LandingButton";
 
 const Hero = () => {
 	return (
-		<section className="w-full after-adaptive relative flex h-full items-center justify-around font-nunito-sans text-white max-sm:flex-col-reverse">
+		<section className="w-full max-sm:after:w-full relative flex h-full items-center justify-around font-nunito-sans text-white max-sm:flex-col-reverse max-sm:px-[30px] max-sm:pt-[10px] max-sm:after:absolute max-sm:after:bottom-0 max-sm:after:left-0 max-sm:after:z-[1]  max-sm:after:h-full max-sm:after:bg-gradient-to-t max-sm:after:from-dark-blue">
 			<div className="z-10 flex flex-col gap-7 max-md:mt-8 max-sm:z-40 max-sm:items-center max-sm:px-[30px]">
 				<h1
 					className="max-w-[661px] text-left font-nunito-sans text-[64px] font-black leading-[72px] max-[1400px]:text-[40px] max-[1400px]:leading-[45px] max-md:text-[32px] max-sm:text-center max-sm:text-title"
