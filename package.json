@@ -10,9 +10,12 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@ant-design/colors": "^7.0.2",
 		"@supabase/supabase-js": "^2.39.7",
 		"@svgr/rollup": "^8.1.0",
+		"antd": "^5.14.1",
 		"classnames": "^2.5.1",
+		"copy-to-clipboard": "^3.3.3",
 		"css-loader": "^6.10.0",
 		"localforage": "^1.10.0",
 		"match-sorter": "^6.3.4",

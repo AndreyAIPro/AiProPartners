@@ -1,7 +1,7 @@
 /** @format */
 
 const Study = () => {
-	return <div>Study</div>;
+    return <div className="">Study</div>;
 };
 
 export default Study;
