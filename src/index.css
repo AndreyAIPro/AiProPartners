@@ -1,6 +1,6 @@
 /** @format */
-@import 'normalize.css';
-@import './assets/styles/variable.css';
+@import "normalize.css";
+@import "./assets/styles/variable.css";
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 @tailwind base;
@@ -10,7 +10,7 @@
 *,
 *::after,
 *::before {
-	font-family: 'Nunito Sans';
+	font-family: "Nunito Sans";
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0;
@@ -18,9 +18,6 @@
 
 @layer components {
 	.after {
-		@apply after:bg-after after:absolute after:opacity-50 after:rounded-full  after:blur-3xl after:content-[""];
-	}
-	.after-adaptive {
-		@apply max-sm:after:h-full max-sm:after:absolute max-sm:after:w-full max-sm:after:bottom-0 max-sm:after:left-0 max-sm:after:z-[1] max-sm:after:bg-gradient-to-t  max-sm:after:from-dark-blue max-sm:px-[30px] max-sm:pt-[10px];
+		@apply after:absolute after:rounded-full after:bg-after after:opacity-50  after:blur-3xl after:content-[""];
 	}
 }

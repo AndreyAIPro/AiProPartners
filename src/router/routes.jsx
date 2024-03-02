@@ -1,13 +1,13 @@
 /** @format */
-import Community from '../components/common/Community/Community';
-import UsuallyArticles from '../components/common/UsuallyArticles/UsuallyArticles';
-import Dashboard from '../pages/Dashboard/Dashboard';
-import Finances from '../pages/Finances/Finances';
-import Landing from '../pages/Landing/Landing';
-import Ref from '../pages/Ref/Ref';
-import Study from '../pages/Study/Study';
-import Subaccount from '../pages/Subaccount/Subaccount';
-import PathConstants from './pathConstants';
+import Community from "../components/common/Community/Community";
+import UsuallyArticles from "../components/common/UsuallyArticles/UsuallyArticles";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Finances from "../pages/Finances/Finances";
+import Landing from "../pages/Landing/Landing";
+import Ref from "../pages/Ref/Ref";
+import Study from "../pages/Study/Study";
+import Subaccount from "../pages/Subaccount/Subaccount";
+import PathConstants from "./pathConstants";
 
 const routes = [
 	{
@@ -36,11 +36,11 @@ const routes = [
 		element: <Study />,
 		children: [
 			{
-				path: '/study/articles',
+				path: "articles",
 				element: <UsuallyArticles />,
 			},
 			{
-				path: '/study/community',
+				path: "community",
 				element: <Community />,
 			},
 		],

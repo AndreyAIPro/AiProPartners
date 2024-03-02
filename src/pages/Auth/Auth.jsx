@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import Register from "../../components/Register/Register";
-import { NavLink, useNavigate } from "react-router-dom";
-import Login from "../../components/Login/Login";
 import { ConfigProvider, theme } from "antd";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Login from "../../components/Login/Login";
+import Register from "../../components/Register/Register";
 
 function Auth() {
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
 
-	const [isActive, setIsActive] = useState(
-		window.location.pathname === "/signup",
-	);
+	const [isActive, setIsActive] = useState(pathname === "/signup");
 
 	return (
 		<div
 			className={`relative flex min-h-screen flex-col-reverse bg-[#181818] text-white lg:flex-row ${!isActive && "lg:flex-row-reverse"}`}
 		>
 			<div
-				className={`flex w-3/6 items-center justify-center bg-[#24a1e0] p-[20px] max-lg:w-full max-lg:rounded-t-[100px] lg:rounded-r-[150px] ${!isActive && "lg:rounded-l-[150px] lg:rounded-r-[0px]"}`}
+				className={`flex w-3/6 items-center justify-center bg-[#24a1e0] p-[20px] max-lg:w-full max-lg:rounded-t-[100px] ${!isActive && "lg:rounded-l-[150px] lg:rounded-r-[0px]"}`}
 			>
 				<div className="flex flex-col items-center justify-center">
 					<div className=" text-center text-[40px] font-bold max-md:text-[30px]">

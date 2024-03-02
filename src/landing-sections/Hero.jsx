@@ -1,42 +1,42 @@
 /** @format */
 
-import LandingButton from '../components/common/LandingButton/LandingButton';
+import LandingButton from "../components/common/LandingButton/LandingButton";
 
 const Hero = () => {
 	return (
-		<section className='font-nunito-sans relative w-full h-full text-white flex items-center justify-around max-sm:flex-col-reverse after-adaptive'>
-			<div className='flex flex-col z-10 gap-7 max-sm:px-[30px] max-sm:items-center max-sm:z-40 max-md:mt-8'>
+		<section className="w-full after-adaptive relative flex h-full items-center justify-around font-nunito-sans text-white max-sm:flex-col-reverse">
+			<div className="z-10 flex flex-col gap-7 max-md:mt-8 max-sm:z-40 max-sm:items-center max-sm:px-[30px]">
 				<h1
-					className='text-[64px] leading-[72px] font-nunito-sans font-black text-left max-w-[661px] max-sm:text-center max-sm:text-title max-[1400px]:leading-[45px] max-[1400px]:text-[40px] max-md:text-[32px]'
-					data-aos='fade-right'
+					className="max-w-[661px] text-left font-nunito-sans text-[64px] font-black leading-[72px] max-[1400px]:text-[40px] max-[1400px]:leading-[45px] max-md:text-[32px] max-sm:text-center max-sm:text-title"
+					data-aos="fade-right"
 				>
-					Партнерская программа, которая подходит{' '}
-					<span className='text-[#e61685] font-nunito-sans'>всем</span>
+					Партнерская программа, которая подходит{" "}
+					<span className="font-nunito-sans text-[#e61685]">всем</span>
 				</h1>
 				<p
-					className='max-w-[586px] font-regular text-title3 font-nunito-sans max-sm:text-center max-md:text-text2'
-					data-aos='fade-up'
+					className="font-regular max-w-[586px] font-nunito-sans text-title3 max-md:text-text2 max-sm:text-center"
+					data-aos="fade-up"
 				>
 					Получайте прибыль за трафик! <br /> Привлекайте покупателей на
 					платформу, а мы предоставим все необходимые инструменты для вашего
 					роста
 				</p>
 				<LandingButton
-					label='Зарегистрироваться'
+					label="Зарегистрироваться"
 					isYellow
-					href='/registration'
-					dataAos='fade'
+					href="/registration"
+					dataAos="fade"
 				/>
 			</div>
 			<div
-				className='z-30 flex flex-col items-center relative after:h-[431px] after:w-[431px] after:top-5 after:left-18 after max-sm:after:w-[400px] max-md:after:h-[200px]'
-				data-aos='fade-left'
+				className="after:left-18 after relative z-30 flex flex-col items-center after:top-5 after:h-[431px] after:w-[431px] max-md:after:h-[200px] max-sm:after:w-[400px]"
+				data-aos="fade-left"
 			>
 				<img
-					src='src/assets/images/landing/landing-hero-img.svg'
-					className='z-30 max-sm:max-w-[270px] max-sm:object-cover'
+					src="src/assets/images/landing/landing-hero-img.svg"
+					className="z-30 max-sm:max-w-[270px] max-sm:object-cover"
 				/>
-				<h2 className='text-[36px] font-nunito-sans max-w-[596px] text-center max-sm:hidden max-md:text-text2 z-30'>
+				<h2 className="z-30 max-w-[596px] text-center font-nunito-sans text-[36px] max-md:text-text2 max-sm:hidden">
 					Зарабатывайте вместе с лучшими AiPro продуктами
 				</h2>
 			</div>

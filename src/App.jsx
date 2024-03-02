@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import Auth from "./pages/Auth/Auth";
+import PathConstants from "./router/pathConstants";
 import routes from "./router/routes";
 
 function App() {
@@ -20,11 +21,11 @@ function App() {
 			children: routes,
 		},
 		{
-			path: "/login",
+			path: PathConstants.LOGIN,
 			element: <Auth />,
 		},
 		{
-			path: "/signup",
+			path: PathConstants.SIGNUP,
 			element: <Auth />,
 		},
 	]);

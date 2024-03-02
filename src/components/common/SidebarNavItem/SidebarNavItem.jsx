@@ -1,6 +1,6 @@
 /** @format */
-import { NavLink } from 'react-router-dom';
-import styles from './sidebar-nav-item.module.scss';
+import { NavLink } from "react-router-dom";
+import styles from "./sidebar-nav-item.module.scss";
 
 const SidebarNavItem = ({ href, name, icon }) => {
 	return (
@@ -9,7 +9,7 @@ const SidebarNavItem = ({ href, name, icon }) => {
 			className={styles.nav__item}
 			style={({ isActive }) => {
 				return {
-					backgroundColor: isActive ? '#24a1e0' : '',
+					backgroundColor: isActive ? "#24a1e0" : "",
 				};
 			}}
 		>
