@@ -10,7 +10,10 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@ant-design/charts": "^2.0.3",
 		"@ant-design/colors": "^7.0.2",
+		"@ant-design/graphs": "^1.4.1",
+		"@ant-design/plots": "^2.1.14",
 		"@supabase/supabase-js": "^2.39.7",
 		"@svgr/rollup": "^8.1.0",
 		"antd": "^5.14.1",
