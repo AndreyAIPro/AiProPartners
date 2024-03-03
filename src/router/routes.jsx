@@ -9,6 +9,7 @@ import Study from "../pages/Study/Study";
 import Subaccount from "../pages/Subaccount/Subaccount";
 import PathConstants from "./pathConstants";
 
+import Preferences from "../pages/Preferences/Preferences";
 const routes = [
 	{
 		path: PathConstants.HOME,
@@ -44,6 +45,10 @@ const routes = [
 				element: <Community />,
 			},
 		],
+	},
+	{
+		path: PathConstants.PREFERENCES,
+		element: <Preferences />,
 	},
 ];
 

@@ -21,3 +21,12 @@
 		@apply after:absolute after:rounded-full after:bg-after after:opacity-50  after:blur-3xl after:content-[""];
 	}
 }
+.ant-form-item .ant-form-item-label {
+	padding-bottom: 0;
+}
+.preference-halfsizer {
+	width: 48%;
+}
+.dashboard-size-helper {
+	width: 97%;
+}
