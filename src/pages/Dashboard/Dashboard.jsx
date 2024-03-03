@@ -33,10 +33,11 @@ const Charts = () => {
 		legend: { size: false },
 		colorField: "category",
 	};
-	console.log(config.data.value);
+
 	const handleChange = (value) => {
 		console.log(`selected ${value}`);
 	};
+
 	const statisticAll = [
 		{ value: "Общая статистика", label: "Общая статистика" },
 	];

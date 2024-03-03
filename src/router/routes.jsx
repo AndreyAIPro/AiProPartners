@@ -41,6 +41,7 @@ const routes = [
 				element: <UsuallyArticles />,
 			},
 			{
+				index: true,
 				path: "community",
 				element: <Community />,
 			},
