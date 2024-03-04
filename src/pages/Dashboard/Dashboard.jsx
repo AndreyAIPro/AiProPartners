@@ -1,17 +1,16 @@
 import Plate from "../Preferences/Plate/Plate";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
-import { Button, Statistic } from "antd";
+import { Table, Checkbox, ConfigProvider, theme, Select, DatePicker, Button, Statistic } from "antd";
 import { Line } from "@ant-design/plots";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
-import { Table, Checkbox, ConfigProvider, theme, Select, DatePicker } from "antd";
-
 /** @format */
 
 const Charts = () => {
+    // Chart config
     const config = {
         data: {
             type: "fetch",
@@ -24,11 +23,14 @@ const Charts = () => {
         theme: "classicDark",
         legend: { size: false },
         colorField: "category",
+        animate: { enter: { type: "growInX", duration: 2000 } },
     };
-    console.log(config.data.value);
+
     const handleChange = value => {
         console.log(`selected ${value}`);
     };
+
+    // Select Arrays
     const statisticAll = [{ value: "Общая статистика", label: "Общая статистика" }];
     const periodType = [{ value: "Тип периода", label: "Тип периода" }];
     const countries = [
@@ -44,6 +46,7 @@ const Charts = () => {
         { value: "Ваня", label: "Ваня", disabled: true },
     ];
     const ofers = [{ value: "Офер", label: "Офер" }];
+    // Table Arrays
     const dataSource = [
         {
             key: "1",
@@ -116,6 +119,7 @@ const Charts = () => {
             <div className="flex-1">
                 <h2 className="text-title px-4 py-6 font-bold ">Dashboard</h2>
                 <div className="flex flex-row justify-evenly p-2">
+                    {/* Плашки*/}
                     <div className="flex-1 mx-2  ">
                         <Plate title={"Клиенты"}>
                             <div className="py-2">
@@ -245,6 +249,7 @@ const Charts = () => {
                         </Plate>
                     </div>
                 </div>
+                {/** Секция с графиками и таблицей */}
                 <div className="flex-1 flex-col flex items-center ">
                     <div className="dashboard-size-helper ">
                         <ConfigProvider
@@ -273,6 +278,7 @@ const Charts = () => {
                                 },
                             }}
                         >
+                            {/** Chart section*/}
                             <Plate
                                 title={
                                     <div className="flex-nowrap flex ">
@@ -333,6 +339,7 @@ const Charts = () => {
                                     </div>
                                 </div>
                                 <div>
+                                    {/** Chart HERE*/}
                                     <Line {...config} />
                                     <div className="px-2 py-2">
                                         <Checkbox className="pr-4">Уники</Checkbox>
@@ -346,6 +353,7 @@ const Charts = () => {
                                     </div>
                                 </div>
                             </Plate>
+                            {/** Table section */}
                             <Plate
                                 title={
                                     <div className="flex-nowrap flex py-1 align-middle h-fit">
@@ -411,6 +419,7 @@ const Charts = () => {
                                         </div>
                                     </div>
                                 </div>
+                                {/** TABLE HERE */}
                                 <Table
                                     dataSource={dataSource}
                                     columns={columns}

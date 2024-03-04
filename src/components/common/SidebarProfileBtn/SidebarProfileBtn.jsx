@@ -15,6 +15,12 @@ const SidebarProfileBtn = () => {
             <NavLink
                 to="/preferences"
                 className={styles.settings__btn}
+                style={({ isActive }) => {
+                    return {
+                        backgroundColor: isActive ? "#24a1e0" : "",
+                        borderRadius: "15px",
+                    };
+                }}
             >
                 <SettingsIcon />
             </NavLink>
