@@ -4,7 +4,8 @@
 .sidebar__wrapper {
 	display: flex;
 	flex-direction: column;
-
+	position: sticky;
+	top: 0;
 	// height: 100%;
 	max-width: var(--sidebar-width);
 	width: var(--sidebar-width);
