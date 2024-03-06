@@ -16,6 +16,8 @@ const SubaccountTable = () => {
     const [selectedRow, setSelectedRow] = useState(null);
     //holds state of modal window false = invisible
     const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
+    // holds Ref
+    const [ref, setRef] = useState('REF PLACEHOLDER')
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     // function that puts new Account name to accountName
@@ -37,7 +39,7 @@ const SubaccountTable = () => {
                 id: rows.length + 1,
                 className: "border-2 border-gray p-1 px-2",
                 accountName: accountName,
-                ref: "REF PLACEHOLDER",
+                ref: ref,
             };
             setRows([...rows, newRow]);
             setAccountName("");

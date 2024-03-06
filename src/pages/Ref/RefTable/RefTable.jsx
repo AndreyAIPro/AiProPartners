@@ -8,11 +8,14 @@ import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
 
 const RefTable = () => {
     const [rows, setRows] = useState([
-        { id: 1, className: "border-2 border-gray p-1  px-2", accountID: "ID", partnerName: "Name PLACEHOLDER" },
-        { id: 2, className: "border-2 border-gray p-1  px-2", accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+        { id: 1,  accountID: "ID", partnerName: "Name PLACEHOLDER" },
+        { id: 2,  accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
     ]);
+
+    const rowClassName = {className: "border-2 border-gray p-1  px-2"};
     // //Holds account name
     // const [accountName, setAccountName] = useState("");
+    const [accountRef, setAccountRef] = useState('Ref placeholder');
     // // Holds row key
     const [selectedRow, setSelectedRow] = useState(null);
     // //holds state of modal window false = invisible
@@ -121,11 +124,11 @@ const RefTable = () => {
                         <div className=" flex  justify-center  ">
                             <button className="custom-button rounded-l-md text-nowrap text-text3 ">Ваша реферальная ссылка</button>
                         </div>
-                        <input
-                            type="text"
-                            placeholder="Де це брати цю фігню пане бек ендери?"
-                            className="w-full text-text2  text-black px-4 rounded-r-md "
-                        />
+                        <div 
+                            className="w-full flex text-text2 text-nowrap bg-white text-black px-4 rounded-r-md items-center">
+                            
+                            {accountRef}
+                        </div>
                     </div>
                     <table>
                         <thead>
@@ -138,8 +141,8 @@ const RefTable = () => {
                         <tbody>
                             {rows.map(row => (
                                 <tr key={row.id}>
-                                    <td className={row.className}>{row.accountID}</td>
-                                    <td className={row.className}>{row.partnerName}</td>
+                                    <td className={rowClassName.className}>{row.accountID}</td>
+                                    <td className={rowClassName.className}>{row.partnerName}</td>
                                     <td className="flex justify-center p-1 border-none">
                                         <img
                                             className="cursor-pointer mx-2"
