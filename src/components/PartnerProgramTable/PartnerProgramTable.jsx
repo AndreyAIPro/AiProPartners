@@ -4,37 +4,37 @@ import {
 	flexRender,
 	getCoreRowModel,
 	useReactTable,
-} from '@tanstack/react-table';
-import { partnerProgramTable } from '../../data/landingData';
+} from "@tanstack/react-table";
+import { partnerProgramTable } from "../../data/landingData";
 
 const PartnerProgramTable = () => {
 	const columnHelper = createColumnHelper();
 
 	const columns = [
-		columnHelper.accessor('types', {
+		columnHelper.accessor("types", {
 			header: () => (
-				<span className='uppercase text-center py-[15px] max-sm:text-text4 max-sm:py-0'>
+				<span className="py-[15px] text-center uppercase max-sm:py-0 max-sm:text-text4">
 					Виды объемов
 				</span>
 			),
 			cell: (info) => info.getValue(),
 		}),
 
-		columnHelper.accessor('conditions', {
+		columnHelper.accessor("conditions", {
 			header: () => (
-				<span className='uppercase text-center max-sm:text-text4 max-sm:py-0'>
+				<span className="text-center uppercase max-sm:py-0 max-sm:text-text4">
 					Условия
 				</span>
 			),
-			cell: (info) => info.renderValue(),
+			cell: (info) => info.getValue(),
 		}),
-		columnHelper.accessor('percent', {
+		columnHelper.accessor("percent", {
 			header: () => (
-				<span className='uppercase text-center max-sm:text-text4 max-sm:py-0'>
+				<span className="text-center uppercase max-sm:py-0 max-sm:text-text4">
 					Процент
 				</span>
 			),
-			cell: (info) => info.renderValue(),
+			cell: (info) => info.getValue(),
 		}),
 	];
 
@@ -46,41 +46,41 @@ const PartnerProgramTable = () => {
 
 	return (
 		<table
-			className='z-30 flex flex-col items-center justify-end w-[931px] max-sm:w-full max-md:w-[650px]'
-			data-aos='fade-zoom-out'
+			className="w-full z-30 flex flex-col justify-end max-[590px]:my-5 max-sm:my-5"
+			data-aos="fade-zoom-out"
 		>
-			<thead className='text-center bg-[#3C006B] text-[#DFBAF4] w-full'>
+			<thead className="bg-table-header text-center text-article-text">
 				{table.getHeaderGroups().map((headerGroup) => (
 					<tr
 						key={headerGroup.id}
-						className='border-[1px] border-table-border flex justify-around max-sm:flex max-sm:items-center max-sm:justify-center'
+						className="flex justify-around border-[1px] border-table-border max-sm:flex max-sm:items-center max-sm:justify-center"
 					>
 						{headerGroup.headers.map((header) => (
 							<th
 								key={header.id}
-								className='border-table-border border-[1px] w-full py-3 last:max-w-[160px] max-sm:h-[45px] max-sm:flex max-sm:items-center max-sm:justify-center'
+								className="w-full border-[1px] border-table-border py-3 last:max-w-[160px] max-sm:flex max-sm:h-[45px] max-sm:items-center max-sm:justify-center"
 							>
 								{header.isPlaceholder
 									? null
 									: flexRender(
 											header.column.columnDef.header,
-											header.getContext()
+											header.getContext(),
 										)}
 							</th>
 						))}
 					</tr>
 				))}
 			</thead>
-			<tbody className='bg-article text-center border-table-border max-w-[931px] w-full flex flex-col items-end'>
+			<tbody className="flex flex-col items-end border-table-border bg-article text-center">
 				{table.getRowModel().rows.map((row) => (
 					<tr
 						key={row.id}
-						className=' text-[#DFBAF4] w-full flex justify-around'
+						className="w-full flex justify-between text-article-text [&>*]:max-w-[487px] "
 					>
 						{row.getVisibleCells().map((cell) => (
 							<td
 								key={cell.id}
-								className='border-table-border border-[1px] py-3 w-full  flex items-center justify-center px-[55px] last:max-w-[160px] max-sm:px-2 max-sm:text-text5'
+								className="flex items-center justify-center w-full border-[1px] border-table-border px-[55px] py-3 last:max-w-[160px] max-sm:px-2 max-sm:text-text5"
 							>
 								{flexRender(cell.column.columnDef.cell, cell.getContext())}
 							</td>
@@ -88,12 +88,12 @@ const PartnerProgramTable = () => {
 					</tr>
 				))}
 			</tbody>
-			<tfoot className='flex justify-end w-full'>
-				<tr className='flex justify-end mt-[15px] w-full'>
-					<th className='p-3 h-11 text-center bg-[#3C006B] text-[#DFBAF4] flex items-center border-[2px] border-table-border w-[235px] text-text2 font-regular max-sm:text-text4 max-sm:w-full max-sm:h-9'>
+			<tfoot className="flex justify-end w-full">
+				<tr className=" mt-[15px] flex justify-end w-full">
+					<th className="font-regular max-sm:w-full flex h-11 items-center border-[2px] border-table-border bg-[#3C006B] p-3 text-center text-text2 text-[#DFBAF4] max-sm:h-9 max-sm:text-text4">
 						Суммарный заработок от:
 					</th>
-					<td className='p-[15px] h-11 text-[#DFBAF4] flex items-center justify-center border-[2px] border-table-border border-l-0 max-w-[160px] w-full max-sm:max-w-[250px]  max-sm:text-text4 max-sm:h-9'>
+					<td className="w-full flex h-11 max-w-[160px] items-center justify-center border-[2px] border-l-0 border-table-border p-[15px] text-[#DFBAF4] max-sm:h-9  max-sm:max-w-[250px] max-sm:text-text4">
 						70%
 					</td>
 				</tr>

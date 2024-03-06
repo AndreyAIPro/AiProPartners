@@ -1,29 +1,29 @@
 /** @format */
 
-import PartnerProgramTable from '../../PartnerProgramTable/PartnerProgramTable';
+import PartnerProgramTable from "../../PartnerProgramTable/PartnerProgramTable";
 
 const PartnerProgramItem = ({ title, text }) => {
 	return (
 		<>
 			{title ? (
-				<li className='flex flex-col w-full gap-4 mt-4 max-sm:mt-0'>
-					<h4 className='font-bold text-text2'>{title}</h4>
-					<p className='text-text2 font-light text-article-text whitespace-pre-line'>
+				<li className="w-full w-full mt-4 flex flex-col gap-4 max-sm:mt-0">
+					<h4 className="text-text2 font-bold">{title}</h4>
+					<p className="whitespace-pre-line text-text2 font-light text-article-text">
 						{text}
 					</p>
 				</li>
 			) : (
-				<>
-					<h4 className='font-bold text-text2 mt-4 mb-6 max-sm:mt-0 max-sm:mb-0'>
+				<div className='w-full'>
+					<h4 className="mb-6 mt-4 text-text2 font-bold max-sm:mb-0 max-sm:mt-0">
 						Таблица:
 					</h4>
 					<PartnerProgramTable />
-					<div className='flex flex-col max-sm:gap-2'>
-						<h4 className='font-bold text-text2 my-6 max-sm:my-0'>
+					<div className="flex flex-col max-sm:gap-2">
+						<h4 className="my-6 text-text2 font-bold max-sm:my-0">
 							Примечание:
 						</h4>
-						<p className='text-article-text'>Запрещенный трафик:</p>
-						<ul className='list-disc flex flex-col items-start pl-5 text-article-text max-sm:text-text3 max-sm:gap-2'>
+						<p className="text-article-text">Запрещенный трафик:</p>
+						<ul className="flex list-disc flex-col items-start pl-5 text-article-text max-sm:gap-2 max-sm:text-text3">
 							<li>мультиаккаунты</li>
 							<li>заблокированных пользователей</li>
 							<li>мотивированный трафик</li>
@@ -35,7 +35,7 @@ const PartnerProgramItem = ({ title, text }) => {
 							</li>
 						</ul>
 					</div>
-				</>
+				</div>
 			)}
 		</>
 	);

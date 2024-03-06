@@ -17,8 +17,27 @@
 }
 
 @layer components {
+	.w-full{
+		width: 100%;
+	}
 	.after {
 		@apply after:absolute after:rounded-full after:bg-after after:opacity-50  after:blur-3xl after:content-[""];
+	}
+
+	.hero-after {
+		@apply after:absolute after:bottom-0 after:left-0 after:h-[500px] after:w-full after:bg-gradient-to-t after:from-dark-blue after:to-transparent max-lg:after:max-h-[752px] max-md:after:max-h-[541px] ;
+	}
+
+	.hero-bg {
+		@apply bg-gradient-to-r from-[#7000ff] from-[1.33%] to-[#c000f0]  to-[96%];
+	}
+	
+	.how-start-after{
+		@apply after:w-[132px] after:h-4 after:top-[95px] after:bg-arrow-how-start after:absolute after:bg-center after:origin-left after:transform after:translate-x-[65px] after:z-10
+	}
+
+	.how-start-before{
+		@apply before:w-[165px] before:h-4 before:top-[95px] before:bg-separator-how-start before:absolute before:bg-center before:origin-right before:transform before:translate-x-[-70px] before:bg-no-repeat before:z-10
 	}
 }
 .ant-form-item .ant-form-item-label {
