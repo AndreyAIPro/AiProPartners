@@ -1,10 +1,11 @@
+/** @format */
 import studyLogo from "../../../assets/images/studyImg//study-logo.svg";
 import studyPlaceholder from "../../../assets/images/studyImg//study-placeholder.svg";
 
 export const Community = () => {
 	return (
 		<div className="mt-10 flex justify-between gap-3">
-			<p className="flex-1 font-nunito-sans text-text1 leading-8 ">
+			<p className="ml-7 flex-1 font-nunito-sans text-text1 leading-8">
 				Вступайте в наш телеграм канал, там есть полное обучение как для
 				новичков, так и для профессионалов. Так же на постоянной основе в канал
 				добавляется актуальная информация, по этому следите внимательно, чтобы
@@ -14,7 +15,7 @@ export const Community = () => {
 				наш партнер. Мы верим в тебя!)
 			</p>
 			<div
-				className={`h-[685px] flex-1 rounded-xl`}
+				className={`h-[665px] flex-1 rounded-xl`}
 				style={{ backgroundImage: `url(${studyPlaceholder})` }}
 			>
 				<div className="flex flex-col items-center pt-12">
@@ -34,7 +35,9 @@ export const Community = () => {
 						</p>
 					</div>
 					<button className="mt-6 rounded-full bg-purple px-5 py-1 font-nunito-sans">
-						Вступить в комьюнити
+						<a href="https://t.me/aipropartners" target="blank">
+							Вступить в комьюнити
+						</a>
 					</button>
 				</div>
 			</div>
