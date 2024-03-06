@@ -1,5 +1,5 @@
 /** @format */
-@import '/src/assets/styles/variable';
+@import "/src/assets/styles/variable";
 
 .sidebar__wrapper {
 	display: flex;
@@ -8,6 +8,9 @@
 	top: 0;
 	// height: 100%;
 	max-width: var(--sidebar-width);
+
+	height: 100%;
+	// max-width: var(--sidebar-width);
 	width: var(--sidebar-width);
 	min-width: 150px;
 

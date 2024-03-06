@@ -1,10 +1,8 @@
 /** @format */
 
-import LeftSidebar from './LeftSidebar';
-import RightSidebar from './RightSidebar/RightSidebar';
-import { sidebar__wrapper as wrapper } from './sidebar.module.scss';
-
-console.log(wrapper);
+import LeftSidebar from "./LeftSidebar";
+import RightSidebar from "./RightSidebar/RightSidebar";
+import { sidebar__wrapper as wrapper } from "./sidebar.module.scss";
 
 const Sidebar = (props) => {
 	return (

@@ -1,6 +1,6 @@
 /** @format */
-@import 'normalize.css';
-@import './assets/styles/variable.css';
+@import "normalize.css";
+@import "./assets/styles/variable.css";
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 @tailwind base;
@@ -10,18 +10,24 @@
 *,
 *::after,
 *::before {
-	font-family: 'Nunito sans'; /*було Times New Roman*/
+	font-family: "Nunito Sans";
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0;
 }
+
+@layer components {
+	.after {
+		@apply after:absolute after:rounded-full after:bg-after after:opacity-50  after:blur-3xl after:content-[""];
+	}
+}
 .ant-form-item .ant-form-item-label {
 	padding-bottom: 0;
-  }
-.preference-halfsizer{
+}
+.preference-halfsizer {
 	width: 48%;
 }
-.dashboard-size-helper{
+.dashboard-size-helper {
 	width: 97%;
 }
 
