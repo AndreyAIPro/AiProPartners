@@ -1,10 +1,9 @@
+import Plate from "../Preferences/Plate/Plate";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Table, Checkbox, ConfigProvider, theme, Select, DatePicker, Button, Statistic } from "antd";
 import { Line } from "@ant-design/plots";
-import { Button, Statistic } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import Plate from "../Preferences/Plate/Plate";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
