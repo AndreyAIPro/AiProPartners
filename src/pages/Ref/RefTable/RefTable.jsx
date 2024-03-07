@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import "./RefTable.scss";
 
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
 import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
+import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
 import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
 
 const RefTable = () => {
@@ -122,7 +122,7 @@ const RefTable = () => {
 				<div className="flex w-[100%]  flex-col content-end">
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
-							<button className="custom-button text-nowrap rounded-l-md text-text3 ">
+							<button className="custom-button w-[200px] p-[10px] text-nowrap rounded-l-md text-text3 ">
 								Ваша реферальная ссылка
 							</button>
 						</div>

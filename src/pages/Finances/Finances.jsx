@@ -11,7 +11,7 @@ const Finances = () => {
 	};
 
 	return (
-		<section className="m-0 w-[1245px] py-8">
+		<section className="m-0 w-full py-8">
 			<h2 className=" font-nunito-sans text-title font-bold">Финансы</h2>
 			<div className="mt-5 flex gap-10 text-title2 ">
 				<button
