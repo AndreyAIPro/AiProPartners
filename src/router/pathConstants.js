@@ -9,6 +9,7 @@ const PathConstants = {
 	FINANCES: "/finances",
 	LOGIN: "/login",
 	SIGNUP: "/signup",
+	PREFERENCES: "/preferences",
 };
 
 export default PathConstants;

@@ -49,3 +49,27 @@
 .dashboard-size-helper {
 	width: 97%;
 }
+
+/* cool look to scroll bar*/
+/* width */
+::-webkit-scrollbar {
+	width: 7px;
+	background-color: #0e0e0e;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey; 
+	border-radius: 3px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #230E32;
+	border-radius: 3px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #24A1E0; 
+  }

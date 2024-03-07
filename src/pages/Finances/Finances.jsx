@@ -1,8 +1,6 @@
 /**  @format */
 import { useState } from "react";
-import Filter from "./../../components/common/Filter/Filter";
 import TableFinance from "./../../components/common/TableFinance.jsx/TableFinance";
-import { filters } from "./../../data/filtersForFinances";
 import "./finances.modal.css";
 
 const Finances = () => {
@@ -13,7 +11,7 @@ const Finances = () => {
 	};
 
 	return (
-		<section className="w-[1245px] px-20 py-8">
+		<section className="m-0 w-[1245px] py-8">
 			<h2 className=" font-nunito-sans text-title font-bold">Финансы</h2>
 			<div className="mt-5 flex gap-10 text-title2 ">
 				<button
@@ -26,20 +24,10 @@ const Finances = () => {
 				<p className="font-nunito-sans font-bold">Список транзакций</p>
 			</div>
 
-			<div className="mx-6 mt-16 flex gap-10">
-				<Filter filters={filters} />
-				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
-					Обновить
-				</button>
-			</div>
 			<div className="m-6">
 				<TableFinance />
 			</div>
-			<div className="text-center">
-				<button className="rounded-full bg-light-blue px-10 py-2 font-nunito-sans">
-					Загрузить ещё
-				</button>
-			</div>
+
 			{modal && (
 				<div>
 					<div onClick={toggleModal} className="overlay"></div>
