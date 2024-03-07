@@ -11,7 +11,7 @@ import { filters } from "./../../../data/filtersForFinances";
 
 const TableFinance = () => {
 	const data = useMemo(() => mData, []);
-	const [getData, setGetData] = useState(5);
+	const [getData, setGetData] = useState(mData.length);
 	const columns = [
 		{
 			header: "Дата",
@@ -48,7 +48,7 @@ const TableFinance = () => {
 
 	return (
 		<>
-			<div className="mb-6 mt-20 flex gap-10">
+			<div className=" mb-6 mt-20 ">
 				<Filter filters={filters} />
 				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
 					Обновить
@@ -129,7 +129,7 @@ const TableFinance = () => {
 			) : (
 				<div className="mt-6 text-center">
 					<button
-						className={` rounded-full bg-light-blue px-10 py-2 font-nunito-sans `}
+						className={` rounded-full bg-light-blue px-10 py-2 font-nunito-sans ${getData < 5 && `hidden`}`}
 						onClick={handelGetMoreData}
 					>
 						Загрузить ещё
