@@ -11,8 +11,8 @@ const Finances = () => {
 	};
 
 	return (
-		<section className=" my-8 w-[1245px] ">
-			<h2 className=" font-nunito-sans text-title font-bold ">Финансы</h2>
+		<section className="w-full m-0 py-8">
+			<h2 className=" font-nunito-sans text-title font-bold">Финансы</h2>
 			<div className="mt-5 flex gap-10 text-title2 ">
 				<button
 					onClick={toggleModal}

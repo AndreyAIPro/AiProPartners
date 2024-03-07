@@ -1,19 +1,21 @@
 /** @format */
 
-import TelegramLink from "../../common/TelegramLink";
-import SidebarNavMenu from "../../SidebarNavMenu";
-import SocialLinksList from "../../SocialLinksList";
-import LeftSidebarHeader from "./LeftSidebarHeader";
+import TelegramLink from '../../common/TelegramLink';
+import SidebarNavMenu from '../../SidebarNavMenu';
+import SocialLinksList from '../../SocialLinksList';
+import LeftSidebarHeader from './LeftSidebarHeader';
 
 const LeftSidebar = () => {
-	return (
-		<aside className="w-[319px]">
-			<LeftSidebarHeader />
-			<SidebarNavMenu />
-			<TelegramLink />
-			<SocialLinksList />
-		</aside>
-	);
+    return (
+        <>
+            <div className="sticky top-0">
+                <LeftSidebarHeader />
+                <SidebarNavMenu />
+                <TelegramLink />
+                <SocialLinksList />
+            </div>
+        </>
+    );
 };
 
 export default LeftSidebar;

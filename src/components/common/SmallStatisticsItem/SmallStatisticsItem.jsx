@@ -9,7 +9,7 @@ const SmallStatisticsItem = ({ value, statistic }) => {
 			<span className='font-black text-[36px] font-nunito-sans leading-[44px]'>
 				{value}
 			</span>
-			<div className='bg-separator-bg h-2 w-2'></div>
+			<div className='bg-separator-bg h-2 w-[8px]'/>
 			{statistic}
 		</li>
 	);

@@ -4,10 +4,10 @@ import LandingButton from "../components/common/LandingButton/LandingButton";
 
 const Hero = () => {
 	return (
-		<section className="w-full max-sm:after:w-full relative flex h-full items-center justify-around font-nunito-sans text-white max-sm:flex-col-reverse max-sm:px-[30px] max-sm:pt-[10px] max-sm:after:absolute max-sm:after:bottom-0 max-sm:after:left-0 max-sm:after:z-[1]  max-sm:after:h-full max-sm:after:bg-gradient-to-t max-sm:after:from-dark-blue">
-			<div className="z-10 flex flex-col gap-7 max-md:mt-8 max-sm:z-40 max-sm:items-center max-sm:px-[30px]">
+		<section className="w-full flex h-[740px] justify-around max-lg:h-[500px] max-lg:items-center max-sm:flex-col-reverse max-sm:gap-8 max-sm:pt-[70px]">
+			<div className="z-10 flex flex-col gap-7 pt-20 max-md:mt-8 max-dm:px-5 max-sm:z-40 max-sm:items-center max-sm:px-[30px] max-sm:mt-0 max-sm:pt-0">
 				<h1
-					className="max-w-[661px] text-left font-nunito-sans text-[64px] font-black leading-[72px] max-[1400px]:text-[40px] max-[1400px]:leading-[45px] max-md:text-[32px] max-sm:text-center max-sm:text-title"
+					className="max-w-[661px] text-left font-nunito-sans text-[64px] font-black leading-[72px] max-[1400px]:text-[40px] max-[1400px]:leading-[45px] max-md:text-[32px] max-sm:text-center max-sm:text-title2"
 					data-aos="fade-right"
 				>
 					Партнерская программа, которая подходит{" "}
@@ -34,9 +34,9 @@ const Hero = () => {
 			>
 				<img
 					src="src/assets/images/landing/landing-hero-img.svg"
-					className="z-30 max-sm:max-w-[270px] max-sm:object-cover"
+					className="z-30 max-w-[528px] max-sm:max-w-[270px] max-sm:object-cover max-lg:max-w-[400px]"
 				/>
-				<h2 className="z-30 max-w-[596px] text-center font-nunito-sans text-[36px] max-md:text-text2 max-sm:hidden">
+				<h2 className="z-30 max-w-[596px] text-center font-nunito-sans text-[36px] max-md:text-text2 max-sm:hidden max-lg:text-[24px]">
 					Зарабатывайте вместе с лучшими AiPro продуктами
 				</h2>
 			</div>

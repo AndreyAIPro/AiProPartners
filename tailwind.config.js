@@ -47,6 +47,7 @@ export default {
 				"article-text": "#DFBAF4",
 				"in-touch-bg": "#381851",
 				"in-touch-border": "#1A1A1A",
+				"table-header": "#3C006B"
 			},
 			backgroundImage: {
 				"reuse-bg": "url('./assets/images/landing/reuse-bg.svg')",

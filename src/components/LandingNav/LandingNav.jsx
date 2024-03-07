@@ -17,7 +17,7 @@ const LandingNav = () => {
 				<LandingButton label='Войти' href='/login' />
 				<LandingButton
 					label='Зарегистрироваться'
-					href='/registration'
+					href='/signup'
 					isBorder
 				/>
 				<select className='rounded-[8px] p-2 bg-transparent text-white font-regular text-sm font-nunito-sans flex uppercase'>

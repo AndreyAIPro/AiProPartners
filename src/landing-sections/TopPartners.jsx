@@ -5,7 +5,7 @@ import LandingSectionHeading from '../components/common/LandingSectionHeading/La
 
 const TopPartners = () => {
 	return (
-		<section className='flex flex-col pb-[171px] max-sm:px-[30px] max-sm:pb-[120px] max-md:px-10'>
+		<section className='flex flex-col pb-[171px] max-sm:px-[30px] max-md:px-10 max-sm:pb-24'>
 			<div className='flex flex-col gap-6'>
 				<LandingSectionHeading title='Партнеры месяца' dataAos='fate' />
 				<h4

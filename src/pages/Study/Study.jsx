@@ -1,18 +1,15 @@
 /** @format */
+import { useEffect } from "react";
 import {
 	Outlet,
 	useLocation,
-	useNavigate,
-	useNavigation,
+	useNavigate
 } from "react-router-dom";
 import Link from "../../components/common/NavLink/NavLink";
-import Community from "../../components/common/Community/Community";
-import { useEffect } from "react";
 
 const Study = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	// console.log(location.pathname);
 
 	useEffect(() => {
 		navigate("community");

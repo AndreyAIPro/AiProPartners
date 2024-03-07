@@ -1,13 +1,13 @@
 import {
-	useReactTable,
 	flexRender,
 	getCoreRowModel,
 	getPaginationRowModel,
+	useReactTable,
 } from "@tanstack/react-table";
-import mData from "../../../data/dataForTable.json";
 import { useMemo, useState } from "react";
-import Filter from "./../Filter/Filter";
+import mData from "../../../data/dataForTable.json";
 import { filters } from "./../../../data/filtersForFinances";
+import Filter from "./../Filter/Filter";
 
 const TableFinance = () => {
 	const data = useMemo(() => mData, []);

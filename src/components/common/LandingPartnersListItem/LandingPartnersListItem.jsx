@@ -9,7 +9,7 @@ const LandingPartnersListItem = ({ title, subtext, image, dataAos }) => {
 			<img
 				src={image}
 				alt={title}
-				className='max-w-[230px] max-sm:w-[293px] max-sm:max-w-[293px]'
+				className='max-w-[230px] max-sm:max-w-[293px] w-full'
 			/>
 			<div className='flex flex-col'>
 				<h4 className='font-nunito-sans mt-4 font-black text-[18px]'>
