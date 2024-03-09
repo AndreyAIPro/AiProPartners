@@ -11,7 +11,7 @@ const LandingNav = () => {
 	return (
 		<nav className="relative z-10 flex items-center justify-between max-sm:justify-center max-sm:pt-5">
 			<NavLink
-				to="/"
+				to="/dashboard"
 				data-aos="fade-right"
 				className="flex items-center gap-4 font-nunito-sans text-[50px] font-medium hover:cursor-pointer"
 			>
@@ -19,7 +19,7 @@ const LandingNav = () => {
 			</NavLink>
 			<div className="flex items-center gap-8 max-md:gap-3 max-sm:hidden">
 				{user ? (
-					<LandingButton label="Выйти" onClick={logout} />
+					<LandingButton onClick={logout} label="Выйти" isBorder />
 				) : (
 					<>
 						<LandingButton label="Войти" href="/login" />
