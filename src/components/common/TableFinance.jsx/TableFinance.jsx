@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 import mData from "../../../data/dataForTable.json";
 import { filters } from "./../../../data/filtersForFinances";
 import Filter from "./../Filter/Filter";
+import DateFilter from './../FiltersForTable/DateFilter';
 
 const TableFinance = () => {
 	const data = useMemo(() => mData, []);
@@ -49,7 +50,7 @@ const TableFinance = () => {
 	return (
 		<>
 			<div className=" mb-6 mt-20 ">
-				<Filter filters={filters} />
+				<DateFilter/>
 				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
 					Обновить
 				</button>
