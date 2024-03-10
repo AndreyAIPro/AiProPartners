@@ -10,6 +10,11 @@ const { RangePicker } = DatePicker;
 /** @format */
 
 const Charts = () => {
+    // eslint-disable-next-line arrow-body-style
+    const disabledDate = current => {
+        // Can not select days before today and today
+        return current && current < dayjs().endOf("day");
+    };
     // Chart config
     const config = {
         data: {
@@ -49,6 +54,182 @@ const Charts = () => {
     // Table Arrays
     const dataSource = [
         {
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
+            key: "1",
+            date: "1/1/1900",
+            Unics: "2",
+            regestrationCount: "30%",
+            submitedRegestration: "2",
+            percentCTR: "3",
+            UO: "1",
+            percentUOS: "3",
+            percentCR2: "2",
+            incomeValue: "over9000",
+        },{
             key: "1",
             date: "1/1/1900",
             Unics: "2",
@@ -109,11 +290,7 @@ const Charts = () => {
         },
     ];
 
-    // eslint-disable-next-line arrow-body-style
-    const disabledDate = current => {
-        // Can not select days before today and today
-        return current && current < dayjs().endOf("day");
-    };
+    
     return (
         <>
             <div className="flex-1">
@@ -338,9 +515,10 @@ const Charts = () => {
                                         </Button>
                                     </div>
                                 </div>
-                                <div>
+                                <div className="flex-1">
                                     {/** Chart HERE*/}
-                                    <Line {...config} />
+                                    <div><Line {...config} /></div>
+                                    
                                     <div className="px-2 py-2">
                                         <Checkbox className="pr-4">Уники</Checkbox>
                                         <Checkbox className="pr-4">Регистрации</Checkbox>
@@ -424,7 +602,7 @@ const Charts = () => {
                                     dataSource={dataSource}
                                     columns={columns}
                                     size="small"
-                                    pagination={false}
+                                    pagination={true}
                                 ></Table>
                             </Plate>
                         </ConfigProvider>

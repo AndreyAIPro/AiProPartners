@@ -123,14 +123,14 @@ const SubaccountTable = () => {
 					</button>
 				</div>
 			</Modal>
-			<div className="w-full  ">
-				<div className="w-full flex  flex-col content-end ">
-					<div className="w-full my-3 flex flex-1   ">
+			<div className="  ">
+				<div className=" flex  flex-col content-end ">
+					<div className=" my-3 flex flex-1   ">
 						<input
 							type="text"
 							onChange={handleNewSubaccount}
 							placeholder="Назовите Субаккаунт"
-							className="w-full flex-1 rounded-md px-2 text-text2 text-black "
+							className=" flex-1 rounded-md px-2 text-text2 text-black "
 							value={accountName}
 						/>
 						<div className="flex justify-center px-3">
@@ -152,7 +152,7 @@ const SubaccountTable = () => {
 									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
 										Ссылка
 									</th>
-									<td className=" "></td>
+									
 								</tr>
 							</thead>
 							<tbody>

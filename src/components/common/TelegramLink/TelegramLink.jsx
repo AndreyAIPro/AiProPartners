@@ -3,7 +3,7 @@ import telegram from '../../../assets/images/socialLinks/telegram.svg';
 
 const TelegramLink = () => {
 	return (
-		<div className='pl-5 flex flex-col gap-2 mt-[60px]'>
+		<div className='pl-5 flex flex-col gap-2 mt-[60px] text-white bg-secondary'>
 			<span>Ваш персональный менеджер</span>
 			<a className='flex items-center gap-1' href='https://t.me/aipro_manager'>
 				<img src={telegram} alt='telegram icon' width={15} height={15} />

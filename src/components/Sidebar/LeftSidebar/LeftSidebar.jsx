@@ -9,7 +9,7 @@ const LeftSidebar = () => {
     return (
         <>
             <div className="sticky top-0">
-                <LeftSidebarHeader />
+                <LeftSidebarHeader    />  
                 <SidebarNavMenu />
                 <TelegramLink />
                 <SocialLinksList />
