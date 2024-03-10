@@ -10,6 +10,8 @@ const PathConstants = {
 	LOGIN: "/login",
 	SIGNUP: "/signup",
 	PREFERENCES: "/preferences",
+	RESET_PASSWORD: '/resetpassword',
+	PASSWORD_RECOVERY: '/passwordrecovery',
 };
 
 export default PathConstants;

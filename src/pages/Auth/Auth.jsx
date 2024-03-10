@@ -3,13 +3,17 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
+import { useUser } from "../../hooks/useUser";
 
 function Auth() {
+	const { user } = useUser()
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
 	const [isActive, setIsActive] = useState(pathname === "/signup");
 
+	if (user) navigate('/dashboard');
+	
 	return (
 		<div
 			className={`relative flex min-h-screen  flex-col-reverse bg-[#181818] text-white lg:flex-row ${!isActive && "lg:flex-row-reverse"}`}
