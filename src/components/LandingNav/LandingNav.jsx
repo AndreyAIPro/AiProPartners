@@ -19,7 +19,7 @@ const LandingNav = () => {
 			</NavLink>
 			<div className="flex items-center gap-8 max-md:gap-3 max-sm:hidden">
 				{user ? (
-					<LandingButton onClick={logout} label="Выйти" isBorder />
+					<LandingButton href='/dashboard' label="Войти" isBorder />
 				) : (
 					<>
 						<LandingButton label="Войти" href="/login" />

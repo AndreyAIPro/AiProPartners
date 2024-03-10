@@ -60,3 +60,18 @@ export async function logout() {
 	const { error } = await supabase.auth.signOut();
 	if (error) throw new Error(error.message);
 }
+
+export async function setEmailForResetPassword(email) {
+	let { error } = await supabase.auth.resetPasswordForEmail(email, {
+		redirectTo: '/passwordrecovery'
+	})
+	if (error) throw new Error(error.message);
+}
+
+
+export async function setUpdateUser({ password }) {
+	const { error } = await supabase.auth.updateUser({
+  		password: password,
+	})
+	if (error) throw new Error(error.message);
+}
