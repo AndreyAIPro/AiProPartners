@@ -25,6 +25,9 @@ export async function SignUp({
 				telegramAccount,
 				sources: radioButtonSources,
 				other: textAreaOtherRadio,
+				roles: ['partner'],
+				money: 0,
+				income: 0,
 			},
 		},
 	});
