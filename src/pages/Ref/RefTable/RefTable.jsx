@@ -7,6 +7,8 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import refData from "./../../../data/dataForRefTable";
+import { message } from "antd";
+import copy from "copy-to-clipboard";
 
 const RefTable = () => {
 	const data = useMemo(() => refData, []);
@@ -29,6 +31,10 @@ const RefTable = () => {
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 	});
+	const handleCopyToClipboard = (ref) => {
+		copy(ref);
+		message.success("Ref copied to clipboard");
+	};
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
@@ -36,8 +42,11 @@ const RefTable = () => {
 				<div className="flex w-[100%]  flex-col content-end">
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
-							<button className="custom-button w-[200px] text-nowrap rounded-l-md p-[10px] text-text3 ">
-								Ваша реферальная ссылка
+							<button
+								onClick={() => handleCopyToClipboard(accountRef)}
+								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
+							>
+								Скопировать реферальную ссылку
 							</button>
 						</div>
 						<div className="flex w-[100%] items-center text-nowrap rounded-r-md bg-white px-4 text-text2 text-black">
