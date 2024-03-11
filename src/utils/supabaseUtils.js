@@ -141,12 +141,12 @@ export async function checkRefLink(refId, ipAddress) {
 
 //Красти
 export async function selectPartnersRefLinks(partnerId) {
-	const { data: selectPartnersRefLinks } = await supabase
+	const { data } = await supabase
 		.from("PartnersRefLinks")
 		.select("refLink,created_at,name")
 		.eq("partnerId", partnerId);
 		
-	return selectPartnersRefLinks
+	return data;
 }
 
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
