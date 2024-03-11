@@ -15,7 +15,6 @@ const SidebarProfileBtn = () => {
 	const { logout } = useLogout();
 	const { user } = useUser();
 	const userData = user.user_metadata;
-	console.log(userData)
 	return (
 		<div className={styles.btn}>
 			<div className={styles.btn__profile}>

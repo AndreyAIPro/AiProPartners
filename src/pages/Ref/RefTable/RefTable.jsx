@@ -11,6 +11,7 @@ import {
 import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
+import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
 
 const RefTable = () => {
 	const [rows, setRows] = useState([
@@ -18,7 +19,8 @@ const RefTable = () => {
 		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
 	]);
 	const {user} = useUser();
-	if(user?.id !== undefined) creatDefultRefLink(user?.id);
+	const {data: partnersRefLinks} = useSelectPartnersRefLinks(user?.id)
+	//if(user?.id !== undefined) creatDefultRefLink(user?.id);
 	const rowClassName = { className: "border-2 border-gray p-1  px-2" };
 	// //Holds account name
 	// const [accountName, setAccountName] = useState("");
