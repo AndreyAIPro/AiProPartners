@@ -8,6 +8,15 @@ import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import Auth from "./pages/Auth/Auth";
 import PathConstants from "./router/pathConstants";
 import routes from "./router/routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
+});
 
 function App() {
 	AOS.init({
@@ -30,7 +39,11 @@ function App() {
 		},
 	]);
 
-	return <RouterProvider router={router} />;
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+		</QueryClientProvider>
+	);
 }
 
 export default App;

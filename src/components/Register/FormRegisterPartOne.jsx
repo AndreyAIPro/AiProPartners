@@ -78,6 +78,10 @@ function FormRegisterPartOne({
 						required: true,
 						message: "Please input your password!",
 					},
+					{
+						min: 8,
+						message: "Input at least 8 characters!",
+					},
 				]}
 			>
 				<Input.Password placeholder="password" ref={inputPassword} />

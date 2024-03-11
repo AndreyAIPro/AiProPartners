@@ -1,10 +1,13 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import React from "react";
+import { useLogin } from "../../hooks/useLogin";
 
 export default function Login() {
+	const { login, isLoading } = useLogin();
+	const [messageApi, contextHolder] = message.useMessage();
 	return (
 		<Form
-			className="w-3/6 text-white max-md:w-full"
+			className="w-3/6 max-md:w-full text-white"
 			initialValues={{
 				remember: true,
 			}}
@@ -14,6 +17,7 @@ export default function Login() {
 			<div className="mb-[25px] text-center text-[40px] font-bold">
 				Вход в аккаунт
 			</div>
+			{contextHolder}
 			<Form.Item
 				name="email"
 				rules={[
@@ -54,15 +58,13 @@ export default function Login() {
 	);
 
 	function onFinish(values) {
-		console.log("Success:", values);
-	}
-	function checkedValidatePhoneNumber() {
-		if (!isValid) {
-			setShowMessagewithErrorPhone(true);
-			console.log("fdsfsd");
-			return;
-		}
-		setShowMessagewithErrorPhone(false);
-		setFormChange(!formChange);
+		login(values, {
+			onError: () => {
+				messageApi.open({
+					type: "error",
+					content: "Provided email or password are incorrect",
+				});
+			},
+		});
 	}
 }
