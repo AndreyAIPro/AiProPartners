@@ -23,6 +23,10 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 						min: 3,
 						message: "Input at least 3 characters!",
 					},
+					{
+						max: 16,
+						message: "Input less then 16 symbol!",
+					},
 				]}
 			>
 				<Input placeholder="ФИО" />
