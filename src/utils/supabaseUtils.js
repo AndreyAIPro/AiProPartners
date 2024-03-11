@@ -25,7 +25,7 @@ export async function SignUp({
 				telegramAccount,
 				sources: radioButtonSources,
 				other: textAreaOtherRadio,
-				roles: ['partner'],
+				roles: ["partner"],
 				money: 0,
 				income: 0,
 			},
@@ -37,14 +37,14 @@ export async function SignUp({
 }
 
 export async function login({ email, password }) {
-    let { data, error } = await supabase.auth.signInWithPassword({
-			email,
-			password,
-    });
-    
-    if (error) throw new Error(error.message);
+	let { data, error } = await supabase.auth.signInWithPassword({
+		email,
+		password,
+	});
 
-    return {data, error};
+	if (error) throw new Error(error.message);
+
+	return { data, error };
 }
 
 export async function getCurrentUser() {
@@ -66,15 +66,34 @@ export async function logout() {
 
 export async function setEmailForResetPassword(email) {
 	let { error } = await supabase.auth.resetPasswordForEmail(email, {
-		redirectTo: '/passwordrecovery'
-	})
+		redirectTo: "/passwordrecovery",
+	});
 	if (error) throw new Error(error.message);
 }
 
-
-export async function setUpdateUser({ password }) {
+export async function setUpdateUserPassword({ password }) {
 	const { error } = await supabase.auth.updateUser({
-  		password: password,
-	})
+		password: password,
+	});
+	if (error) throw new Error(error.message);
+}
+export async function UpdateUser({
+	telephoneNumber,
+	discord,
+	name,
+	telegram,
+	radioButtonSources,
+	textAreaOtherRadio,
+}) {
+	const { error } = await supabase.auth.updateUser({
+		data: {
+			phone: telephoneNumber,
+			nickname: name,
+			discordAccount: discord || "",
+			telegramAccount: telegram,
+			sources: radioButtonSources,
+			other: textAreaOtherRadio || "",
+		},
+	});
 	if (error) throw new Error(error.message);
 }
