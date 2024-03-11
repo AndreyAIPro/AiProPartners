@@ -3,25 +3,29 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
+import { useUser } from "../../hooks/useUser";
 
 function Auth() {
+	const { user } = useUser()
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
 	const [isActive, setIsActive] = useState(pathname === "/signup");
 
+	if (user) navigate('/dashboard');
+	
 	return (
 		<div
-			className={`relative flex min-h-screen flex-col-reverse bg-[#181818] text-white lg:flex-row ${!isActive && "lg:flex-row-reverse"}`}
+			className={`relative flex min-h-screen  flex-col-reverse bg-[#181818] text-white lg:flex-row ${!isActive && "lg:flex-row-reverse"}`}
 		>
 			<div
-				className={`flex w-3/6 items-center justify-center bg-[#24a1e0] p-[20px] max-lg:w-full max-lg:rounded-t-[100px] ${!isActive && "lg:rounded-l-[150px] lg:rounded-r-[0px]"}`}
+				className={`max-lg:min-w-full flex w-[50%] items-center justify-center bg-[#24a1e0] p-[20px] max-lg:rounded-t-[100px] lg:rounded-r-[150px] ${!isActive && "lg:rounded-l-[150px] lg:rounded-r-none"}`}
 			>
 				<div className="flex flex-col items-center justify-center">
 					<div className=" text-center text-[40px] font-bold max-md:text-[30px]">
 						{isActive ? "Добро пожаловать" : "С возвращением!"}
 					</div>
-					<div className="w-[400px] text-center text-[20px] font-normal max-md:w-auto max-md:text-[16px]">
+					<div className="max-md:max-w-none lg:w-[400px] text-center text-[20px] font-normal max-md:text-[16px]">
 						Заполните поля что бы пользоваться всеми функциями AiPro
 						<p>
 							{isActive
@@ -37,7 +41,7 @@ function Auth() {
 					</button>
 				</div>
 			</div>
-			<div className="flex w-full items-center justify-center p-[20px] lg:w-3/6">
+			<div className="max-lg:min-w-full flex w-[50%] items-center justify-center p-[20px]">
 				<ConfigProvider
 					theme={{
 						token: {

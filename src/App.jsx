@@ -8,6 +8,17 @@ import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import Auth from "./pages/Auth/Auth";
 import PathConstants from "./router/pathConstants";
 import routes from "./router/routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import RefLink from "./pages/RefLink/RefLink";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
+});
 
 function App() {
 	AOS.init({
@@ -25,12 +36,29 @@ function App() {
 			element: <Auth />,
 		},
 		{
-			path: PathConstants.SIGNUP,
+			path: PathConstants.SIGNUP,//     "/signup",
 			element: <Auth />,
 		},
+		{
+			path: PathConstants.RESET_PASSWORD,
+			element: <ResetPassword />,	
+		},
+		{
+			path: PathConstants.PASSWORD_RECOVERY,
+			element: <ResetPassword />,
+			
+		},
+		{
+			path: PathConstants.PARTNERREFLINK  + PathConstants.REFCODE,
+			element: <RefLink />,
+		}
 	]);
 
-	return <RouterProvider router={router} />;
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+		</QueryClientProvider>
+	);
 }
 
 export default App;

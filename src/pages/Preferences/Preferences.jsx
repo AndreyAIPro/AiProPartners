@@ -1,4 +1,5 @@
 /** @format */
+import { useLogout } from "../../hooks/useLogout";
 import Plate from "./Plate/Plate";
 import { Form, Input, Table, Checkbox, ConfigProvider, theme, Select, Typography } from "antd";
 
@@ -7,6 +8,7 @@ const Preferences = () => {
     // const [form] = Form.useForm();
     // const [messageApi, contextHolder] = message.useMessage();
     const { TextArea } = Input;
+    const { logout } = useLogout();
     const countries = [
         { value: "Украина", label: "Украина" },
         { value: "Омерика", label: "Омерика" },
@@ -331,9 +333,13 @@ const Preferences = () => {
                                         pagination={false}
                                     />
                                 </div>
+                              
                             </Plate>
+                              <button className="flex border-2 border-[#fff] items-center transition-all justify-center p-2 font-nunito-sans font-bold hover:bg-[#24A1E0]" onClick={logout}>Выйти</button>
                         </div>
+                        
                     </div>
+                   
                 </div>
             </ConfigProvider>
         </>
