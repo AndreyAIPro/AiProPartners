@@ -36,7 +36,7 @@ function App() {
 			element: <Auth />,
 		},
 		{
-			path: PathConstants.SIGNUP,//     "/signup",
+			path: PathConstants.SIGNUP,
 			element: <Auth />,
 		},
 		{
@@ -49,8 +49,16 @@ function App() {
 			
 		},
 		{
-			path: PathConstants.PARTNERREFLINK  + PathConstants.REFCODE,
+			path: PathConstants.PARTNERREFLINK + PathConstants.REFCODE,
 			element: <RefLink />,
+		},
+		{
+			path: PathConstants.LOGIN + PathConstants.REFCODE,
+			element: <Auth />,
+		},
+		{
+			path: PathConstants.SIGNUP + PathConstants.REFCODE,
+			element: <Auth />,
 		}
 	]);
 
