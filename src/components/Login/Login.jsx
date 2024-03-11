@@ -1,12 +1,14 @@
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { useLogin } from "../../hooks/useLogin";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
-	const { login, isLoading } = useLogin();
+	const { login } = useLogin();
 	const [messageApi, contextHolder] = message.useMessage();
 	return (
-		<Form
+		<div className="flex justify-center items-center flex-col text-center">
+				<Form
 			className="w-3/6 max-md:w-full text-white"
 			initialValues={{
 				remember: true,
@@ -44,9 +46,9 @@ export default function Login() {
 
 			<div className="flex justify-between">
 				<Form.Item>
-					<Button type="link" className="bg-[#1677ff00]">
+					<NavLink to='/resetpassword' type="link"  className="bg-[#1677ff00]">
 						<div className="font-bold text-[#fff]">Забыли пароль?</div>
-					</Button>
+					</NavLink>
 				</Form.Item>
 				<Form.Item>
 					<Button type="primary" className="bg-[#1677FF]" htmlType="submit">
@@ -55,6 +57,7 @@ export default function Login() {
 				</Form.Item>
 			</div>
 		</Form>
+		</div>
 	);
 
 	function onFinish(values) {

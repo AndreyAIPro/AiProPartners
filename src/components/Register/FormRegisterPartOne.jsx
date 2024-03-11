@@ -8,8 +8,8 @@ function FormRegisterPartOne({
 	phone,
 	setPhone,
 	setFormChange,
-	showMessagewithErrorPhone,
 	checkedValidatePhoneNumber,
+	showMessagewithErrorPhone,
 }) {
 	const inputNickname = useRef();
 	const inputEmail = useRef();
@@ -91,8 +91,8 @@ function FormRegisterPartOne({
 					type="primary"
 					className="bg-[#1677FF]"
 					onClick={() => {
-						checkedValidatePhoneNumber();
 						checkInputValues();
+						checkedValidatePhoneNumber();
 					}}
 				>
 					<div className="font-bold text-[#fff]">Далее</div>
@@ -104,7 +104,7 @@ function FormRegisterPartOne({
 		if (
 			inputNickname.current.input.value.length !== 0 &&
 			inputEmail.current.input.value.length !== 0 &&
-			inputPassword.current.input.value.length >= 3
+			inputPassword.current.input.value.length >= 8
 		) {
 			setFormChange(false);
 		}

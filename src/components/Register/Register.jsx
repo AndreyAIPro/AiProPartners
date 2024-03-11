@@ -60,11 +60,12 @@ export default function Register() {
 			},
 		});
 	}
-	function checkedValidatePhoneNumber() {
+		function checkedValidatePhoneNumber() {
 		if (!isValid) {
 			setShowMessagewithErrorPhone(true);
+			setFormChange(true);
 			return;
-		}
-		setShowMessagewithErrorPhone(false);
+		} 
+			setShowMessagewithErrorPhone(false);
 	}
 }
