@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from "react";
 import "./RefTable.scss";
+import { useUser } from "../../../hooks/useUser";
+import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 import {
 	flexRender,
 	getCoreRowModel,
@@ -84,6 +86,30 @@ const RefTable = () => {
 	//     setIsModalVisible(false); // Hide the modal
 	//     setAccountName("");
 	// };
+	const data = useMemo(() => refData, []);
+	
+
+	const columns = [
+		{
+			header: "ID партнера",
+			accessorKey: "accountID",
+		},
+		{
+			header: "Название партнера",
+			accessorKey: "partnerName",
+		},
+	];
+
+	const table = useReactTable({
+		data,
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+	});
+	const handleCopyToClipboard = (ref) => {
+		copy(ref);
+		message.success("Ref copied to clipboard");
+	};
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>

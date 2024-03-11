@@ -26,7 +26,7 @@ export async function SignUp({
 				telegramAccount,
 				sources: radioButtonSources,
 				other: textAreaOtherRadio,
-				roles: ['partner'],
+				roles: ["partner"],
 				money: 0,
 				income: 0,
 			},
@@ -38,14 +38,14 @@ export async function SignUp({
 }
 
 export async function login({ email, password }) {
-    let { data, error } = await supabase.auth.signInWithPassword({
-			email,
-			password,
-    });
-    
-    if (error) throw new Error(error.message);
+	let { data, error } = await supabase.auth.signInWithPassword({
+		email,
+		password,
+	});
 
-    return {data, error};
+	if (error) throw new Error(error.message);
+
+	return { data, error };
 }
 
 export async function getCurrentUser() {
@@ -67,76 +67,92 @@ export async function logout() {
 
 export async function setEmailForResetPassword(email) {
 	let { error } = await supabase.auth.resetPasswordForEmail(email, {
-		redirectTo: '/passwordrecovery'
-	})
+		redirectTo: "/passwordrecovery",
+	});
 	if (error) throw new Error(error.message);
 }
 
-
-export async function setUpdateUser({ password }) {
+export async function setUpdateUserPassword({ password }) {
 	const { error } = await supabase.auth.updateUser({
-  		password: password,
-	})
+		password: password,
+	});
 	if (error) throw new Error(error.message);
 }
-
+export async function UpdateUser({
+	telephoneNumber,
+	discord,
+	name,
+	telegram,
+	radioButtonSources,
+	textAreaOtherRadio,
+}) {
+	const { error } = await supabase.auth.updateUser({
+		data: {
+			phone: telephoneNumber,
+			nickname: name,
+			discordAccount: discord || "",
+			telegramAccount: telegram,
+			sources: radioButtonSources,
+			other: textAreaOtherRadio || "",
+		},
+	});
+	if (error) throw new Error(error.message);
+}
 export async function creatDefultRefLink(userId) {
 	const { data, error } = await supabase
-  	.from('PartnersSubLinks')
-  	.select('name')
-  	.eq('refLink', userId);
+		.from("PartnersSubLinks")
+		.select("name")
+		.eq("refLink", userId);
 
-  if (data.length === 0) {
-	await supabase
-  	.from('PartnersSubLinks')
-  	.insert({ refLink: userId, name: Empty })
-  }
+	if (data.length === 0) {
+		await supabase
+			.from("PartnersSubLinks")
+			.insert({ refLink: userId, name: Empty });
+	}
 }
 
 export async function checkRefLink(refId, ipAddress) {
-
-	const nowDate = new Date(); 
-	const month = nowDate.getMonth()+1 < 10 
-	? "0"+(nowDate.getMonth()+1) 
-	: nowDate.getMonth()+1;
-	const correctFormatDate = nowDate.getFullYear()+"-"+month+"-"+nowDate.getDate();
+	const nowDate = new Date();
+	const month =
+		nowDate.getMonth() + 1 < 10
+			? "0" + (nowDate.getMonth() + 1)
+			: nowDate.getMonth() + 1;
+	const correctFormatDate =
+		nowDate.getFullYear() + "-" + month + "-" + nowDate.getDate();
 
 	const { data: checkConfigInSupabase } = await supabase
-	.from('RefClickLogs')
-	.select("id")
-	.match({ refLink: refId, ip: ipAddress });
+		.from("RefClickLogs")
+		.select("id")
+		.match({ refLink: refId, ip: ipAddress });
 
 	if (checkConfigInSupabase.length > 0) return;
 
-	
-	const { data: selectPartnerId} = await supabase
-  	.from('PartnersRefLinks')
-  	.select('partnerId')
-  	.eq('refLink', refId);
+	const { data: selectPartnerId } = await supabase
+		.from("PartnersRefLinks")
+		.select("partnerId")
+		.eq("refLink", refId);
 
-	const partnerId = selectPartnerId[0].partnerId
+	const partnerId = selectPartnerId[0].partnerId;
 
-	updateOrInsertPartnersAnalytical(refId, partnerId, correctFormatDate)
+	updateOrInsertPartnersAnalytical(refId, partnerId, correctFormatDate);
 
-	await supabase
-  	.from('RefClickLogs')
-  	.insert({ refLink: refId, ip: ipAddress })
+	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
 }
 
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
-	const { data: selectUniqueFromAnalitica} = await supabase
-  	.from('PartnersAnalyticalTable')
-  	.select('unique')
-  	.match({date: date, partnerId: partnerId, refLink: refLink});
+	const { data: selectUniqueFromAnalitica } = await supabase
+		.from("PartnersAnalyticalTable")
+		.select("unique")
+		.match({ date: date, partnerId: partnerId, refLink: refLink });
 
 	if (selectUniqueFromAnalitica.length === 0) {
 		await supabase
-  		.from('PartnersAnalyticalTable')
-  		.insert({ refLink: refLink, partnerId: partnerId, unique: 1 })
+			.from("PartnersAnalyticalTable")
+			.insert({ refLink: refLink, partnerId: partnerId, unique: 1 });
 	} else {
 		await supabase
-  		.from('PartnersAnalyticalTable')
-  		.update({ unique: selectUniqueFromAnalitica[0].unique+1 })
-		.match({date: date, partnerId: partnerId, refLink: refLink});
+			.from("PartnersAnalyticalTable")
+			.update({ unique: selectUniqueFromAnalitica[0].unique + 1 })
+			.match({ date: date, partnerId: partnerId, refLink: refLink });
 	}
 }
