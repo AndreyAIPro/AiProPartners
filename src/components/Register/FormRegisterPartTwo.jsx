@@ -27,6 +27,7 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 						max: 16,
 						message: "Input less then 16 symbol!",
 					},
+					
 				]}
 			>
 				<Input placeholder="ФИО" />
