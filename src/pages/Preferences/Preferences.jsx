@@ -18,7 +18,6 @@ import { useUser } from "../../hooks/useUser";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 
 const Preferences = () => {
-	const { user } = useUser();
 	const { updateUser } = useUpdateUser();
 	const { discordAccount, nickname, other, phone, sources, telegramAccount } =
 		user.user_metadata;
@@ -460,8 +459,7 @@ const Preferences = () => {
 				messageApi.open({
 					type: "success",
 					duration: 5,
-					content:
-						"Аккаунт оновленно!",
+					content: "Аккаунт оновленно!",
 				});
 			},
 			onError: () => {
