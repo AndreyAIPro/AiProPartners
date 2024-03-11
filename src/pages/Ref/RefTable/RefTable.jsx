@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import "./RefTable.scss";
 import { useUser } from "../../../hooks/useUser";
 import {
@@ -19,7 +19,7 @@ const RefTable = () => {
 	]);
 	const { user } = useUser();
 	const { data: partnersRefLinks } = useSelectPartnersRefLinks(user?.id);
-	const data = useMemo(() => partnersRefLinks || [], [partnersRefLinks]);
+	const data = partnersRefLinks || [];
 
 	//if(user?.id !== undefined) creatDefultRefLink(user?.id);
 	const rowClassName = { className: "border-2 border-gray p-1  px-2" };
