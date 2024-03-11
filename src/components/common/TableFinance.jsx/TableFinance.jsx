@@ -6,9 +6,9 @@ import {
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import mData from "../../../data/dataForTable.json";
-import { filters } from "./../../../data/filtersForFinances";
-import Filter from "./../Filter/Filter";
+
 import DateFilter from './../FiltersForTable/DateFilter';
+import FiltersTable from "../FiltersForTable/FiltersTable";
 
 const TableFinance = () => {
 	const data = useMemo(() => mData, []);
@@ -49,12 +49,15 @@ const TableFinance = () => {
 
 	return (
 		<>
-			<div className=" mb-6 mt-20 ">
-				<DateFilter/>
-				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
-					Обновить
-				</button>
+			<div className=" mb-6 mt-20 flex items-center justify-between">
+				<FiltersTable/>
+				<div>
+					<button className="hover:bg-light-blue rounded-full border-2 border-light-blue px-4 font-nunito-sans">
+						Обновить
+					</button>
+				</div>
 			</div>
+
 			<table className="   min-w-full  border-[2px] border-gray">
 				<thead>
 					{table.getHeaderGroups().map((headerGroup) => (

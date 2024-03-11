@@ -1,7 +1,6 @@
 /**  @format */
 import { useState } from "react";
 import TableFinance from "./../../components/common/TableFinance.jsx/TableFinance";
-import "./finances.modal.css";
 import Withdrawal from "./../../components/common/Withdrawal/Withdrawal";
 
 const Finances = () => {

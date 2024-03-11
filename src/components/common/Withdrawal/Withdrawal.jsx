@@ -1,6 +1,20 @@
+import {ReactComponent as Locker} from '../../../assets/images/lock-svgrepo-com.svg'
+import { useState } from 'react';
+
+
 const Withdrawal = () => {
+	const [hovered, setHovered] = useState(true)
+
+	const onHover = () => {
+		setHovered(!hovered)
+	}
+
 	return (
-		<section className="ml-7 mt-20">
+		<section className="ml-7 mt-20 relative">
+			<div className={`flex justify-center items-center  backdrop-opacity-20 backdrop-invert bg-black/30  fill-light-blue absolute top-[-10%] min-h-[120%] min-w-[100%]`} >
+					{hovered ?  <div onMouseOver={onHover}><Locker/></div> : <div onMouseOut={onHover}><p  className='font-nunito-sans text-[40px] '>Ещё в разработке...</p></div>}
+				</div>
+
 			<div>
 				<p className="mb-2 text-text3">Выберите способ вывода</p>
 				<select
@@ -12,6 +26,7 @@ const Withdrawal = () => {
 					<option value="">WebMoney</option>
 					<option value="">На руки</option>
 				</select>
+
 				<button className="rounded-full border-2 border-light-blue px-8 py-1 font-nunito-sans ">
 					Добавить способ
 				</button>
@@ -46,7 +61,7 @@ const Withdrawal = () => {
 
 			<div>
 				<p className="mb-2">Комментарий</p>
-				<textarea placeholder="До 100 символов" className="text-black outline-none resize-none pt-2 pl-2 w-[500px] rounded-lg" maxlength='100'/>
+				<textarea placeholder="До 100 символов" className="text-black outline-none resize-none pt-2 pl-2 w-[500px] rounded-lg" maxLength='100'/>
 			</div>
 			<div className="mt-6">
 				<p className="font-nunito-sans font-bold text-text1 mb-4">Итого: 00.00</p>
