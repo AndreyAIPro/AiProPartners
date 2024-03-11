@@ -11,6 +11,7 @@ import routes from "./router/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import RefLink from "./pages/RefLink/RefLink";
+import Landing from "./pages/Landing/Landing";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -34,6 +35,10 @@ function App() {
 		{
 			path: PathConstants.LOGIN,
 			element: <Auth />,
+		},
+		{
+			path: PathConstants.HOME,
+			element: <Landing/>,
 		},
 		{
 			path: PathConstants.SIGNUP,
