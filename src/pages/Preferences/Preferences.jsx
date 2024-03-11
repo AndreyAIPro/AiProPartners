@@ -1,8 +1,13 @@
 /** @format */
+import { useUser } from "../../hooks/useUser";
 import Plate from "./Plate/Plate";
 import { Form, Input, Table, Checkbox, ConfigProvider, theme, Select, Typography } from "antd";
 
+
 const Preferences = () => {
+
+    const { user } = useUser();
+    console.log(user.user_metadata);
     // // For next backend implementation
     // const [form] = Form.useForm();
     // const [messageApi, contextHolder] = message.useMessage();
@@ -109,36 +114,23 @@ const Preferences = () => {
                             <Plate title={"Учетная запись"}>
                                 <div className="w-full ">
                                     <Form layout="vertical">
-                                        <Form.Item
-                                            name="Reference"
+                                        
+                                            <Typography.Text size="small" name="Reference"
                                             label="Реферальная ссылка"
-                                            style={{ margin: 0 }}
-                                        >
-                                            <Typography size="small">
+                                            style={{ margin: 0 }}>
+                                            
                                                 <pre>REF</pre>
-                                            </Typography>
-                                            {/* <Input
-                                                size="small"
-                                                placeholder=""
-                                                variant="filled"
-                                                disabled
-                                            ></Input> */}
-                                        </Form.Item>
-                                        <Form.Item
-                                            name="RegistrationDate"
+                                            </Typography.Text>
+                                           
+                                        
+                                            <Typography size="small"  name="RegistrationDate"
                                             label="Дата регистрации"
-                                            style={{ marginBottom: 0 }}
-                                        >
-                                            <Typography size="small">
+                                            style={{ marginBottom: 0 }}>
                                                 <pre>10.10.2024</pre>
                                             </Typography>
-                                            {/* <Input
-                                                size="small"
-                                                variant="filled"
-                                                defaultValue={""}
-                                            ></Input> */}
-                                        </Form.Item>
-                                        <Form.Item
+                                            
+                                        
+                                        {/* <Form.Item
                                             style={{ marginBottom: 0 }}
                                             label="Страна"
                                         >
@@ -148,7 +140,7 @@ const Preferences = () => {
                                                 options={[...countries]}
                                                 size="small"
                                             />
-                                        </Form.Item>
+                                        </Form.Item> */}
                                         <Form.Item
                                             name="name"
                                             label="Имя"
@@ -237,7 +229,7 @@ const Preferences = () => {
                             </Plate>
                         </div>
                         <div className="preference-halfsizer  flex h-max  flex-col ">
-                            <Plate title={"Смена пароля"}>
+                            {/* <Plate title={"Смена пароля"}>
                                 <div>
                                     <Form layout="vertical">
                                         <Form.Item
@@ -321,7 +313,7 @@ const Preferences = () => {
                                         </Form.Item>
                                     </Form>
                                 </div>
-                            </Plate>
+                            </Plate> */}
                             <Plate title={"Тарифы"}>
                                 <div className="pb-8">
                                     <Table
