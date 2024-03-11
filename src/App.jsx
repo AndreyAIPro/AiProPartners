@@ -10,6 +10,7 @@ import PathConstants from "./router/pathConstants";
 import routes from "./router/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import RefLink from "./pages/RefLink/RefLink";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -35,7 +36,7 @@ function App() {
 			element: <Auth />,
 		},
 		{
-			path: PathConstants.SIGNUP,
+			path: PathConstants.SIGNUP,//     "/signup",
 			element: <Auth />,
 		},
 		{
@@ -46,6 +47,10 @@ function App() {
 			path: PathConstants.PASSWORD_RECOVERY,
 			element: <ResetPassword />,
 			
+		},
+		{
+			path: PathConstants.PARTNERREFLINK  + PathConstants.REFCODE,
+			element: <RefLink />,
 		}
 	]);
 

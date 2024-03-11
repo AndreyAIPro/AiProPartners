@@ -8,10 +8,11 @@ import { useMemo, useState } from "react";
 import mData from "../../../data/dataForTable.json";
 import { filters } from "./../../../data/filtersForFinances";
 import Filter from "./../Filter/Filter";
+import DateFilter from './../FiltersForTable/DateFilter';
 
 const TableFinance = () => {
 	const data = useMemo(() => mData, []);
-	const [getData, setGetData] = useState(5);
+	const [getData, setGetData] = useState(mData.length);
 	const columns = [
 		{
 			header: "Дата",
@@ -48,8 +49,8 @@ const TableFinance = () => {
 
 	return (
 		<>
-			<div className="mb-6 mt-20 flex gap-10">
-				<Filter filters={filters} />
+			<div className=" mb-6 mt-20 ">
+				<DateFilter/>
 				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
 					Обновить
 				</button>
@@ -129,7 +130,7 @@ const TableFinance = () => {
 			) : (
 				<div className="mt-6 text-center">
 					<button
-						className={` rounded-full bg-light-blue px-10 py-2 font-nunito-sans `}
+						className={` rounded-full bg-light-blue px-10 py-2 font-nunito-sans ${getData < 5 && `hidden`}`}
 						onClick={handelGetMoreData}
 					>
 						Загрузить ещё
