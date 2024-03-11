@@ -12,12 +12,6 @@ import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 
-import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
-import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
-import { useUser } from "../../../hooks/useUser";
-import { creatDefultRefLink } from "../../../utils/supabaseUtils";
-
 const RefTable = () => {
 	const [rows, setRows] = useState([
 		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
