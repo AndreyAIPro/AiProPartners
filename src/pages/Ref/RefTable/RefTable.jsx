@@ -1,9 +1,5 @@
 import React, { useState, useMemo } from "react";
 import "./RefTable.scss";
-
-import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
-import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
 import { useUser } from "../../../hooks/useUser";
 import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 import {
@@ -85,7 +81,7 @@ const RefTable = () => {
 	//     setAccountName("");
 	// };
 	const data = useMemo(() => refData, []);
-	const [accountRef, setAccountRef] = useState("Ваша реферальная ссылка");
+	
 
 	const columns = [
 		{
