@@ -26,7 +26,7 @@ const Hero = () => {
 				<LandingButton
 					label="Зарегистрироваться"
 					isYellow
-					href={user ? "/dashboard" : "/registration"}
+					href={user ? "/dashboard" : "/signup"}
 					dataAos="fade"
 				/>
 			</div>
