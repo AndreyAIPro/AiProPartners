@@ -15,7 +15,7 @@ const StartToday = () => {
 				Начните зарабатывать сегодня. <br /> Станьте лидером уже завтра!
 			</h3>
 			<LandingButton
-				href={user ? "/dashboard" : "/registration"}
+				href={user ? "/dashboard" : "/signup"}
 				isYellow
 				label="Зарегистрироваться"
 				dataAos="fade-right"

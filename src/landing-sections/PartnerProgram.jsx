@@ -20,7 +20,7 @@ const PartnerProgram = () => {
 					dataAos="flip-right"
 				/>
 				<LandingButton
-					href={user ? "/dashboard" : "/registration"}
+					href={user ? "/dashboard" : "/signup"}
 					label="Начать зарабатывать"
 					isYellow
 					dataAos="fade-right"

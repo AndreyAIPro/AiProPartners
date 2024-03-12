@@ -13,7 +13,7 @@ const Enjoy = () => {
 				dataAos="fate-left"
 			/>
 			<LandingButton
-				href={user ? "/dashboard" : "/registration"}
+				href={user ? "/dashboard" : "/signup"}
 				isYellow
 				label="Зарегистрироваться"
 				dataAos="fate-right"
