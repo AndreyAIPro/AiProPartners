@@ -113,7 +113,7 @@ const RefTable = () => {
 		message.success("Ref copied to clipboard");
 	};
 
-	if(user?.id !== undefined) creatDefultRefLink(user.id);
+	if (user?.id !== undefined) creatDefultRefLink(user.id);
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
@@ -155,7 +155,7 @@ const RefTable = () => {
 						<tbody>
 							{table
 								.getRowModel()
-								.rows.slice(0, refData.length)
+								.rows.slice(0, data.length)
 								.map((row) => (
 									<tr key={row.id} className=" border-[1px] border-gray">
 										{row.getVisibleCells().map((cell) => (
@@ -173,7 +173,7 @@ const RefTable = () => {
 								))}
 						</tbody>
 					</table>
-					{refData.length > 10 && (
+					{data.length > 10 && (
 						<div className={`mt-3 text-center`}>
 							<button
 								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
