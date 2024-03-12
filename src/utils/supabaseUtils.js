@@ -149,6 +149,15 @@ export async function selectPartnersRefLinks(partnerId) {
 	return data;
 }
 
+export async function selectSubaccountRefLinks(partnerId) {
+	const { data: selectSubRefLinks } = await supabase
+		.from("RefRegPartnerLogs")
+		.select("refLink,created_at,partnerName")
+		.eq("partnerId", partnerId);
+
+	return selectSubRefLinks;
+}
+
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
 	const { data: selectUniqueFromAnalitica } = await supabase
 		.from("PartnersAnalyticalTable")

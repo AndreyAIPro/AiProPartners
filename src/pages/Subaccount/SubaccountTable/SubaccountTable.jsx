@@ -9,9 +9,15 @@ import { message } from "antd";
 import subaccountLinks from "../../../utils/supabaseUtils";
 import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
+import { useSelectSubaccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
+
+	const { data: subaccountRefLinks } = useSelectSubaccountRefLinks(user?.id);
+	const data = subaccountRefLinks || [];
+	console.log(data);
+
 	const { createSubaccountLinks } = useCreateSubaccountLinks();
 	// variable that hold all rows
 	const [rows, setRows] = useState([]);
@@ -22,7 +28,8 @@ const SubaccountTable = () => {
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
-	const [ref, setRef] = useState("REF PLACEHOLDER");
+
+	const [ref, setRef] = useState(data.refLink);
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
