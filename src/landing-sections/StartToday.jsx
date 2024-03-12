@@ -1,17 +1,26 @@
 /** @format */
 
-import LandingButton from '../components/common/LandingButton/LandingButton';
+import LandingButton from "../components/common/LandingButton/LandingButton";
+import { useUser } from "../hooks/useUser";
 
 const StartToday = () => {
+	const { user } = useUser();
+
 	return (
-		<section className='max-h-[644px] bg-reuse-bg h-screen flex flex-col items-center justify-center gap-[67px] relative after:absolute after:h-full after:w-full after:bg-start-today-after after:bg-no-repeat after:bg-center max-sm:bg-start-today-mobile max-sm:bg-no-repeat max-sm:bg-center max-sm:bg-cover max-sm:after:bg-start-today-mobile-vectors max-sm:after:bg-contain max-sm:after:scale-90 max-sm:text-title2'>
+		<section className="after:w-full relative flex h-screen max-h-[644px] flex-col items-center justify-center gap-[67px] bg-reuse-bg after:absolute after:h-full after:bg-start-today-after after:bg-center after:bg-no-repeat max-sm:bg-start-today-mobile max-sm:bg-cover max-sm:bg-center max-sm:bg-no-repeat max-sm:text-title2 max-sm:after:scale-90 max-sm:after:bg-start-today-mobile-vectors max-sm:after:bg-contain">
 			<h3
-				className='text-white font-extrabold text-[36px] font-nunito-sans text-center'
-				data-aos='fade-left'
+				className="text-center font-nunito-sans text-[36px] font-extrabold text-white"
+				data-aos="fade-left"
 			>
 				Начните зарабатывать сегодня. <br /> Станьте лидером уже завтра!
 			</h3>
-			<LandingButton isYellow label='Зарегистрироваться' dataAos='fade-right' isMobileStart/>
+			<LandingButton
+				href={user ? "/dashboard" : "/signup"}
+				isYellow
+				label="Зарегистрироваться"
+				dataAos="fade-right"
+				isMobileStart
+			/>
 		</section>
 	);
 };

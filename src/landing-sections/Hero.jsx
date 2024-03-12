@@ -1,16 +1,18 @@
 /** @format */
 
 import LandingButton from "../components/common/LandingButton/LandingButton";
+import { useUser } from "../hooks/useUser";
 
 const Hero = () => {
+	const { user } = useUser();
 	return (
 		<section className="w-full flex h-[740px] justify-around max-lg:h-[500px] max-lg:items-center max-sm:flex-col-reverse max-sm:gap-8 max-sm:pt-[70px]">
-			<div className="z-10 flex flex-col gap-7 pt-20 max-md:mt-8 max-dm:px-5 max-sm:z-40 max-sm:items-center max-sm:px-[30px] max-sm:mt-0 max-sm:pt-0">
+			<div className="max-dm:px-5 z-10 flex flex-col gap-7 pt-20 max-md:mt-8 max-sm:z-40 max-sm:mt-0 max-sm:items-center max-sm:px-[30px] max-sm:pt-0">
 				<h1
 					className="max-w-[661px] text-left font-nunito-sans text-[64px] font-black leading-[72px] max-[1400px]:text-[40px] max-[1400px]:leading-[45px] max-md:text-[32px] max-sm:text-center max-sm:text-title2"
 					data-aos="fade-right"
 				>
-					Партнерская программа, которая подходит{" "}
+					Партнерская программа, которая подходит
 					<span className="font-nunito-sans text-[#e61685]">всем</span>
 				</h1>
 				<p
@@ -24,7 +26,7 @@ const Hero = () => {
 				<LandingButton
 					label="Зарегистрироваться"
 					isYellow
-					href="/registration"
+					href={user ? "/dashboard" : "/signup"}
 					dataAos="fade"
 				/>
 			</div>
@@ -34,9 +36,9 @@ const Hero = () => {
 			>
 				<img
 					src="src/assets/images/landing/landing-hero-img.svg"
-					className="z-30 max-w-[528px] max-sm:max-w-[270px] max-sm:object-cover max-lg:max-w-[400px]"
+					className="z-30 max-w-[528px] max-lg:max-w-[400px] max-sm:max-w-[270px] max-sm:object-cover"
 				/>
-				<h2 className="z-30 max-w-[596px] text-center font-nunito-sans text-[36px] max-md:text-text2 max-sm:hidden max-lg:text-[24px]">
+				<h2 className="z-30 max-w-[596px] text-center font-nunito-sans text-[36px] max-lg:text-[24px] max-md:text-text2 max-sm:hidden">
 					Зарабатывайте вместе с лучшими AiPro продуктами
 				</h2>
 			</div>
