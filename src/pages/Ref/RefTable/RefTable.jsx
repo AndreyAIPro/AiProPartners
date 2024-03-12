@@ -11,6 +11,7 @@ import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
+import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 
 const RefTable = () => {
 	const [rows, setRows] = useState([
@@ -21,7 +22,6 @@ const RefTable = () => {
 	const { data: partnersRefLinks } = useSelectPartnersRefLinks(user?.id);
 	const data = partnersRefLinks || [];
 
-	//if(user?.id !== undefined) creatDefultRefLink(user?.id);
 	const rowClassName = { className: "border-2 border-gray p-1  px-2" };
 	// //Holds account name
 	// const [accountName, setAccountName] = useState("");
@@ -112,6 +112,8 @@ const RefTable = () => {
 		copy(ref);
 		message.success("Ref copied to clipboard");
 	};
+
+	if(user?.id !== undefined) creatDefultRefLink(user.id);
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
