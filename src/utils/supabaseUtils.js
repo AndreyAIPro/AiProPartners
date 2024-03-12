@@ -145,7 +145,7 @@ export async function selectPartnersRefLinks(partnerId) {
 		.from("PartnersRefLinks")
 		.select("refLink,created_at,name")
 		.eq("partnerId", partnerId);
-		
+
 	return data;
 }
 
@@ -165,4 +165,28 @@ async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
 			.update({ unique: selectUniqueFromAnalitica[0].unique + 1 })
 			.match({ date: date, partnerId: partnerId, refLink: refLink });
 	}
+}
+
+// export default async function subaccountLinks(lube) {
+// 	const { data: refLink } = await supabase.from("RefRegPartnerLogs").insert([
+// 		{
+// 			partnerId: "43433443",
+// 			created_at: "",
+// 			refLink: "random",
+// 			partnerName: lube,
+// 		},
+// 	]);
+// 	return refLink;
+
+// }
+
+export default async function subaccountLinks(partnerName, userId) {
+	const { data, error } = await supabase
+		.from("RefRegPartnerLogs")
+		.insert([
+			{
+				partnerName: partnerName,
+			},
+		])
+		.select();
 }

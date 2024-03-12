@@ -6,8 +6,13 @@ import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
 import Modal from "../SubaccountModal/SubaccountModal";
 import { CopyOutlined } from "@ant-design/icons";
 import { message } from "antd";
+import subaccountLinks from "../../../utils/supabaseUtils";
+import { useUser } from "../../../hooks/useUser";
+import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
 
 const SubaccountTable = () => {
+	const { user } = useUser();
+	const { createSubaccountLinks } = useCreateSubaccountLinks();
 	// variable that hold all rows
 	const [rows, setRows] = useState([]);
 	//Holds account name
@@ -42,7 +47,16 @@ const SubaccountTable = () => {
 				ref: ref,
 			};
 			setRows([...rows, newRow]);
+			console.log(newRow);
 			setAccountName("");
+			createSubaccountLinks(newRow.accountName, {
+				onSuccess: () => {
+					console.log("done");
+				},
+				onError: () => {
+					console.log("error");
+				},
+			});
 			// setRef("");
 		}
 	};
@@ -71,8 +85,11 @@ const SubaccountTable = () => {
 	};
 	const handleFormSubmit = () => {
 		const updatedRow = rows.map((row) =>
-			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
+			row.id === selectedRow.id
+				? { ...row, accountName: console.log(accountName) }
+				: row,
 		);
+
 		setRows(updatedRow);
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
