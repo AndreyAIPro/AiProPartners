@@ -6,10 +6,8 @@ import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-
 import styles from "./sidebar-profile-btn.module.scss";
 import { ReactComponent as ExitIcon } from "../../../assets/images/Icons aipro partners/exit.svg";
 import { Popconfirm, ConfigProvider, theme, Button } from "antd";
-import { useLogout } from '../../../hooks/useLogout'
+import { useLogout } from "../../../hooks/useLogout";
 import { useUser } from "../../../hooks/useUser";
-
-
 
 const SidebarProfileBtn = () => {
 	const { logout } = useLogout();
@@ -48,15 +46,13 @@ const SidebarProfileBtn = () => {
 
 				<NavLink
 					to="/preferences"
-					className={styles.settings__btn}
-					style={({ isActive }) => {
-						return {
-							backgroundColor: isActive ? "#24a1e0" : "",
-							borderRadius: "15px",
-						};
-					}}
+					className={({ isActive }) =>
+						!isActive
+							? styles.settings__btn
+							: `${styles.settings__btn} ${styles.active}`
+					}
 				>
-					<SettingsIcon />
+					<SettingsIcon className={styles.svgIcon} />
 				</NavLink>
 			</div>
 		</div>
