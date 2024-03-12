@@ -15,7 +15,7 @@ export default function Register() {
 	const [formChange, setFormChange] = useState(true);
 	return (
 		<Form
-			className="w-3/5 max-md:w-full text-white"
+			className="w-[40%] max-md:w-full text-white"
 			initialValues={{
 				remember: true,
 			}}
@@ -60,12 +60,12 @@ export default function Register() {
 			},
 		});
 	}
-		function checkedValidatePhoneNumber() {
+	function checkedValidatePhoneNumber() {
 		if (!isValid) {
 			setShowMessagewithErrorPhone(true);
 			setFormChange(true);
 			return;
-		} 
-			setShowMessagewithErrorPhone(false);
+		}
+		setShowMessagewithErrorPhone(false);
 	}
 }

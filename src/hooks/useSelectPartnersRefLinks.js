@@ -6,6 +6,5 @@ export function useSelectPartnersRefLinks(id) {
 		queryKey: ["PartnersRefLinks"],
 		queryFn: () => selectPartnersRefLinks(id),
 	});
-
-	return {data};
+	return { data };
 }

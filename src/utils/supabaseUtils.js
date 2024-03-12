@@ -99,14 +99,14 @@ export async function UpdateUser({
 	if (error) throw new Error(error.message);
 }
 export async function creatDefultRefLink(userId) {
-	const { data: dataPartnersSubLinks } = await supabase
-		.from("PartnersSubLinks")
+	const { data: dataPartnersRefLinks } = await supabase
+		.from("PartnersRefLinks")
 		.select("name")
 		.eq("refLink", userId);
 
-	if (dataPartnersSubLinks.length === 0) {
+	if (dataPartnersRefLinks.length === 0) {
 		await supabase
-			.from("PartnersSubLinks")
+			.from("PartnersRefLinks")
 			.insert({ refLink: userId, name: Empty });
 	}
 }
@@ -141,12 +141,12 @@ export async function checkRefLink(refId, ipAddress) {
 
 //Красти
 export async function selectPartnersRefLinks(partnerId) {
-	const { data: selectPartnersRefLinks } = await supabase
+	const { data } = await supabase
 		.from("PartnersRefLinks")
 		.select("refLink,created_at,name")
 		.eq("partnerId", partnerId);
 		
-	return selectPartnersRefLinks
+	return data;
 }
 
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {

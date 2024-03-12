@@ -12,7 +12,6 @@ import {
 } from "antd";
 import { useRef, useState } from "react";
 import { PhoneInput } from "react-international-phone";
-import { useLogout } from "../../hooks/useLogout";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import { useUser } from "../../hooks/useUser";
 import Plate from "./Plate/Plate";
@@ -42,7 +41,6 @@ const Preferences = () => {
 	// const [form] = Form.useForm();
 	// const [messageApi, contextHolder] = message.useMessage();
 	const { TextArea } = Input;
-	const { logout } = useLogout();
 	const countries = [
 		{ value: "Украина", label: "Украина" },
 		{ value: "Омерика", label: "Омерика" },
@@ -442,12 +440,6 @@ const Preferences = () => {
 									/>
 								</div>
 							</Plate>
-							<button
-								className="flex items-center justify-center border-2 border-[#fff] p-2 font-nunito-sans font-bold transition-all hover:bg-[#24A1E0]"
-								onClick={logout}
-							>
-								Выйти
-							</button>
 						</div>
 					</div>
 				</div>
@@ -460,8 +452,7 @@ const Preferences = () => {
 				messageApi.open({
 					type: "success",
 					duration: 5,
-					content:
-						"Аккаунт оновленно!",
+					content: "Аккаунт оновленно!",
 				});
 			},
 			onError: () => {

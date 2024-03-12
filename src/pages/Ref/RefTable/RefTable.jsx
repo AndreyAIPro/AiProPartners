@@ -1,7 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import "./RefTable.scss";
 import { useUser } from "../../../hooks/useUser";
-import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 import {
 	flexRender,
 	getCoreRowModel,
@@ -12,19 +11,28 @@ import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
+import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 
 const RefTable = () => {
 	const [rows, setRows] = useState([
 		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
 		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
 	]);
-	const {user} = useUser();
-	const {data: partnersRefLinks} = useSelectPartnersRefLinks(user?.id)
-	//if(user?.id !== undefined) creatDefultRefLink(user?.id);
+	const { user } = useUser();
+	const { data: partnersRefLinks } = useSelectPartnersRefLinks(user?.id);
+	const data = partnersRefLinks || [];
+
 	const rowClassName = { className: "border-2 border-gray p-1  px-2" };
 	// //Holds account name
 	// const [accountName, setAccountName] = useState("");
-	const link = (window.location.hostname === 'localhost') ? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434": window.location.protocol +"//"+ window.location.hostname + "/reflink/" + user.id
+	const link =
+		window.location.hostname === "localhost"
+			? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434"
+			: window.location.protocol +
+				"//" +
+				window.location.hostname +
+				"/reflink/" +
+				user.id;
 	const [accountRef, setAccountRef] = useState(link);
 	// // Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
@@ -82,17 +90,15 @@ const RefTable = () => {
 	//     setIsModalVisible(false); // Hide the modal
 	//     setAccountName("");
 	// };
-	const data = useMemo(() => refData, []);
-	
 
 	const columns = [
 		{
 			header: "ID партнера",
-			accessorKey: "accountID",
+			accessorKey: "refLink",
 		},
 		{
 			header: "Название партнера",
-			accessorKey: "partnerName",
+			accessorKey: "name",
 		},
 	];
 
@@ -106,6 +112,8 @@ const RefTable = () => {
 		copy(ref);
 		message.success("Ref copied to clipboard");
 	};
+
+	if(user?.id !== undefined) creatDefultRefLink(user.id);
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
