@@ -1,4 +1,4 @@
-/** @format */
+
 
 const SmallStatisticsItem = ({ value, statistic }) => {
 	return (

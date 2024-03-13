@@ -1,4 +1,4 @@
-/** @format */
+
 
 const LandingSectionHeading = ({ title, subtitle, isUpper, dataAos }) => {
 	return (

@@ -1,4 +1,4 @@
-/** @format */
+
 
 import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';
 import HowStartList from '../components/HowStartList/HowStartList';

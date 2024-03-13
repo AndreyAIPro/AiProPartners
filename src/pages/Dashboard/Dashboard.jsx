@@ -7,7 +7,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
-/** @format */
+
 
 const Charts = () => {
     // Chart config

@@ -1,4 +1,4 @@
-/** @format */
+
 
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar/RightSidebar";

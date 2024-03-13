@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { howStart } from '../../../data/landingData';
 

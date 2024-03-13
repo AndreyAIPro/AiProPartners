@@ -1,4 +1,4 @@
-/** @format */
+
 import studyLogo from "../../../assets/images/studyImg//study-logo.svg";
 import studyPlaceholder from "../../../assets/images/studyImg//study-placeholder.svg";
 

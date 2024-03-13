@@ -1,4 +1,4 @@
-/** @format */
+
 import AlwaysInTouchList from '../components/AlwaysInTouchList/AlwaysInTouchList';
 import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';
 

@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { topPartners } from '../../data/landingData';
 import TopPartnersItem from '../common/TopPartnersItem/TopPartnersItem';

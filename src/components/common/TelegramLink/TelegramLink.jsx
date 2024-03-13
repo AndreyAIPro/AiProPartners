@@ -1,4 +1,4 @@
-/** @format */
+
 import telegram from '../../../assets/images/socialLinks/telegram.svg';
 
 const TelegramLink = () => {

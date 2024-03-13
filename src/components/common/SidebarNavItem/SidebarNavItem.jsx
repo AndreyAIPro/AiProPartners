@@ -1,4 +1,4 @@
-/** @format */
+
 import { NavLink } from "react-router-dom";
 import styles from "./sidebar-nav-item.module.scss";
 
