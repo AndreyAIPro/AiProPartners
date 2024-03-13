@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { ReactComponent as FacebookIcon } from '../../assets/images/socialLinks/facebook.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/images/socialLinks/instagram.svg';

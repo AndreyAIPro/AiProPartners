@@ -1,4 +1,4 @@
-/** @format */
+
 
 import PartnerProgramDetails from "../components/PartnerProgramDetails/PartnerProgramDetails";
 import LandingButton from "../components/common/LandingButton/LandingButton";

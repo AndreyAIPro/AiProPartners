@@ -1,4 +1,4 @@
-/** @format */
+
 
 export const statistics = [
 	{ statistic: 'Стран для трафика', value: 164 },

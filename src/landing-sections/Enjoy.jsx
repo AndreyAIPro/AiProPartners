@@ -1,4 +1,4 @@
-/** @format */
+
 
 import LandingButton from "../components/common/LandingButton/LandingButton";
 import LandingSectionHeading from "../components/common/LandingSectionHeading/LandingSectionHeading";

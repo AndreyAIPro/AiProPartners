@@ -1,4 +1,4 @@
-/** @format */
+
 
 const LastTransactions = () => {
 	return <div>LastTransactions</div>;
