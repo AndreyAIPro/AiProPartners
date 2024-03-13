@@ -16,7 +16,6 @@ const SubaccountTable = () => {
 
 	const { data: subaccountRefLinks } = useSelectSubaccountRefLinks(user?.id);
 	const data = subaccountRefLinks || [];
-	console.log(data);
 
 	const { createSubaccountLinks } = useCreateSubaccountLinks();
 	// variable that hold all rows
@@ -29,12 +28,13 @@ const SubaccountTable = () => {
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
 
-	const [ref, setRef] = useState(data.refLink);
+	const [ref, setRef] = useState("");
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
+		setRef(data[0]?.refLink);
 	};
 
 	//function that puts ref to the ref state
@@ -54,7 +54,7 @@ const SubaccountTable = () => {
 				ref: ref,
 			};
 			setRows([...rows, newRow]);
-			console.log(newRow);
+
 			setAccountName("");
 			createSubaccountLinks(newRow.accountName, {
 				onSuccess: () => {
