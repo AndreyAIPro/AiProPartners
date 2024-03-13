@@ -5,14 +5,14 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import mData from "../../../data/dataForTable.json";
-import { filters } from "./../../../data/filtersForFinances";
-import Filter from "./../Filter/Filter";
-import DateFilter from './../FiltersForTable/DateFilter';
+// import mData from "../../../data/dataForTable.json";
+
+import DateFilter from "./../FiltersForTable/DateFilter";
+import FiltersTable from "../FiltersForTable/FiltersTable";
 
 const TableFinance = () => {
-	const data = useMemo(() => mData, []);
-	const [getData, setGetData] = useState(mData.length);
+	const data = [2];
+	const [getData, setGetData] = useState(data.length);
 	const columns = [
 		{
 			header: "Дата",
@@ -44,17 +44,20 @@ const TableFinance = () => {
 	});
 
 	const handelGetMoreData = () => {
-		setGetData(mData.length);
+		setGetData(data.length);
 	};
 
 	return (
 		<>
-			<div className=" mb-6 mt-20 ">
-				<DateFilter/>
-				<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans ">
-					Обновить
-				</button>
+			<div className=" mb-6 mt-20 flex items-center justify-between">
+				<FiltersTable />
+				<div>
+					<button className="rounded-full border-2 border-light-blue px-4 font-nunito-sans hover:bg-light-blue">
+						Обновить
+					</button>
+				</div>
 			</div>
+
 			<table className="   min-w-full  border-[2px] border-gray">
 				<thead>
 					{table.getHeaderGroups().map((headerGroup) => (
@@ -95,7 +98,7 @@ const TableFinance = () => {
 						))}
 				</tbody>
 			</table>
-			{getData == mData.length ? (
+			{getData == data.length ? (
 				<div className={`mt-3 text-center`}>
 					<button
 						className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}

@@ -145,8 +145,17 @@ export async function selectPartnersRefLinks(partnerId) {
 		.from("PartnersRefLinks")
 		.select("refLink,created_at,name")
 		.eq("partnerId", partnerId);
-		
+
 	return data;
+}
+// обирає з бази по субаккаунт айді (айдішнік юзера) і малює таблицю в Субаккаунт
+export async function selectSubaccountRefLinks(subaccountID) {
+	const { data: selectSubRefLinks } = await supabase
+		.from("RefRegPartnerLogs")
+		.select("refLink,created_at,partnerName")
+		.eq("subaccountID", subaccountID);
+
+	return selectSubRefLinks;
 }
 
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
@@ -165,4 +174,11 @@ async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
 			.update({ unique: selectUniqueFromAnalitica[0].unique + 1 })
 			.match({ date: date, partnerId: partnerId, refLink: refLink });
 	}
+}
+
+export default async function subaccountLinks(subaccountID, partnerName) {
+	const { data, error } = await supabase
+		.from("RefRegPartnerLogs")
+		.insert([{ subaccountID: subaccountID, partnerName: partnerName }])
+		.select();
 }
