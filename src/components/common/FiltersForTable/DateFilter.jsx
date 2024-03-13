@@ -1,5 +1,5 @@
 import React, {   useState } from 'react'
-import DatePicker, { getDefaultLocale } from 'react-datepicker'
+import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
 const DateFilter = () => {

@@ -7,7 +7,6 @@ import {
 	getPaginationRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";

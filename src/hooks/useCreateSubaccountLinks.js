@@ -1,13 +1,11 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
-import subaccountLinks from "../utils/supabaseUtils";
+import createSubAccountLink from "../utils/supabaseUtils";
 
-export function useCreateSubaccountLinks(subaccountID, partnerName) {
-	const queryClient = useQueryClient();
-
-	const { mutate: createSubaccountLinks, isLoading: isUpdating } = useMutation({
-		mutationFn: subaccountLinks,
+export function useCreateSubaccountLinks() {
+	const { mutate: setCreateSubAccountLink } = useMutation({
+		mutationFn: createSubAccountLink,
 	});
 
-	return { createSubaccountLinks, isUpdating };
+	return { setCreateSubAccountLink };
 }
