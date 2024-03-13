@@ -53,14 +53,14 @@ const SubaccountTable = () => {
 			// 	ref: ref,
 			// };
 
-			const newArray = data.map((row, index) => ({
-				id: index + 1,
-				className: "border-2 border-gray p-1 px-2",
-				accountName: row.partnerName || "No partner name available",
-				ref: row.refLink,
-			}));
+			// const newArray = data.map((row, index) => ({
+			// 	id: index + 1,
+			// 	className: "border-2 border-gray p-1 px-2",
+			// 	accountName: row.partnerName || "No partner name available",
+			// 	ref: row.refLink,
+			// }));
 
-			setRows(newArray);
+			// setRows(newArray);
 
 			// console.log(accountName);
 			const newAccountName = accountName;
@@ -75,7 +75,7 @@ const SubaccountTable = () => {
 			// 	},
 			// });
 			// setRef("");
-			// setAccountName("");
+			setAccountName("");
 		}
 	};
 	const handleDelete = () => {

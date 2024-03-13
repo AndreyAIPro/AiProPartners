@@ -1,19 +1,18 @@
 import { useUser } from "../../../hooks/useUser";
 
-
-
 const BalanceArticle = () => {
 	const { user } = useUser();
 	const userData = user.user_metadata;
+	console.log(user);
 	return (
-		<article className='h-[70px] font-nunito-sans bg-light-blue rounded-[10px] flex items-center gap-[10px] p-[10px]'>
-			<span className='h-[50px] w-[50px] rounded-[10px] text-light-blue font-[900] text-[24px] flex items-center justify-center bg-black font-nunito-sans'>
+		<article className="flex h-[70px] items-center gap-[10px] rounded-[10px] bg-light-blue p-[10px] font-nunito-sans">
+			<span className="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] bg-black font-nunito-sans text-[24px] font-[900] text-light-blue">
 				$
 			</span>
-			<p className='font-nunito-sans flex flex-col justify-center text-[16px] '>
+			<p className="flex flex-col justify-center font-nunito-sans text-[16px] ">
 				Текущий баланс
-				<span id='currentCash' className='font-nunito-sans'>
-					0.11$
+				<span id="currentCash" className="font-nunito-sans">
+					{userData.money + " $"}
 				</span>
 			</p>
 		</article>
