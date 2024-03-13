@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import "./SubaccountTable.scss";
 import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
@@ -13,28 +13,27 @@ import { useSelectSubaccountRefLinks } from "../../../hooks/useSelectSubaccountL
 
 const SubaccountTable = () => {
 	const { user } = useUser();
+	//Holds account name
+	const [accountName, setAccountName] = useState("");
 
-	const { data: subaccountRefLinks } = useSelectSubaccountRefLinks(user?.id);
+	const [ref, setRef] = useState("");
+	// Holds row key
+	const [selectedRow, setSelectedRow] = useState(null);
+	// variable that hold all rows
+	const [rows, setRows] = useState([]);
+	const { data: subaccountRefLinks } = useSelectSubaccountRefLinks(user.id);
 	const data = subaccountRefLinks || [];
 
 	const { createSubaccountLinks } = useCreateSubaccountLinks();
-	// variable that hold all rows
-	const [rows, setRows] = useState([]);
-	//Holds account name
-	const [accountName, setAccountName] = useState("");
-	// Holds row key
-	const [selectedRow, setSelectedRow] = useState(null);
+
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
-
-	const [ref, setRef] = useState("");
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
-		setRef(data[0]?.refLink);
 	};
 
 	//function that puts ref to the ref state
@@ -47,24 +46,36 @@ const SubaccountTable = () => {
 	//adding new row to the table
 	const addRow = () => {
 		if (accountName.length !== 0) {
-			const newRow = {
-				id: rows.length + 1,
-				className: "border-2 border-gray p-1 px-2",
-				accountName: accountName,
-				ref: ref,
-			};
-			setRows([...rows, newRow]);
+			// const newRow = {
+			// 	id: rows.length + 1,
+			// 	className: "border-2 border-gray p-1 px-2",
+			// 	accountName: data.,
+			// 	ref: ref,
+			// };
 
-			setAccountName("");
-			createSubaccountLinks(newRow.accountName, {
-				onSuccess: () => {
-					console.log("done");
-				},
-				onError: () => {
-					console.log("error");
-				},
-			});
+			const newArray = data.map((row, index) => ({
+				id: index + 1,
+				className: "border-2 border-gray p-1 px-2",
+				accountName: row.partnerName || "No partner name available",
+				ref: row.refLink,
+			}));
+
+			setRows(newArray);
+
+			// console.log(accountName);
+			const newAccountName = accountName;
+			subaccountLinks(user.id, newAccountName);
+
+			// createSubaccountLinks(user.id, newAccountName, {
+			// 	onSuccess: () => {
+			// 		console.log("done");
+			// 	},
+			// 	onError: () => {
+			// 		console.log("error");
+			// 	},
+			// });
 			// setRef("");
+			// setAccountName("");
 		}
 	};
 	const handleDelete = () => {
@@ -92,15 +103,22 @@ const SubaccountTable = () => {
 	};
 	const handleFormSubmit = () => {
 		const updatedRow = rows.map((row) =>
-			row.id === selectedRow.id
-				? { ...row, accountName: console.log(accountName) }
-				: row,
+			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
 		);
 
 		setRows(updatedRow);
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
+	useEffect(() => {
+		const newArray = data.map((row, index) => ({
+			id: index + 1,
+			className: "border-2 border-gray p-1 px-2",
+			accountName: row.partnerName || "No partner name available",
+			ref: row.refLink,
+		}));
+		setRows(newArray);
+	}, [data]);
 
 	return (
 		<div className={"w-full "}>
