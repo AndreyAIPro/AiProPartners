@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { growth } from '../../data/landingData';
 import GrowthListItem from '../common/GrowthListItem/GrowthListItem';

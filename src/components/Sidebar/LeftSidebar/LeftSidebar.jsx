@@ -1,4 +1,4 @@
-/** @format */
+
 
 import TelegramLink from '../../common/TelegramLink';
 import SidebarNavMenu from '../../SidebarNavMenu';

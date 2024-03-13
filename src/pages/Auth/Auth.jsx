@@ -1,16 +1,19 @@
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider, Empty, theme } from "antd";
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import { useUser } from "../../hooks/useUser";
 
 function Auth() {
+	const { refid } = useParams();
+	const refLink = refid === undefined ? "" : "/"+refid;
+	
 	const { user } = useUser()
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
-	const [isActive, setIsActive] = useState(pathname === "/signup");
+	const [isActive, setIsActive] = useState(pathname === ("/signup"+ refLink));
 
 	if (user) navigate('/dashboard');
 	
@@ -70,12 +73,12 @@ function Auth() {
 
 	function handleLoginClick() {
 		setIsActive(false);
-		navigate("/login", { replace: true });
+		navigate("/login" + refLink, { replace: true });
 	}
 
 	function handleRegisterClick() {
 		setIsActive(true);
-		navigate("/signup", { replace: true });
+		navigate("/signup"+ refLink, { replace: true });
 	}
 }
 

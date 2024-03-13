@@ -1,4 +1,4 @@
-/** @format */
+
 
 import LandingNav from "../../components/LandingNav/LandingNav";
 import {

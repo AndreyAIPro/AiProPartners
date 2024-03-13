@@ -1,16 +1,23 @@
-/** @format */
 
-import LandingButton from '../components/common/LandingButton/LandingButton';
-import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';
+
+import LandingButton from "../components/common/LandingButton/LandingButton";
+import LandingSectionHeading from "../components/common/LandingSectionHeading/LandingSectionHeading";
+import { useUser } from "../hooks/useUser";
 
 const Enjoy = () => {
+	const { user } = useUser();
 	return (
-		<section className='relative w-full max-h-[336px] h-screen flex flex-col items-center justify-center gap-8 after:h-full after:w-full after:bg-enjoy-after after:bg-no-repeat after:bg-center after:absolute bg-gradient-to-r from-enjoy-start-gradient to-enjoy-end-gradient max-sm:bg-start-today-mobile max-sm:max-h-[366px] max-sm:after:hidden max-sm:bg-cover max-sm:bg-center max-sm:bg-no-repeat'>
+		<section className="w-full after:w-full relative flex h-screen max-h-[336px] flex-col items-center justify-center gap-8 bg-gradient-to-r from-enjoy-start-gradient to-enjoy-end-gradient after:absolute after:h-full after:bg-enjoy-after after:bg-center after:bg-no-repeat max-sm:max-h-[366px] max-sm:bg-start-today-mobile max-sm:bg-cover max-sm:bg-center max-sm:bg-no-repeat max-sm:after:hidden">
 			<LandingSectionHeading
-				title='Присоединяйтесь к AIPRO!'
-				dataAos='fate-left'
+				title="Присоединяйтесь к AIPRO!"
+				dataAos="fate-left"
 			/>
-			<LandingButton isYellow label='Зарегистрироваться' dataAos='fate-right' />
+			<LandingButton
+				href={user ? "/dashboard" : "/signup"}
+				isYellow
+				label="Зарегистрироваться"
+				dataAos="fate-right"
+			/>
 		</section>
 	);
 };

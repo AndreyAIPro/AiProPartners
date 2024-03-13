@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-
 import "./RefTable.scss";
-
-import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
-import Modal from "../../Subaccount/SubaccountModal/SubaccountModal";
 import { useUser } from "../../../hooks/useUser";
+import {
+	flexRender,
+	getCoreRowModel,
+	getPaginationRowModel,
+	useReactTable,
+} from "@tanstack/react-table";
+import refData from "./../../../data/dataForRefTable";
+import { message } from "antd";
+import copy from "copy-to-clipboard";
+import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
 import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 
 const RefTable = () => {
@@ -13,12 +18,21 @@ const RefTable = () => {
 		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
 		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
 	]);
-	const {user} = useUser();
-	if(user?.id !== undefined) creatDefultRefLink(user?.id);
+	const { user } = useUser();
+	const { data: partnersRefLinks } = useSelectPartnersRefLinks(user?.id);
+	const data = partnersRefLinks || [];
+
 	const rowClassName = { className: "border-2 border-gray p-1  px-2" };
 	// //Holds account name
 	// const [accountName, setAccountName] = useState("");
-	const link = (window.location.hostname === 'localhost') ? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434": window.location.protocol +"//"+ window.location.hostname + "/reflink/" + user.id
+	const link =
+		window.location.hostname === "localhost"
+			? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434"
+			: window.location.protocol +
+				"//" +
+				window.location.hostname +
+				"/reflink/" +
+				user.id;
 	const [accountRef, setAccountRef] = useState(link);
 	// // Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
@@ -77,97 +91,121 @@ const RefTable = () => {
 	//     setAccountName("");
 	// };
 
+	const columns = [
+		{
+			header: "ID партнера",
+			accessorKey: "refLink",
+		},
+		{
+			header: "Название партнера",
+			accessorKey: "name",
+		},
+	];
+
+	const table = useReactTable({
+		data,
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+	});
+	const handleCopyToClipboard = (ref) => {
+		copy(ref);
+		message.success("Ref copied to clipboard");
+	};
+
+	if(user?.id !== undefined) creatDefultRefLink(user.id);
+
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
-			{/* Edit Modal */}
-			{/* <Modal
-                title="Редактировать"
-                open={isModalVisible}
-                onCancel={() => setIsModalVisible(false)}
-                footer={null}
-            >
-                <input
-                    name="accountName"
-                    type="text"
-                    onChange={handleNewSubaccount}
-                    className="w-full h-full text-black px-2 rounded-md my-3"
-                    value={accountName}
-                />
-                <button
-                    className="custom-button"
-                    onClick={handleFormSubmit}
-                >
-                    Сохранить
-                </button>
-            </Modal>
-            {/* Delete Confirmation Modal */}
-			<Modal
-				title="Удалить?"
-				open={deleteModalVisible}
-				onCancel={hideDeleteModal}
-				footer={null}
-			>
-				<div className="flex justify-start p-2">
-					<button
-						className="mx-4 rounded-full bg-light-blue px-8 py-2"
-						onClick={() => handleDelete(selectedRow.id)}
-					>
-						ДА
-					</button>
-					<button
-						className="mx-4 rounded-full bg-light-blue px-8 py-2"
-						onClick={hideDeleteModal}
-					>
-						Нет
-					</button>
-				</div>
-			</Modal>
 			<div className="flex w-[100%]  justify-items-center">
 				<div className="flex w-[100%]  flex-col content-end">
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
-							<button className="custom-button w-[200px] p-[10px] text-nowrap rounded-l-md text-text3 ">
-								Ваша реферальная ссылка
+							<button
+								onClick={() => handleCopyToClipboard(accountRef)}
+								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
+							>
+								Скопировать реферальную ссылку
 							</button>
 						</div>
 						<div className="flex w-[100%] items-center text-nowrap rounded-r-md bg-white px-4 text-text2 text-black">
 							{accountRef}
 						</div>
 					</div>
-					<table>
+					<table className="   min-w-full  border-[2px] border-gray">
 						<thead>
-							<tr>
-								<th className="table-gradient w-[20%] border-2 border-gray p-1 text-text4 ">
-									ID партнера
-								</th>
-								<th className="table-gradient w-[60%] border-2 border-gray p-1 text-text4 ">
-									Название партнера
-								</th>
-								<td className="w-20 text-center text-text4 "></td>
-							</tr>
-						</thead>
-						<tbody>
-							{rows.map((row) => (
-								<tr key={row.id}>
-									<td className={rowClassName.className}>{row.accountID}</td>
-									<td className={rowClassName.className}>{row.partnerName}</td>
-									<td className="flex justify-center border-none p-1">
-										<img
-											className="mx-2 cursor-pointer"
-											src={editIcon}
-											alt="edit"
-										></img>
-										<img
-											className="mx-2 cursor-pointer"
-											src={deleteIcon}
-											alt="delete"
-											onClick={() => openDeleteModal(row)}
-										></img>
-									</td>
+							{table.getHeaderGroups().map((headerGroup) => (
+								<tr key={headerGroup.id} className="bg-gray">
+									{headerGroup.headers.map((header) => (
+										<th
+											key={header.id}
+											className="py-1 text-left font-nunito-sans text-text2 first:pl-4 last:pl-4 "
+										>
+											{header.isPlaceholder
+												? null
+												: flexRender(
+														header.column.columnDef.header,
+														header.getContext(),
+													)}
+										</th>
+									))}
 								</tr>
 							))}
+						</thead>
+						<tbody>
+							{table
+								.getRowModel()
+								.rows.slice(0, refData.length)
+								.map((row) => (
+									<tr key={row.id} className=" border-[1px] border-gray">
+										{row.getVisibleCells().map((cell) => (
+											<td
+												key={cell.id}
+												className={`text border-r-2 border-gray py-1 pl-4 font-nunito-sans text-text2`}
+											>
+												{flexRender(
+													cell.column.columnDef.cell,
+													cell.getContext(),
+												)}
+											</td>
+										))}
+									</tr>
+								))}
 						</tbody>
 					</table>
+					{refData.length > 10 && (
+						<div className={`mt-3 text-center`}>
+							<button
+								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
+								onClick={() => table.setPageIndex(0)}
+								disabled={!table.getCanPreviousPage()}
+							>
+								{"<<"}
+							</button>
+							<button
+								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
+								onClick={() => table.previousPage()}
+								disabled={!table.getCanPreviousPage()}
+							>
+								Предыдущая страница
+							</button>
+
+							<button
+								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanNextPage() && "disabled:opacity-25"}`}
+								onClick={() => table.nextPage()}
+								disabled={!table.getCanNextPage()}
+							>
+								Следующая страница
+							</button>
+							<button
+								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanNextPage() && "disabled:opacity-25"}`}
+								onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+								disabled={!table.getCanNextPage()}
+							>
+								{">>"}
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

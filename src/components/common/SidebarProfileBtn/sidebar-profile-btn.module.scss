@@ -1,4 +1,4 @@
-/** @format */
+
 
 .btn {
 	display: flex;
@@ -23,6 +23,21 @@
 
 	.settings__btn {
 		border: 5px;
-		
+		width: 25px;
+		height: 25px;
+		margin-left: 0.5rem;
+		svg {
+			path {
+				fill: rgb(214, 214, 214);
+			}
+		}
+	}
+
+	.active {
+		svg {
+			path {
+				fill: #fff;
+			}
+		}
 	}
 }

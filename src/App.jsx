@@ -1,4 +1,4 @@
-/** @format */
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,6 +11,7 @@ import routes from "./router/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import RefLink from "./pages/RefLink/RefLink";
+import Landing from "./pages/Landing/Landing";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -36,7 +37,11 @@ function App() {
 			element: <Auth />,
 		},
 		{
-			path: PathConstants.SIGNUP,//     "/signup",
+			path: PathConstants.HOME,
+			element: <Landing/>,
+		},
+		{
+			path: PathConstants.SIGNUP,
 			element: <Auth />,
 		},
 		{
@@ -49,8 +54,16 @@ function App() {
 			
 		},
 		{
-			path: PathConstants.PARTNERREFLINK  + PathConstants.REFCODE,
+			path: PathConstants.PARTNERREFLINK + PathConstants.REFCODE,
 			element: <RefLink />,
+		},
+		{
+			path: PathConstants.LOGIN + PathConstants.REFCODE,
+			element: <Auth />,
+		},
+		{
+			path: PathConstants.SIGNUP + PathConstants.REFCODE,
+			element: <Auth />,
 		}
 	]);
 

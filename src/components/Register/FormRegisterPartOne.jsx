@@ -73,14 +73,21 @@ function FormRegisterPartOne({
 			)}
 			<Form.Item
 				name="password"
+				className="mb-[40px]"
 				rules={[
 					{
 						required: true,
-						message: "Please input your password!",
+						message: "Пожалуйста, введите ваш пароль!",
 					},
 					{
 						min: 8,
-						message: "Input at least 8 characters!",
+						message: "Введите не менее 8 символов!",
+					},
+					{
+						pattern:
+							/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+						message:
+							"Пароль должен содержать заглавные и строчные буквы, цифры и символы!",
 					},
 				]}
 			>

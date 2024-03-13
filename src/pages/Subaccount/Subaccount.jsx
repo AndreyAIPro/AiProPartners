@@ -1,6 +1,6 @@
 import SubaccountTable from "./SubaccountTable/SubaccountTable";
 
-/** @format */
+
 
 const Subaccount = () => {
     return (
