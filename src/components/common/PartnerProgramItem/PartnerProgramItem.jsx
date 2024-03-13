@@ -1,4 +1,4 @@
-/** @format */
+
 
 import PartnerProgramTable from "../../PartnerProgramTable/PartnerProgramTable";
 

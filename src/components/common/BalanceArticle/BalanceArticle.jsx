@@ -1,6 +1,6 @@
 import { useUser } from "../../../hooks/useUser";
 
-/** @format */
+
 
 const BalanceArticle = () => {
 	const { user } = useUser();

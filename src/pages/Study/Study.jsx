@@ -1,4 +1,4 @@
-/** @format */
+
 import { useEffect } from "react";
 import {
 	Outlet,

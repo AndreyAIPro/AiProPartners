@@ -1,4 +1,4 @@
-/** @format */
+
 
 const WhyAIPROListItem = ({ img, title, text, dataAos }) => {
 	return (

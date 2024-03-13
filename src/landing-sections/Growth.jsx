@@ -1,4 +1,4 @@
-/** @format */
+
 
 import GrowthList from '../components/GrowthList/GrowthList';
 import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';

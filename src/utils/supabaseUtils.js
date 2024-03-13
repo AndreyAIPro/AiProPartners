@@ -1,4 +1,3 @@
-import { Empty } from "antd";
 import supabase from "./supabaseCreate";
 
 export async function SignUp({
@@ -98,6 +97,8 @@ export async function UpdateUser({
 	});
 	if (error) throw new Error(error.message);
 }
+
+//For Create Defult Link For Client and Partner
 export async function creatDefultRefLink(userId) {
 	const { data: dataPartnersRefLinks } = await supabase
 		.from("PartnersRefLinks")
@@ -107,10 +108,36 @@ export async function creatDefultRefLink(userId) {
 	if (dataPartnersRefLinks.length === 0) {
 		await supabase
 			.from("PartnersRefLinks")
-			.insert({ refLink: userId, name: Empty });
+			.insert({ refLink: userId, name: "Main", isMainLink: true });
 	}
 }
 
+
+export async function selectPartnersRefLinks(userId) {
+	const { data } = await supabase
+		.from("RefRegPartnerLogs")
+		.select("subaccountId,partnerName")
+		.eq("refLink", userId);
+
+	return data;
+}
+
+export async function selectSubAccountRefLinks(userId) {
+	const { data: selectSubRefLinks } = await supabase
+		.from("PartnersRefLinks")
+		.select("refLink,name")
+		.eq("partnerId", userId);
+
+	return selectSubRefLinks;
+}
+
+export default async function createSubAccountLink(subAccountName) {
+	await supabase
+		.from("PartnersRefLinks")
+		.insert({name: subAccountName});
+}
+
+//CLIENT REFLINK ON CLICK
 export async function checkRefLink(refId, ipAddress) {
 	const nowDate = new Date();
 	const month =
@@ -139,16 +166,7 @@ export async function checkRefLink(refId, ipAddress) {
 	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
 }
 
-//Красти
-export async function selectPartnersRefLinks(partnerId) {
-	const { data } = await supabase
-		.from("PartnersRefLinks")
-		.select("refLink,created_at,name")
-		.eq("partnerId", partnerId);
-		
-	return data;
-}
-
+//NOT EXPORT
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
 	const { data: selectUniqueFromAnalitica } = await supabase
 		.from("PartnersAnalyticalTable")

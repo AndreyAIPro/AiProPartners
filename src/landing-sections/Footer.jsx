@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { ReactComponent as Logo } from '../assets/images/logo.svg';
 import FooterLinksList from '../components/common/FooterLinksList/FooterLinksList';

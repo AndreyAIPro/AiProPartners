@@ -1,4 +1,4 @@
-/** @format */
+
 
 import svgr from '@svgr/rollup';
 import react from '@vitejs/plugin-react';

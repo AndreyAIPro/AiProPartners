@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { footerLinks } from '../../../data/landingData';
 import FooterLinksItem from '../FooterLinksItem/FooterLinksItem';
