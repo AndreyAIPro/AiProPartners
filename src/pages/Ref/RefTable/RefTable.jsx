@@ -112,8 +112,6 @@ const RefTable = () => {
 		message.success("Ref copied to clipboard");
 	};
 
-	if (user?.id !== undefined) creatDefultRefLink(user.id);
-
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
 			<div className="flex w-[100%]  justify-items-center">
