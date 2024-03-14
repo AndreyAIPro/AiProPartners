@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import RefLink from "./pages/RefLink/RefLink";
 import Landing from "./pages/Landing/Landing";
+import PartnershipAgreement from "./pages/PartnershipAgreement/PartnershipAgreement";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -38,7 +39,7 @@ function App() {
 		},
 		{
 			path: PathConstants.HOME,
-			element: <Landing/>,
+			element: <Landing />,
 		},
 		{
 			path: PathConstants.SIGNUP,
@@ -46,12 +47,11 @@ function App() {
 		},
 		{
 			path: PathConstants.RESET_PASSWORD,
-			element: <ResetPassword />,	
+			element: <ResetPassword />,
 		},
 		{
 			path: PathConstants.PASSWORD_RECOVERY,
 			element: <ResetPassword />,
-			
 		},
 		{
 			path: PathConstants.PARTNERREFLINK + PathConstants.REFCODE,
@@ -64,7 +64,11 @@ function App() {
 		{
 			path: PathConstants.SIGNUP + PathConstants.REFCODE,
 			element: <Auth />,
-		}
+		},
+		{
+			path: PathConstants.PARTNERSHIP_AGREEMENT,
+			element: <PartnershipAgreement />,
+		},
 	]);
 
 	return (

@@ -154,7 +154,7 @@ export async function selectSubaccountRefLinks(partnerId) {
 		.from("RefRegPartnerLogs")
 		.select("refLink,created_at,partnerName")
 		.eq("partnerId", partnerId);
-
+	console.log(selectSubRefLinks);
 	return selectSubRefLinks;
 }
 
