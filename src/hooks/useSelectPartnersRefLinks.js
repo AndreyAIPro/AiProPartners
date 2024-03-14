@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { selectPartnersRefLinks } from "../utils/supabaseUtils";
 
-export function useSelectPartnersRefLinks(id) {
+export function useSelectPartnersRefLinks(userId) {
 	const { data } = useQuery({
 		queryKey: ["PartnersRefLinks"],
-		queryFn: () => selectPartnersRefLinks(id),
+		queryFn: () => selectPartnersRefLinks(userId),
 	});
 
 	return { data };

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { selectSubaccountRefLinks } from "../utils/supabaseUtils";
+import { selectSubAccountRefLinks } from "../utils/supabaseUtils";
 
-export function useSelectSubaccountRefLinks(id) {
+export function useSelectSubAccountRefLinks(userId) {
 	const { data } = useQuery({
 		queryKey: ["RefRegPartnerLogs"],
-		queryFn: () => selectSubaccountRefLinks(id),
+		queryFn: () => selectSubAccountRefLinks(userId),
 	});
 
 	return { data };

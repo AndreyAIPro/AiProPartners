@@ -4,6 +4,8 @@ import { Table, Checkbox, ConfigProvider, theme, Select, DatePicker, Button, Sta
 import { Line } from "@ant-design/plots";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { useUser } from "../../hooks/useUser";
+import { creatDefultRefLink } from "../../utils/supabaseUtils";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
@@ -11,6 +13,7 @@ const { RangePicker } = DatePicker;
 
 const Charts = () => {
     // Chart config
+    const { user } = useUser();
     const config = {
         data: {
             type: "fetch",
@@ -114,6 +117,8 @@ const Charts = () => {
         // Can not select days before today and today
         return current && current < dayjs().endOf("day");
     };
+    if (user?.id !== undefined) creatDefultRefLink(user.id);
+
     return (
         <>
             <div className="flex-1">
