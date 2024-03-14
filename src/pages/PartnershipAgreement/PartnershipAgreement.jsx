@@ -1,4 +1,3 @@
-/** @format */
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as BackButton } from "../../assets/images/landing/footer/partnershipBackButton.svg";
 import { dataForPartnershipAgreement } from "../../data/dataForPartnershipAgreement";

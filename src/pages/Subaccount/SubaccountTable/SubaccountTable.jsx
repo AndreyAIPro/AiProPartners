@@ -8,19 +8,16 @@ import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
 import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
 import { SubaccountItem } from "./SubaccountItem";
+import { deleteSubaccount } from "../../../utils/supabaseUtils";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
 	const { data: subaccountRefLinks } = useSelectSubAccountRefLinks(user?.id);
 	const { setCreateSubAccountLink } = useCreateSubaccountLinks();
-
 	//Holds account name
 	const [accountName, setAccountName] = useState("");
-
 	// Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
-	// variable that hold all rows
-
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
@@ -30,49 +27,29 @@ const SubaccountTable = () => {
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
 	};
-
-	//function that puts ref to the ref state
+	const handleDeleteClick = (rowData) => {
+		setSelectedRow(rowData);
+		setDeleteModalVisible(true);
+		console.log(rowData);
+	};
+	const handleEditClick = (rowData) => {
+		setSelectedRow(rowData);
+		setIsModalVisible(true);
+		console.log(rowData);
+	};
 
 	//adding new row to the table
 	const addRow = () => {
 		if (accountName.length) {
-			// const newRow = {
-			// 	id: rows.length + 1,
-			// 	className: "border-2 border-gray p-1 px-2",
-			// 	accountName: data.,
-			// 	ref: ref,
-			// };
-
 			setCreateSubAccountLink(accountName);
-			// const newArray = subaccountRefLinks?.map((row, index) => ({
-			// 	id: index + 1,
-			// 	className: "border-2 border-gray p-1 px-2",
-			// 	accountName: row.name || "No partner name available",
-			// 	ref: row.refLink,
-			// }));
 
-			//setRows(newArray);
-
-			// console.log(accountName);
-			// const newAccountName = accountName;
-			// subaccountLinks(user.id, newAccountName);
-
-			// createSubaccountLinks(user.id, newAccountName, {
-			// 	onSuccess: () => {
-			// 		console.log("done");
-			// 	},
-			// 	onError: () => {
-			// 		console.log("error");
-			// 	},
-			// });
-			// setRef("");
-			// setAccountName("");
+			setAccountName("");
 		}
 	};
 	const handleDelete = () => {
-		if (selectedRow && selectedRow.id) {
-			const updatedRows = rows.filter((row) => row.id !== selectedRow.id);
-			setRows(updatedRows);
+		if (selectedRow) {
+			deleteSubaccount(selectedRow.refLink);
+
 			setDeleteModalVisible(false); // Close delete confirmation modal after deletion
 		}
 	};
@@ -86,19 +63,10 @@ const SubaccountTable = () => {
 			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
 		);
 
-		setRows(updatedRow);
+		//
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
-	// useEffect(() => {
-	// 	const newArray = subaccountRefLinks.map((row, index) => ({
-	// 		id: index + 1,
-	// 		className: "border-2 border-gray p-1 px-2",
-	// 		accountName: row.partnerName || "No partner name available",
-	// 		ref: row.refLink,
-	// 	}));
-	// 	setRows(newArray);
-	// }, [subaccountRefLinks]);
 
 	return (
 		<div className={"w-full "}>
@@ -168,21 +136,23 @@ const SubaccountTable = () => {
 						<table className="w-[100%] bg-black">
 							<thead>
 								<tr>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Название Субаккаунта
 									</th>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Ссылка
 									</th>
 									<td className=" "></td>
 								</tr>
 							</thead>
 							<tbody>
-								{subaccountRefLinks?.map((row) => (
+								{subaccountRefLinks?.map((row, index) => (
 									<SubaccountItem
-										key={Math.random()}
+										key={index}
 										name={row.name}
 										refLink={row.refLink}
+										onEditClick={() => handleEditClick(row)}
+										onDeleteClick={() => handleDeleteClick(row)}
 									/>
 								))}
 							</tbody>
