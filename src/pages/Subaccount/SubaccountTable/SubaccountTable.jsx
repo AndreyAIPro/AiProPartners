@@ -8,6 +8,7 @@ import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
 import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
 import { SubaccountItem } from "./SubaccountItem";
+import { deleteSubaccount } from "../../../utils/supabaseUtils";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
@@ -26,19 +27,29 @@ const SubaccountTable = () => {
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
 	};
+	const handleDeleteClick = (rowData) => {
+		setSelectedRow(rowData);
+		setDeleteModalVisible(true);
+		console.log(rowData);
+	};
+	const handleEditClick = (rowData) => {
+		setSelectedRow(rowData);
+		setIsModalVisible(true);
+		console.log(rowData);
+	};
 
 	//adding new row to the table
 	const addRow = () => {
 		if (accountName.length) {
 			setCreateSubAccountLink(accountName);
-			setRows(newArray);
+
 			setAccountName("");
 		}
 	};
 	const handleDelete = () => {
-		if (selectedRow && selectedRow.id) {
-			const updatedRows = rows.filter((row) => row.id !== selectedRow.id);
-			setRows(updatedRows);
+		if (selectedRow) {
+			deleteSubaccount(selectedRow.refLink);
+
 			setDeleteModalVisible(false); // Close delete confirmation modal after deletion
 		}
 	};
@@ -52,7 +63,7 @@ const SubaccountTable = () => {
 			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
 		);
 
-		setRows(updatedRow);
+		//
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
@@ -125,21 +136,23 @@ const SubaccountTable = () => {
 						<table className="w-[100%] bg-black">
 							<thead>
 								<tr>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Название Субаккаунта
 									</th>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Ссылка
 									</th>
 									<td className=" "></td>
 								</tr>
 							</thead>
 							<tbody>
-								{subaccountRefLinks?.map((row) => (
+								{subaccountRefLinks?.map((row, index) => (
 									<SubaccountItem
-										key={Math.random()}
+										key={index}
 										name={row.name}
 										refLink={row.refLink}
+										onEditClick={() => handleEditClick(row)}
+										onDeleteClick={() => handleDeleteClick(row)}
 									/>
 								))}
 							</tbody>

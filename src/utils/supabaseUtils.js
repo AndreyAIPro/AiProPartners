@@ -112,7 +112,6 @@ export async function creatDefultRefLink(userId) {
 	}
 }
 
-
 export async function selectPartnersRefLinks(userId) {
 	const { data } = await supabase
 		.from("RefRegPartnerLogs")
@@ -130,11 +129,15 @@ export async function selectSubAccountRefLinks(userId) {
 
 	return selectSubRefLinks;
 }
-
-export default async function createSubAccountLink(subAccountName) {
-	await supabase
+export async function deleteSubaccount(refLink) {
+	const { error } = await supabase
 		.from("PartnersRefLinks")
-		.insert({name: subAccountName});
+		.delete()
+		.eq("refLink", refLink)
+		.select();
+}
+export default async function createSubAccountLink(subAccountName) {
+	await supabase.from("PartnersRefLinks").insert({ name: subAccountName });
 }
 
 //CLIENT REFLINK ON CLICK
