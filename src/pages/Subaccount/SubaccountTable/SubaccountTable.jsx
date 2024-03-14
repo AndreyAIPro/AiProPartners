@@ -13,14 +13,10 @@ const SubaccountTable = () => {
 	const { user } = useUser();
 	const { data: subaccountRefLinks } = useSelectSubAccountRefLinks(user?.id);
 	const { setCreateSubAccountLink } = useCreateSubaccountLinks();
-
 	//Holds account name
 	const [accountName, setAccountName] = useState("");
-
 	// Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
-	// variable that hold all rows
-
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
@@ -31,41 +27,11 @@ const SubaccountTable = () => {
 		setAccountName(e.target.value);
 	};
 
-	//function that puts ref to the ref state
-
 	//adding new row to the table
 	const addRow = () => {
 		if (accountName.length) {
-			// const newRow = {
-			// 	id: rows.length + 1,
-			// 	className: "border-2 border-gray p-1 px-2",
-			// 	accountName: data.,
-			// 	ref: ref,
-			// };
-
 			setCreateSubAccountLink(accountName);
-			// const newArray = subaccountRefLinks?.map((row, index) => ({
-			// 	id: index + 1,
-			// 	className: "border-2 border-gray p-1 px-2",
-			// 	accountName: row.name || "No partner name available",
-			// 	ref: row.refLink,
-			// }));
-
 			setRows(newArray);
-
-			// console.log(accountName);
-			// const newAccountName = accountName;
-			// subaccountLinks(user.id, newAccountName);
-
-			// createSubaccountLinks(user.id, newAccountName, {
-			// 	onSuccess: () => {
-			// 		console.log("done");
-			// 	},
-			// 	onError: () => {
-			// 		console.log("error");
-			// 	},
-			// });
-			// setRef("");
 			setAccountName("");
 		}
 	};
@@ -90,15 +56,6 @@ const SubaccountTable = () => {
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
-	// useEffect(() => {
-	// 	const newArray = subaccountRefLinks.map((row, index) => ({
-	// 		id: index + 1,
-	// 		className: "border-2 border-gray p-1 px-2",
-	// 		accountName: row.partnerName || "No partner name available",
-	// 		ref: row.refLink,
-	// 	}));
-	// 	setRows(newArray);
-	// }, [subaccountRefLinks]);
 
 	return (
 		<div className={"w-full "}>
