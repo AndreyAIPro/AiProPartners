@@ -27,7 +27,6 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 						max: 16,
 						message: "Input less then 16 symbol!",
 					},
-					
 				]}
 			>
 				<Input placeholder="ФИО" />
@@ -103,6 +102,11 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 			>
 				<Input placeholder="Телеграм" />
 			</Form.Item>
+			<Checkbox className="mb-[20px] text-[#fff]">
+				<div className="text-[12px]">
+					Я принимаю все условия <span>партнерского соглашения</span>
+				</div>
+			</Checkbox>
 			<div className="flex justify-between">
 				<Form.Item>
 					<Button
@@ -115,7 +119,7 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 				</Form.Item>
 				<Form.Item>
 					<Button type="primary" className="bg-[#1677FF]" htmlType="submit">
-						<div className="font-bold text-[#fff]">Далее</div>
+						<div className="font-bold text-[#fff]">Регистрация</div>
 					</Button>
 				</Form.Item>
 			</div>
