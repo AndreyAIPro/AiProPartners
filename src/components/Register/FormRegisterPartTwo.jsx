@@ -115,6 +115,7 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 						className="ml-[3px] text-[#24A1E0]"
 						to="/partnershipAgreement"
 						state={link}
+						target="_blank"
 					>
 						партнерского соглашения
 					</NavLink>
