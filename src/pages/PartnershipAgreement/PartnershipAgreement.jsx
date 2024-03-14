@@ -1,9 +1,11 @@
-/** @format */
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as BackButton } from "../../assets/images/landing/footer/partnershipBackButton.svg";
 import { dataForPartnershipAgreement } from "../../data/dataForPartnershipAgreement";
+import { useLocation } from "react-router-dom";
 
 const PartnershipAgreement = () => {
+	const location = useLocation();
+	const linkState = location.state;
 	return (
 		<section className=" bg-primary">
 			<div className="flex justify-between px-24 pt-14">
@@ -15,7 +17,10 @@ const PartnershipAgreement = () => {
 				</select>
 			</div>
 			<div className=" px-24 py-20 text-white">
-				<a href="/" className="flex items-center gap-6">
+				<a
+					href={linkState === "/signup" ? "/signup" : "/"}
+					className="flex items-center gap-6"
+				>
 					<BackButton />
 					<p className="font-nunito-sans text-text1 ">Назад</p>
 				</a>

@@ -2,9 +2,12 @@ import { Button, Checkbox, Form, Input, Radio } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import classNames from "classnames";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function FormRegisterPartTwo({ formChange, setFormChange }) {
 	const [valueRadioButtonSources, setValueRadioButtonSources] = useState("");
+	const link = "/signup";
+	const [activeButton, setActiveButton] = useState(false);
 	const [textAreaOpen, setTextAreaOpen] = useState(false);
 	return (
 		<div
@@ -102,9 +105,19 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 			>
 				<Input placeholder="Телеграм" />
 			</Form.Item>
-			<Checkbox className="mb-[20px] text-[#fff]">
+			<Checkbox
+				onChange={(e) => setActiveButton(e.target.checked)}
+				className="mb-[20px] text-[#fff]"
+			>
 				<div className="text-[12px]">
-					Я принимаю все условия <span>партнерского соглашения</span>
+					Я принимаю все условия
+					<NavLink
+						className="ml-[3px] text-[#24A1E0]"
+						to="/partnershipAgreement"
+						state={link}
+					>
+						партнерского соглашения
+					</NavLink>
 				</div>
 			</Checkbox>
 			<div className="flex justify-between">
@@ -118,7 +131,11 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 					</Button>
 				</Form.Item>
 				<Form.Item>
-					<Button type="primary" className="bg-[#1677FF]" htmlType="submit">
+					<Button
+						type="primary"
+						className={`bg-[#1677FF] ${!activeButton ? "pointer-events-none" : ""} `}
+						htmlType="submit"
+					>
 						<div className="font-bold text-[#fff]">Регистрация</div>
 					</Button>
 				</Form.Item>
