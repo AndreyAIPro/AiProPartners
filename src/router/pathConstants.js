@@ -10,11 +10,11 @@ const PathConstants = {
 	LOGIN: "/login",
 	SIGNUP: "/signup",
 	PREFERENCES: "/preferences",
-	RESET_PASSWORD: '/resetpassword',
-	PASSWORD_RECOVERY: '/passwordrecovery',
-	PARTNERREFLINK: '/reflink',
-
-	REFCODE: '/:refid'
+	RESET_PASSWORD: "/resetpassword",
+	PASSWORD_RECOVERY: "/passwordrecovery",
+	PARTNERREFLINK: "/reflink",
+	PARTNERSHIP_AGREEMENT: "/partnershipAgreement",
+	REFCODE: "/:refid",
 };
 
 export default PathConstants;
