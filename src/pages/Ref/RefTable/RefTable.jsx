@@ -121,6 +121,13 @@ const RefTable = () => {
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
 							<button
+								onClick={() => window.location.replace(link)}
+								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
+							>
+								Перейти на тестове посилання
+							</button>
+							<br />
+							<button
 								onClick={() => handleCopyToClipboard(accountRef)}
 								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
 							>
