@@ -139,25 +139,6 @@ export async function checkRefLink(refId, ipAddress) {
 	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
 }
 
-//Красти
-export async function selectPartnersRefLinks(partnerId) {
-	const { data } = await supabase
-		.from("PartnersRefLinks")
-		.select("refLink,created_at,name")
-		.eq("partnerId", partnerId);
-
-	return data;
-}
-
-export async function selectSubaccountRefLinks(partnerId) {
-	const { data: selectSubRefLinks } = await supabase
-		.from("RefRegPartnerLogs")
-		.select("refLink,created_at,partnerName")
-		.eq("partnerId", partnerId);
-	console.log(selectSubRefLinks);
-	return selectSubRefLinks;
-}
-
 async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
 	const { data: selectUniqueFromAnalitica } = await supabase
 		.from("PartnersAnalyticalTable")
