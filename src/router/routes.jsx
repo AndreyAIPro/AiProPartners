@@ -8,6 +8,7 @@ import Study from "../pages/Study/Study";
 import Subaccount from "../pages/Subaccount/Subaccount";
 import PathConstants from "./pathConstants";
 import Preferences from "../pages/Preferences/Preferences";
+import PartnershipAgreement from "../pages/PartnershipAgreement/PartnershipAgreement";
 const routes = [
 	{
 		path: PathConstants.DASHBOARD,
