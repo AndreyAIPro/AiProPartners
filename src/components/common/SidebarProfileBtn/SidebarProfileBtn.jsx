@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { NavLink } from "react-router-dom";
 import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";

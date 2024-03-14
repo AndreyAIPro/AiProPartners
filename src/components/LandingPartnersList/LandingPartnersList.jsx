@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { partners } from '../../data/landingData';
 import LandingPartnersListItem from '../common/LandingPartnersListItem/LandingPartnersListItem';

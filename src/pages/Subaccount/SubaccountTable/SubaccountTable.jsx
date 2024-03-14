@@ -1,35 +1,29 @@
-import React, { useState } from "react";
-import copy from "copy-to-clipboard";
+import React, { useState, useEffect } from "react";
+
 import "./SubaccountTable.scss";
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
-import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
+
 import Modal from "../SubaccountModal/SubaccountModal";
-import { CopyOutlined } from "@ant-design/icons";
-import { message } from "antd";
-import subaccountLinks from "../../../utils/supabaseUtils";
+
 import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
-import { useSelectSubaccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
+import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
+import { SubaccountItem } from "./SubaccountItem";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
+	const { data: subaccountRefLinks } = useSelectSubAccountRefLinks(user?.id);
+	const { setCreateSubAccountLink } = useCreateSubaccountLinks();
 
-	const { data: subaccountRefLinks } = useSelectSubaccountRefLinks(user?.id);
-	const data = subaccountRefLinks || [];
-	console.log(data);
-
-	const { createSubaccountLinks } = useCreateSubaccountLinks();
-	// variable that hold all rows
-	const [rows, setRows] = useState([]);
 	//Holds account name
 	const [accountName, setAccountName] = useState("");
+
 	// Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
+	// variable that hold all rows
+
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
-
-	const [ref, setRef] = useState(data.refLink);
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
@@ -38,33 +32,41 @@ const SubaccountTable = () => {
 	};
 
 	//function that puts ref to the ref state
-	const handleRef = (row) => {
-		const refToCopy = row.ref;
-		copy(refToCopy);
-		message.success("Ссылка скопирована в кеш");
-	};
 
 	//adding new row to the table
 	const addRow = () => {
-		if (accountName.length !== 0) {
-			const newRow = {
-				id: rows.length + 1,
-				className: "border-2 border-gray p-1 px-2",
-				accountName: accountName,
-				ref: ref,
-			};
-			setRows([...rows, newRow]);
-			console.log(newRow);
-			setAccountName("");
-			createSubaccountLinks(newRow.accountName, {
-				onSuccess: () => {
-					console.log("done");
-				},
-				onError: () => {
-					console.log("error");
-				},
-			});
+		if (accountName.length) {
+			// const newRow = {
+			// 	id: rows.length + 1,
+			// 	className: "border-2 border-gray p-1 px-2",
+			// 	accountName: data.,
+			// 	ref: ref,
+			// };
+
+			setCreateSubAccountLink(accountName);
+			// const newArray = subaccountRefLinks?.map((row, index) => ({
+			// 	id: index + 1,
+			// 	className: "border-2 border-gray p-1 px-2",
+			// 	accountName: row.name || "No partner name available",
+			// 	ref: row.refLink,
+			// }));
+
+			//setRows(newArray);
+
+			// console.log(accountName);
+			// const newAccountName = accountName;
+			// subaccountLinks(user.id, newAccountName);
+
+			// createSubaccountLinks(user.id, newAccountName, {
+			// 	onSuccess: () => {
+			// 		console.log("done");
+			// 	},
+			// 	onError: () => {
+			// 		console.log("error");
+			// 	},
+			// });
 			// setRef("");
+			// setAccountName("");
 		}
 	};
 	const handleDelete = () => {
@@ -74,33 +76,29 @@ const SubaccountTable = () => {
 			setDeleteModalVisible(false); // Close delete confirmation modal after deletion
 		}
 	};
-	const openDeleteModal = (row) => {
-		setSelectedRow(row);
-		setDeleteModalVisible(true);
-	};
 
 	const hideDeleteModal = () => {
 		setDeleteModalVisible(false); // Hide delete confirmation modal
 	};
 
-	const handleEdit = (row) => {
-		setSelectedRow(row); // Set the selected row for editing
-		setAccountName(row.accountName);
-
-		// Set the accountName state with the current account name
-		setIsModalVisible(true); // Show the edit modal
-	};
 	const handleFormSubmit = () => {
 		const updatedRow = rows.map((row) =>
-			row.id === selectedRow.id
-				? { ...row, accountName: console.log(accountName) }
-				: row,
+			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
 		);
 
 		setRows(updatedRow);
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
+	// useEffect(() => {
+	// 	const newArray = subaccountRefLinks.map((row, index) => ({
+	// 		id: index + 1,
+	// 		className: "border-2 border-gray p-1 px-2",
+	// 		accountName: row.partnerName || "No partner name available",
+	// 		ref: row.refLink,
+	// 	}));
+	// 	setRows(newArray);
+	// }, [subaccountRefLinks]);
 
 	return (
 		<div className={"w-full "}>
@@ -180,32 +178,12 @@ const SubaccountTable = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{rows.map((row) => (
-									<tr key={row.id}>
-										<td className={row.className}>{row.accountName}</td>
-										<td className={row.className}>{row.ref}</td>
-										<td className="flex justify-evenly border-none p-1">
-											<img
-												className="mx-2 cursor-pointer p-1"
-												src={editIcon}
-												alt="edit"
-												onClick={() => handleEdit(row)}
-											></img>
-											<img
-												className="mx-2 cursor-pointer"
-												src={deleteIcon}
-												alt="delete"
-												onClick={() => openDeleteModal(row)}
-											></img>
-											<span
-												className="mx-2 flex cursor-pointer p-1"
-												onClick={() => handleRef(row)}
-												alt="Copy"
-											>
-												<CopyOutlined />
-											</span>
-										</td>
-									</tr>
+								{subaccountRefLinks?.map((row) => (
+									<SubaccountItem
+										key={Math.random()}
+										name={row.name}
+										refLink={row.refLink}
+									/>
 								))}
 							</tbody>
 						</table>

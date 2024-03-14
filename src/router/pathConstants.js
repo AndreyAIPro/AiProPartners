@@ -1,4 +1,4 @@
-/** @format */
+
 
 const PathConstants = {
 	HOME: "/",

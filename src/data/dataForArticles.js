@@ -1,4 +1,4 @@
-/** @format */
+
 import studyAll from "../assets/images/studyImg/study-all.svg";
 import facebookImg from "../assets/images/studyImg/articles-fc.svg";
 import googleAdsImg from "../assets/images/studyImg/articles-googleAds.svg";

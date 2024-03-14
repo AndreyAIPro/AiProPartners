@@ -7,7 +7,6 @@ import {
 	getPaginationRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
@@ -112,8 +111,6 @@ const RefTable = () => {
 		copy(ref);
 		message.success("Ref copied to clipboard");
 	};
-
-	if (user?.id !== undefined) creatDefultRefLink(user.id);
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>

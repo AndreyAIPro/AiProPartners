@@ -1,4 +1,4 @@
-/** @format */
+
 import Community from "../components/common/Community/Community";
 import UsuallyArticles from "../components/common/UsuallyArticles/UsuallyArticles";
 import Dashboard from "../pages/Dashboard/Dashboard";
