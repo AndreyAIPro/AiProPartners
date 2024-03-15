@@ -1,17 +1,18 @@
-export const dataSource = [
-	{
-		key: "1",
-		date: "1/1/1900",
-		Unics: "2",
-		regestrationCount: "30%",
-		submitedRegestration: "2",
-		percentCTR: "3",
-		UO: "1",
-		percentUOS: "3",
-		percentCR2: "2",
-		incomeValue: "over9000",
-	},
-];
+// const  dataSource = tableData.map((row, index)=> {
+// 		key: {index}, /* = id*/
+// 		date: {row.data}, //data
+// 		Unics: {row.unique}, //unique
+// 		regestrationCount: {row.getClients}, //getClients
+// 		firstBuy: {row.firstbuy}
+// 		percentCTR: {((row.unique / row.getClients) * 100).toFixed(2)}, // unique/getClients * 100  2 цифри після точки
+// 		TO = {row.firstBuy + row.otherBuy} // (total orders)
+// 		UOS: {row.income}, //іncome
+// 		percentUOS: "3", //
+// 		percentCR2: "2", //CR2 % = firstBuy / getClients * 100
+// 		// CR3 % = firstBuy / otherBuy * 100
+// 		incomeValue: "over9000", //
+// 	},)
+
 export const ofers = [{ value: "Офер", label: "Офер" }];
 export const columns = [
 	{
@@ -20,44 +21,60 @@ export const columns = [
 		key: "date",
 	},
 	{
+		title: "Субакаунт",
+		dataIndex: "refName",
+		key: "refName",
+	},
+	{
 		title: "Уники",
-		dataIndex: "Unics",
-		key: "Unics",
+		dataIndex: "unique",
+		key: "unique",
 	},
 	{
-		title: "Регистрации",
-		dataIndex: "regestrationCount",
-		key: "regestrationCount",
+		title: "Рег",
+		dataIndex: "getClients",
+		key: "getClients",
 	},
-	{
-		title: "Подтв. рег.",
-		dataIndex: "submitedRegestration",
-		key: "submitedRegestration",
-	},
+
 	{
 		title: "CTR, %",
 		dataIndex: "percentCTR",
 		key: "percentCTR",
 	},
 	{
-		title: "UO",
-		dataIndex: "UO",
-		key: "UO",
+		title: "First buy",
+		dataIndex: "firstBuy",
+		key: "firstBuy",
 	},
 	{
-		title: "UOS, %",
-		dataIndex: "percentUOS",
-		key: "percentUOS",
+		title: "Other buy",
+		dataIndex: "otherBuy",
+		key: "otherBuy",
 	},
 	{
-		title: "CR2, %",
-		dataIndex: "percentCR2",
-		key: "percentCR2",
+		title: "TO",
+		dataIndex: "to",
+		key: "to",
 	},
 	{
-		title: "Доход, $",
-		dataIndex: "incomeValue",
-		key: "incomeValue",
+		title: "UOS",
+		dataIndex: "uos",
+		key: "uos",
+	},
+	{
+		title: "CR2",
+		dataIndex: "cr2",
+		key: "cr2",
+	},
+	{
+		title: "CR3",
+		dataIndex: "cr3",
+		key: "cr3",
+	},
+	{
+		title: "Дохід",
+		dataIndex: "totalIncome",
+		key: "totalIncome",
 	},
 ];
 

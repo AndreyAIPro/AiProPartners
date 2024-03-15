@@ -4,14 +4,16 @@ import {
 	statisticAll,
 	columns,
 	ofers,
-	dataSource,
 } from "../DataDashboard/TableData";
 import { Select, DatePicker, Button, Table } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import Plate from "../../Preferences/Plate/Plate";
+import { useUser } from "../../../hooks/useUser";
+import { useSelectAnalTable } from "../../../hooks/useSelectAnalTable";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
+
 export default function DashboardTable(params) {
 	const handleChange = (value) => {
 		console.log(`selected ${value}`);
@@ -20,6 +22,37 @@ export default function DashboardTable(params) {
 		// Can not select days before today and today
 		return current && current < dayjs().endOf("day");
 	};
+	const { user } = useUser();
+
+	const { data: analTable } = useSelectAnalTable(user?.id);
+	const analTableData = analTable?.map((row, index) => {
+		row.key = index;
+		if (row.firstBuy && row.otherBuy) {
+			row.percentCTR = ((row.unique / row.getClients) * 100).toFixed(2) + "%";
+		} else {
+			row.percentCTR = "-";
+		}
+		// row.percentCTR = ((row.unique / row.getClients) * 100).toFixed(2) + "%";
+		row.to = row.firstBuy + row.otherBuy;
+		row.uos = (row.incomeFirst + row.incomeOther).toFixed(2) + "$";
+		if (row.firstBuy && row.getClients) {
+			row.cr2 = ((row.firstBuy / row.getClients) * 100).toFixed(2) + "%";
+		} else {
+			row.cr2 = "-";
+		}
+		// row.cr2 = ((row.firstBuy / row.getClients) * 100).toFixed(2) + "%";
+		if (row.firstBuy && row.otherBuy) {
+			row.cr3 = ((row.firstBuy / row.otherBuy) * 100).toFixed(2) + "%";
+		} else {
+			row.cr3 = "-";
+		}
+		// row.cr3 = ((row.firstBuy / row.otherBuy) * 100).toFixed(2) + "%";
+		row.totalIncome =
+			(row.incomeFirst * 0.3 + row.incomeOther * 0.15).toFixed(2) + "$";
+
+		return row;
+	});
+
 	return (
 		<>
 			<Plate
@@ -39,14 +72,12 @@ export default function DashboardTable(params) {
 									Выбрать диапазон дат
 								</div>
 								<div className=" flex">
-									{/* <ConfigProvider theme={{ algorithm: theme.defaultAlgorithm }}> */}
 									<RangePicker
 										disabledDate={disabledDate}
 										size="small"
 										variant={false}
 										placeholder={["Начало", "Конец"]}
 									/>
-									{/* </ConfigProvider> */}
 								</div>
 							</div>
 						</div>
@@ -88,10 +119,10 @@ export default function DashboardTable(params) {
 				</div>
 				{/** TABLE HERE */}
 				<Table
-					dataSource={dataSource}
+					dataSource={analTableData}
 					columns={columns}
 					size="small"
-					pagination={false}
+					pagination={true}
 				></Table>
 			</Plate>
 		</>

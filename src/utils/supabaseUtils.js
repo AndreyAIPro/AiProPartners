@@ -141,11 +141,20 @@ export default async function createSubAccountLink(subAccountName) {
 }
 
 export async function editSubaccountName(refLink, name) {
-	const { data, error } = await supabase
+	await supabase
 		.from("PartnersRefLinks")
 		.update({ name: name })
-		.eq("refLink", refLink)
-		.select();
+		.eq("refLink", refLink);
+}
+//Dashboard fetch data
+
+export async function getAnalTable(partnerId) {
+	const { data: PartnersAnalyticalTable } = await supabase
+		.from("PartnersAnalyticalTable")
+		.select("*")
+		.eq("partnerId", partnerId);
+
+	return PartnersAnalyticalTable;
 }
 
 //CLIENT REFLINK ON CLICK
