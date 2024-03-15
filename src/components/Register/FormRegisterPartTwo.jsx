@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 
 function FormRegisterPartTwo({ formChange, setFormChange }) {
 	const [valueRadioButtonSources, setValueRadioButtonSources] = useState("");
-	const link = "/signup";
 	const [activeButton, setActiveButton] = useState(false);
 	const [textAreaOpen, setTextAreaOpen] = useState(false);
 	return (
@@ -114,7 +113,6 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 					<NavLink
 						className="ml-[3px] text-[#24A1E0]"
 						to="/partnershipAgreement"
-						state={link}
 						target="_blank"
 					>
 						партнерского соглашения
