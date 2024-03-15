@@ -140,6 +140,23 @@ export default async function createSubAccountLink(subAccountName) {
 	await supabase.from("PartnersRefLinks").insert({ name: subAccountName });
 }
 
+export async function editSubaccountName(refLink, name) {
+	await supabase
+		.from("PartnersRefLinks")
+		.update({ name: name })
+		.eq("refLink", refLink);
+}
+//Dashboard fetch data
+
+export async function getAnalTable(partnerId) {
+	const { data: PartnersAnalyticalTable } = await supabase
+		.from("PartnersAnalyticalTable")
+		.select("*")
+		.eq("partnerId", partnerId);
+
+	return PartnersAnalyticalTable;
+}
+
 //CLIENT REFLINK ON CLICK
 export async function checkRefLink(refId, ipAddress) {
 	const nowDate = new Date();
