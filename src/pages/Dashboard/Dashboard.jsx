@@ -16,6 +16,29 @@ const Charts = () => {
 	const { user } = useUser();
 
 	if (user?.id !== undefined) creatDefultRefLink(user.id);
+	const componentsConfg = {
+		components: {
+			Checkbox: {
+				colorPrimary: "#24A1E0",
+				colorBgContainer: "white",
+				colorBgBase: "white",
+				colorText: "white",
+				fontSize: 12,
+			},
+			Line: {},
+			Select: {
+				colorBorder: "white",
+				colorBgContainer: "black",
+			},
+			Button: {
+				colorBorder: "#24A1E0",
+			},
+			DatePicker: {
+				cellActiveWithRangeBg: "#24A1E0",
+			},
+			Icon: { color: "white" },
+		},
+	};
 
 	return (
 		<>
@@ -42,27 +65,7 @@ const Charts = () => {
 						<ConfigProvider
 							theme={{
 								algorithm: theme.darkAlgorithm,
-								components: {
-									Checkbox: {
-										colorPrimary: "#24A1E0",
-										colorBgContainer: "white",
-										colorBgBase: "white",
-										colorText: "white",
-										fontSize: 12,
-									},
-									Line: {},
-									Select: {
-										colorBorder: "white",
-										colorBgContainer: "black",
-									},
-									Button: {
-										colorBorder: "#24A1E0",
-									},
-									DatePicker: {
-										cellActiveWithRangeBg: "#24A1E0",
-									},
-									Icon: { color: "white" },
-								},
+								...componentsConfg,
 							}}
 						>
 							{/** Chart section*/}
