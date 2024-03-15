@@ -14,7 +14,7 @@ import { useSelectAnalTable } from "../../../hooks/useSelectAnalTable";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
-export default function DashboardTable(params) {
+export default function DashboardTable() {
 	const handleChange = (value) => {
 		console.log(`selected ${value}`);
 	};

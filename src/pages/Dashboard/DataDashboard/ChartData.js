@@ -11,7 +11,7 @@ export const chartConfig = {
 	theme: "classicDark",
 	legend: { size: false },
 	colorField: "category",
-	animate: { enter: { type: "growInX", duration: 2000 } },
+	animate: { enter: { type: "growInX", duration: 600 } },
 };
 export const periodType = [{ value: "Тип периода", label: "Тип периода" }];
 export const statisticAll = [
