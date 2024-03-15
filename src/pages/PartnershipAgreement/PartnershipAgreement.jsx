@@ -4,8 +4,6 @@ import { dataForPartnershipAgreement } from "../../data/dataForPartnershipAgreem
 import { useLocation } from "react-router-dom";
 
 const PartnershipAgreement = () => {
-	const location = useLocation();
-	const linkState = location.state;
 	return (
 		<section className=" bg-primary">
 			<div className="flex justify-between px-24 pt-14">
@@ -18,7 +16,7 @@ const PartnershipAgreement = () => {
 			</div>
 			<div className=" px-24 py-20 text-white">
 				<a
-					href={linkState === "/signup" ? "/signup" : "/"}
+					href="/"
 					className="flex items-center gap-6"
 				>
 					<BackButton />
