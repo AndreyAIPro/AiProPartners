@@ -140,6 +140,14 @@ export default async function createSubAccountLink(subAccountName) {
 	await supabase.from("PartnersRefLinks").insert({ name: subAccountName });
 }
 
+export async function editSubaccountName(refLink, name) {
+	const { data, error } = await supabase
+		.from("PartnersRefLinks")
+		.update({ name: name })
+		.eq("refLink", refLink)
+		.select();
+}
+
 //CLIENT REFLINK ON CLICK
 export async function checkRefLink(refId, ipAddress) {
 	const nowDate = new Date();

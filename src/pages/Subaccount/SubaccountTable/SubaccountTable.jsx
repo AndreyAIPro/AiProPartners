@@ -8,7 +8,10 @@ import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
 import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
 import { SubaccountItem } from "./SubaccountItem";
-import { deleteSubaccount } from "../../../utils/supabaseUtils";
+import {
+	deleteSubaccount,
+	editSubaccountName,
+} from "../../../utils/supabaseUtils";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
@@ -30,12 +33,10 @@ const SubaccountTable = () => {
 	const handleDeleteClick = (rowData) => {
 		setSelectedRow(rowData);
 		setDeleteModalVisible(true);
-		console.log(rowData);
 	};
 	const handleEditClick = (rowData) => {
 		setSelectedRow(rowData);
 		setIsModalVisible(true);
-		console.log(rowData);
 	};
 
 	//adding new row to the table
@@ -59,11 +60,10 @@ const SubaccountTable = () => {
 	};
 
 	const handleFormSubmit = () => {
-		const updatedRow = rows.map((row) =>
-			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
-		);
+		if (accountName.length !== 0) {
+			editSubaccountName(selectedRow.refLink, accountName);
+		}
 
-		//
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
