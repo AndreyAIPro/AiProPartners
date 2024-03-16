@@ -1,4 +1,4 @@
-import { Outlet, Route, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Link from "../../components/common/NavLink/NavLink";
 
 const Study = () => {
@@ -12,9 +12,15 @@ const Study = () => {
 					href="articles"
 					title="Полезные статьи"
 					path={location.pathname}
+					route={"study"}
 				/>
 
-				<Link href="community" title="Комьюнити" path={location.pathname} />
+				<Link
+					href="community"
+					title="Комьюнити"
+					path={location.pathname}
+					route={"study"}
+				/>
 			</div>
 
 			<Outlet />

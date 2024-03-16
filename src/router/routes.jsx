@@ -8,6 +8,8 @@ import Subaccount from "../pages/Subaccount/Subaccount";
 import PathConstants from "./pathConstants";
 import Preferences from "../pages/Preferences/Preferences";
 import { Navigate } from "react-router-dom";
+import Withdrawal from "./../components/common/Withdrawal/Withdrawal";
+import TableFinance from "../components/common/TableFinance.jsx/TableFinance";
 
 const routes = [
 	{
@@ -21,6 +23,20 @@ const routes = [
 	{
 		path: PathConstants.FINANCES,
 		element: <Finances />,
+		children: [
+			{
+				index: true,
+				element: <Navigate to="transactionList" replace />,
+			},
+			{
+				path: "transactionList",
+				element: <TableFinance />,
+			},
+			{
+				path: "withdrawal",
+				element: <Withdrawal />,
+			},
+		],
 	},
 	{
 		path: PathConstants.REF,
