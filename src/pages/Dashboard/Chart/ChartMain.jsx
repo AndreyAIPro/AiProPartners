@@ -22,7 +22,7 @@ export default function ChartMain(params) {
 	const analTableData = analTable?.map((row, index) => {
 		row.key = index;
 		if (row.firstBuy && row.otherBuy) {
-			row.percentCTR = +(row.unique / row.getClients).toFixed(2);
+			row.percentCTR = +((row.unique / row.getClients) * 100).toFixed(2);
 		} else {
 			row.percentCTR = 0;
 		}
@@ -30,13 +30,13 @@ export default function ChartMain(params) {
 		row.to = row.firstBuy + row.otherBuy;
 		row.uos = +(row.incomeFirst + row.incomeOther).toFixed(2);
 		if (row.firstBuy && row.getClients) {
-			row.cr2 = +(row.firstBuy / row.getClients).toFixed(2);
+			row.cr2 = +((row.firstBuy / row.getClients) * 100).toFixed(2);
 		} else {
 			row.cr2 = 0;
 		}
 		// row.cr2 = ((row.firstBuy / row.getClients)).toFixed(2) + "%";
 		if (row.firstBuy && row.otherBuy) {
-			row.cr3 = +(row.firstBuy / row.otherBuy).toFixed(2);
+			row.cr3 = +((row.firstBuy / row.otherBuy) * 100).toFixed(2);
 		} else {
 			row.cr3 = 0;
 		}
@@ -44,7 +44,6 @@ export default function ChartMain(params) {
 		row.totalIncome = +(row.incomeFirst * 0.3 + row.incomeOther * 0.15).toFixed(
 			2,
 		);
-		console.log(typeof row.totalIncome);
 
 		return row;
 	});
