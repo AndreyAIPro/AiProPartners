@@ -1,5 +1,5 @@
 import { Form, Input, message } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-international-phone/style.css";
 import { isPhoneValid } from "../../utils/helpers";
 import FormRegisterPartOne from "./FormRegisterPartOne";
@@ -16,7 +16,13 @@ export default function Register() {
 	const [showMessagewithErrorPhone, setShowMessagewithErrorPhone] =
 		useState(false);
 	const [formChange, setFormChange] = useState(true);
-	const { refid } = useParams();
+	let { refid } = useParams();
+	const [ refLinkId, setRefLinkId] = useState("");
+
+	useEffect(() => {
+		setRefLinkId(refid);
+	  }, [refid]);
+
 	return (
 		<Form
 			className="max-md:w-full w-[40%] text-white"
@@ -43,21 +49,20 @@ export default function Register() {
 						setFormChange={setFormChange}
 						formChange={formChange}
 					/>
-					<Form.Item name="refLink" style={{ height: "0px", margin: 0 }}>
+					{/* <Form.Item name="refLink" style={{ height: "0px", margin: 0 }}>
 						<Input
-							placeholder="Название компании"
-							defaultValue={refid}
-							value={refid}
-							style={{
-								backgroundColor: "transparent",
-								color: "transparent",
-								border: "none",
-								outline: "none",
-								caretColor: "transparent",
-								fontSize: 0,
-							}}
+							type="text"
+							value={refLinkId}
+							// style={{
+							// 	backgroundColor: "transparent",
+							// 	color: "transparent",
+							// 	border: "none",
+							// 	outline: "none",
+							// 	caretColor: "transparent",
+							// 	fontSize: 0,
+							// }}
 						/>
-					</Form.Item>
+					</Form.Item> */}
 					{contextHolder}
 				</>
 			) : (
@@ -78,7 +83,8 @@ export default function Register() {
 	);
 
 	function onFinish(values) {
-		signup(values, {
+		const returnedTarget = Object.assign({refLink: refid}, values);
+		signup(returnedTarget, {
 			onSuccess: () => {
 				setIsFanillyForm(false);
 			},

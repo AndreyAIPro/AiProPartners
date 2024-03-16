@@ -13,7 +13,8 @@ export async function SignUp({
 	telegramAccount,
 	textAreaOtherRadio,
 }) {
-	console.log(refLink);
+	
+	const refLinkId = refLink !== undefined ? refLink : null;
 	let { data, error } = await supabase.auth.signUp({
 		email,
 		password,
@@ -30,7 +31,7 @@ export async function SignUp({
 				roles: ["partner"],
 				money: 0,
 				income: 0,
-				refLink
+				refLink: refLinkId
 			},
 		},
 	});
@@ -187,6 +188,11 @@ export async function checkRefLink(refId, ipAddress) {
 	updateOrInsertPartnersAnalytical(refId, partnerId, correctFormatDate);
 
 	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
+}
+
+export async function checkPartnerToPartnerRefLink(refLinkFromData){
+	if(refLinkFromData == null) return
+	
 }
 
 //NOT EXPORT
