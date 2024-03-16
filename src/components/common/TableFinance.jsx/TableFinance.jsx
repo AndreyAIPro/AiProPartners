@@ -11,7 +11,7 @@ import DateFilter from "./../FiltersForTable/DateFilter";
 import FiltersTable from "../FiltersForTable/FiltersTable";
 
 const TableFinance = () => {
-	const data = [2];
+	const data = [];
 	const [getData, setGetData] = useState(data.length);
 	const columns = [
 		{
@@ -98,7 +98,7 @@ const TableFinance = () => {
 						))}
 				</tbody>
 			</table>
-			{getData == data.length ? (
+			{/* {getData == data.length ? (
 				<div className={`mt-3 text-center`}>
 					<button
 						className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
@@ -139,7 +139,7 @@ const TableFinance = () => {
 						Загрузить ещё
 					</button>
 				</div>
-			)}
+			)} */}
 		</>
 	);
 };
