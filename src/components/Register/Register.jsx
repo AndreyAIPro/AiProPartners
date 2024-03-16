@@ -1,10 +1,11 @@
-import { Form, message } from "antd";
+import { Form, Input, message } from "antd";
 import React, { useState } from "react";
 import "react-international-phone/style.css";
 import { isPhoneValid } from "../../utils/helpers";
 import FormRegisterPartOne from "./FormRegisterPartOne";
 import FormRegisterPartTwo from "./FormRegisterPartTwo";
 import { useSignup } from "../../hooks/useSignup";
+import { useParams } from "react-router-dom";
 
 export default function Register() {
 	const { signup, isLoading } = useSignup();
@@ -15,6 +16,7 @@ export default function Register() {
 	const [showMessagewithErrorPhone, setShowMessagewithErrorPhone] =
 		useState(false);
 	const [formChange, setFormChange] = useState(true);
+	const { refid } = useParams();
 	return (
 		<Form
 			className="max-md:w-full w-[40%] text-white"
@@ -41,6 +43,21 @@ export default function Register() {
 						setFormChange={setFormChange}
 						formChange={formChange}
 					/>
+					<Form.Item name="refLink" style={{ height: "0px", margin: 0 }}>
+						<Input
+							placeholder="Название компании"
+							defaultValue={refid}
+							value={refid}
+							style={{
+								backgroundColor: "transparent",
+								color: "transparent",
+								border: "none",
+								outline: "none",
+								caretColor: "transparent",
+								fontSize: 0,
+							}}
+						/>
+					</Form.Item>
 					{contextHolder}
 				</>
 			) : (
@@ -51,7 +68,9 @@ export default function Register() {
 					<p className="mb-[25px] text-center text-[18px] opacity-[0.7]">
 						На ваш E-mail отправлено письмо для подтверждения регистрации.
 						Посмотрите его что бы подтвердить регистрацию.
-						<p className="mt-[15px]">После подтверждения регистрации вы можете войти в аккаунт.</p>
+						<p className="mt-[15px]">
+							После подтверждения регистрации вы можете войти в аккаунт.
+						</p>
 					</p>
 				</div>
 			)}
@@ -61,7 +80,7 @@ export default function Register() {
 	function onFinish(values) {
 		signup(values, {
 			onSuccess: () => {
-				setIsFanillyForm(false)
+				setIsFanillyForm(false);
 			},
 			onError: (err) => {
 				messageApi.open({

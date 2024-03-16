@@ -6,7 +6,7 @@ import Register from "../../components/Register/Register";
 import { useUser } from "../../hooks/useUser";
 
 function Auth() {
-	let { refid } = useParams();
+	const { refid } = useParams();
 	const refLink = refid === undefined ? "" : "/" + refid;
 
 	const { user } = useUser();

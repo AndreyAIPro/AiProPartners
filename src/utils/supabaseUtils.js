@@ -1,6 +1,7 @@
 import supabase from "./supabaseCreate";
 
 export async function SignUp({
+	refLink,
 	discordAccount,
 	email,
 	fullName,
@@ -12,6 +13,7 @@ export async function SignUp({
 	telegramAccount,
 	textAreaOtherRadio,
 }) {
+	console.log(refLink);
 	let { data, error } = await supabase.auth.signUp({
 		email,
 		password,
@@ -28,6 +30,7 @@ export async function SignUp({
 				roles: ["partner"],
 				money: 0,
 				income: 0,
+				refLink
 			},
 		},
 	});
