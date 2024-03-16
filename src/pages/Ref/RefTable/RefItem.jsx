@@ -5,24 +5,24 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 
-const table = useReactTable({
-	data,
-	columns,
-	getCoreRowModel: getCoreRowModel(),
-	getPaginationRowModel: getPaginationRowModel(),
-});
-
-export function RefItem({ name, refLink }) {
+export function RefItem({ data }) {
 	const columns = [
 		{
 			header: "ID партнера",
-			accessorKey: "refLink",
+			accessorKey: "accountID",
 		},
 		{
 			header: "Название партнера",
-			accessorKey: "name",
+			accessorKey: "partnerName",
 		},
 	];
+	const table = useReactTable({
+		data: data,
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+	});
+
 	return (
 		<>
 			<table className="   min-w-full  border-[2px] border-gray">
