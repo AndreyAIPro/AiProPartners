@@ -1,5 +1,3 @@
-
-
 import LandingButton from "../components/common/LandingButton/LandingButton";
 import { useUser } from "../hooks/useUser";
 
@@ -13,7 +11,7 @@ const Hero = () => {
 					data-aos="fade-right"
 				>
 					Партнерская программа, которая подходит
-					<span className="font-nunito-sans text-[#e61685]">всем</span>
+					<span className="font-nunito-sans text-[#e61685]"> всем</span>
 				</h1>
 				<p
 					className="font-regular max-w-[586px] font-nunito-sans text-title3 max-md:text-text2 max-sm:text-center"
