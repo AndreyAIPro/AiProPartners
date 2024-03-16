@@ -9,7 +9,7 @@ const Withdrawal = () => {
 	};
 
 	return (
-		<section className="relative ml-7 mt-20">
+		<section className="  relative mt-20">
 			<div
 				className={`absolute top-[-10%] flex  min-h-[120%] min-w-[100%] items-center  justify-center bg-black/30 fill-light-blue backdrop-invert backdrop-opacity-20`}
 			>
@@ -24,7 +24,7 @@ const Withdrawal = () => {
 				)}
 			</div>
 
-			<div>
+			<div className="pl-10">
 				<p className="mb-2 text-text3">Выберите способ вывода</p>
 				<select
 					name="withdrawal"
@@ -40,7 +40,7 @@ const Withdrawal = () => {
 					Добавить способ
 				</button>
 			</div>
-			<div>
+			<div className="pl-10">
 				<p className="mb-2 mt-6 text-text3">Сумма</p>
 				<input
 					type="text"
@@ -48,7 +48,7 @@ const Withdrawal = () => {
 					className="min-w-[500px] rounded-lg px-2 py-1 text-black"
 				/>
 			</div>
-			<div>
+			<div className="pl-10">
 				<ul className="mb-5 mt-3 flex w-[500px] justify-between gap-1">
 					<li className="rounded-full border-2 border-light-blue px-5 py-1 font-nunito-sans ">
 						50
@@ -68,7 +68,7 @@ const Withdrawal = () => {
 				</ul>
 			</div>
 
-			<div>
+			<div className="pl-10">
 				<p className="mb-2">Комментарий</p>
 				<textarea
 					placeholder="До 100 символов"
@@ -76,7 +76,7 @@ const Withdrawal = () => {
 					maxLength="100"
 				/>
 			</div>
-			<div className="mt-6">
+			<div className="mt-6 pl-10">
 				<p className="mb-4 font-nunito-sans text-text1 font-bold">
 					Итого: 00.00
 				</p>
