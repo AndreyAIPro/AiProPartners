@@ -5,6 +5,7 @@ import { isPhoneValid } from "../../utils/helpers";
 import FormRegisterPartOne from "./FormRegisterPartOne";
 import FormRegisterPartTwo from "./FormRegisterPartTwo";
 import { useSignup } from "../../hooks/useSignup";
+
 export default function Register() {
 	const { signup, isLoading } = useSignup();
 	const [phone, setPhone] = useState("");
