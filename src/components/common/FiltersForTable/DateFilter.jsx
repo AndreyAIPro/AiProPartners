@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { DatePicker } from "antd";
+import { ConfigProvider, DatePicker, theme } from "antd";
 
 dayjs.extend(customParseFormat);
 
@@ -12,18 +12,22 @@ const DateFilter = () => {
 	};
 
 	return (
-		<div className="dark-theme lex flex-col flex-nowrap border-[1px] border-white">
-			<div className="flex items-center justify-center pt-2">
-				Выбрать диапазон дат
-			</div>
-			<div className="  pt-2  text-red">
-				<RangePicker
-					className="bg-gray text-white"
-					disabledDate={disabledDate}
-					size="small"
-					variant={false}
-					placeholder={["Начало", "Конец"]}
-				/>
+		<div className="flex flex-col flex-nowrap rounded-md border-[1px] border-white">
+			<div className="pt-2 text-center">Выбрать диапазон дат</div>
+			<div className="  pt-2">
+				<ConfigProvider
+					theme={{
+						algorithm: theme.darkAlgorithm,
+					}}
+				>
+					<RangePicker
+						className="bg-secondary  text-white"
+						disabledDate={disabledDate}
+						size="small"
+						variant={false}
+						placeholder={["Начало", "Конец"]}
+					/>
+				</ConfigProvider>
 			</div>
 		</div>
 	);
