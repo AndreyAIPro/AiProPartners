@@ -1,19 +1,8 @@
-
-import { useEffect } from "react";
-import {
-	Outlet,
-	useLocation,
-	useNavigate
-} from "react-router-dom";
+import { Outlet, Route, useLocation } from "react-router-dom";
 import Link from "../../components/common/NavLink/NavLink";
 
 const Study = () => {
 	const location = useLocation();
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		navigate("community");
-	}, [navigate]);
 
 	return (
 		<section className="w-[1245px]  py-8 [&>*:nth-child(4)]:text-light-gray">
@@ -24,6 +13,7 @@ const Study = () => {
 					title="Полезные статьи"
 					path={location.pathname}
 				/>
+
 				<Link href="community" title="Комьюнити" path={location.pathname} />
 			</div>
 

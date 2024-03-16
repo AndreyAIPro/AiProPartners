@@ -1,4 +1,3 @@
-
 import Community from "../components/common/Community/Community";
 import UsuallyArticles from "../components/common/UsuallyArticles/UsuallyArticles";
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -8,7 +7,8 @@ import Study from "../pages/Study/Study";
 import Subaccount from "../pages/Subaccount/Subaccount";
 import PathConstants from "./pathConstants";
 import Preferences from "../pages/Preferences/Preferences";
-import PartnershipAgreement from "../pages/PartnershipAgreement/PartnershipAgreement";
+import { Navigate } from "react-router-dom";
+
 const routes = [
 	{
 		path: PathConstants.DASHBOARD,
@@ -31,19 +31,20 @@ const routes = [
 		element: <Study />,
 		children: [
 			{
-				path: "articles",
-				element: <UsuallyArticles />,
+				index: true,
+				element: <Navigate to="community" replace />,
 			},
 			{
 				path: "community",
 				element: <Community />,
 			},
 			{
-				path: "*",
-				element: <Community />,
+				path: "articles",
+				element: <UsuallyArticles />,
 			},
 		],
 	},
+
 	{
 		path: PathConstants.PREFERENCES,
 		element: <Preferences />,
