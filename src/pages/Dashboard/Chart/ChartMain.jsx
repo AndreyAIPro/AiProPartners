@@ -53,22 +53,28 @@ export default function ChartMain(params) {
 		testData.push({
 			date: line.date,
 			value: line.unique,
-			category: "unique",
+			category: "Уники",
+		});
+		testData.push({
+			date: line.date,
+			value: line.percentCTR,
+			category: "CTR, %",
 		});
 		testData.push({
 			date: line.date,
 			value: line.cr2,
-			category: "cr2",
+			category: "CR2, %",
 		});
 		testData.push({
 			date: line.date,
 			value: line.cr3,
-			category: "cr3",
+			category: "CR3, %",
 		});
+
 		testData.push({
 			date: line.date,
 			value: line.firstBuy,
-			category: "firstBuy",
+			category: "First buy",
 		});
 		testData.push({
 			date: line.date,
@@ -78,32 +84,24 @@ export default function ChartMain(params) {
 		testData.push({
 			date: line.date,
 			value: line.otherBuy,
-			category: "otherBuy",
+			category: "Other buy",
 		});
-		testData.push({
-			date: line.date,
-			value: line.percentCTR,
-			category: "percentCTR",
-		});
+
 		testData.push({
 			date: line.date,
 			value: line.to,
-			category: "to",
+			category: "TO",
 		});
 		testData.push({
 			date: line.date,
 			value: line.totalIncome,
-			category: "totalIncome",
+			category: "Доход",
 		});
-		testData.push({
-			date: line.date,
-			value: line.unique,
-			category: "unique",
-		});
+
 		testData.push({
 			date: line.date,
 			value: line.uos,
-			category: "uos",
+			category: "UOS",
 		});
 	});
 
@@ -115,7 +113,9 @@ export default function ChartMain(params) {
 		sizeField: "5",
 		shapeField: "trail",
 		theme: "classicDark",
-		legend: { size: false },
+		title: "this is ttitle",
+		legendFilter: "false",
+		legend: { size: true, legendFilter: "false" },
 		colorField: "category",
 		animate: { enter: { type: "growInX", duration: 600 } },
 	};
@@ -144,10 +144,10 @@ export default function ChartMain(params) {
 								/>
 							</div>
 							<div className="pl-6">
-						<Button size="small" shape="round">
-							Обновить
-						</Button>
-					</div>
+								<Button size="small" shape="round">
+									Обновить
+								</Button>
+							</div>
 						</div>
 					</div>
 				}
