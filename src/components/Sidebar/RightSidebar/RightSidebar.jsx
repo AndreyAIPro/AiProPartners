@@ -1,19 +1,14 @@
-
-
 import BalanceArticle from "../../common/BalanceArticle";
 import SidebarProfileBtn from "../../common/SidebarProfileBtn";
-import styles from "./right-sidebar.module.scss";
 
 const RightSidebar = () => {
 	return (
-		<>
-			<div className="sticky top-0">
-				<div className={styles.sidebar__wrapper}>
-					<BalanceArticle />
-					<SidebarProfileBtn />
-				</div>
+		<div className="sticky top-0">
+			<div className="width-sidebar-width flex min-h-dvh flex-col gap-[50px] p-5">
+				<BalanceArticle />
+				<SidebarProfileBtn />
 			</div>
-		</>
+		</div>
 	);
 };
 

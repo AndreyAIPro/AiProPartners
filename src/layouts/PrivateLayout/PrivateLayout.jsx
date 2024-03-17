@@ -1,21 +1,17 @@
-
-
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
-import styles from "./private-layout.module.scss";
 import { useUser } from "../../hooks/useUser";
 const PrivateLayout = () => {
 	const { user } = useUser();
 	return (
 		<>
 			{user && (
-				<div className={styles.private__layout}>
+				<div className="height-full flex justify-between bg-primary text-white">
 					<Sidebar isLeftSidebar />
 					<Outlet />
 					<Sidebar />
 				</div>
 			)}
-			
 		</>
 	);
 };
