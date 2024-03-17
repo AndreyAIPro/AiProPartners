@@ -9,7 +9,7 @@ const BalanceArticle = () => {
 			<span className="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] bg-black font-nunito-sans text-[24px] font-[900] text-light-blue">
 				$
 			</span>
-			<p className="flex flex-col justify-center font-nunito-sans text-[16px] ">
+			<p className="flex flex-col justify-center font-nunito-sans text-[16px] max-xl:hidden">
 				Текущий баланс
 				<span id="currentCash" className="font-nunito-sans">
 					{userData.money + " $"}

@@ -3,7 +3,7 @@ import RightSidebar from "./RightSidebar/RightSidebar";
 
 const Sidebar = (props) => {
 	return (
-		<div className="sticky flex w-sidebar-width max-w-[sidebar-width] flex-col bg-secondary">
+		<div className="sticky flex flex-col bg-secondary">
 			{props.isLeftSidebar ? <LeftSidebar /> : <RightSidebar />}
 		</div>
 	);

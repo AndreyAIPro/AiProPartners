@@ -12,7 +12,7 @@ const SidebarNavItem = ({ href, name, icon }) => {
 			}}
 		>
 			{icon}
-			{name}
+			<span className="max-xl:hidden">{name}</span>
 		</NavLink>
 	);
 };

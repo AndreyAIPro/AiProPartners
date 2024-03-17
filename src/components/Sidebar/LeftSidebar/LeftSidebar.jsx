@@ -5,12 +5,14 @@ import LeftSidebarHeader from "./LeftSidebarHeader";
 
 const LeftSidebar = () => {
 	return (
-		<div className="sticky top-0">
+		<aside className="w-full sticky top-0 max-w-[sidebar-width]">
 			<LeftSidebarHeader />
 			<SidebarNavMenu />
 			<TelegramLink />
-			<SocialLinksList />
-		</div>
+			<span className="max-xl:hidden">
+				<SocialLinksList />
+			</span>
+		</aside>
 	);
 };
 
