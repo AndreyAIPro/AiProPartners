@@ -119,6 +119,15 @@ export async function creatDefultRefLink(userId) {
 export async function selectPartnersRefLinks(userId) {
 	const { data } = await supabase
 		.from("RefRegPartnerLogs")
+		.select("accountID,partnerName")
+		.eq("refLink", userId);
+
+	return data;
+}
+
+export async function selectClientsRefLinks(userId) {
+	const { data } = await supabase
+		.from("RefRegPartnerLogs")
 		.select("subaccountId,partnerName")
 		.eq("refLink", userId);
 
@@ -180,12 +189,13 @@ export async function checkRefLink(refId, ipAddress) {
 
 	const { data: selectPartnerId } = await supabase
 		.from("PartnersRefLinks")
-		.select("partnerId")
+		.select("partnerId,name")
 		.eq("refLink", refId);
 
 	const partnerId = selectPartnerId[0].partnerId;
+	const name = selectPartnerId[0].name;
 
-	updateOrInsertPartnersAnalytical(refId, partnerId, correctFormatDate);
+	updateOrInsertPartnersAnalytical(refId, name, partnerId, correctFormatDate);
 
 	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
 }
@@ -196,20 +206,20 @@ export async function checkPartnerToPartnerRefLink(refLinkFromData){
 }
 
 //NOT EXPORT
-async function updateOrInsertPartnersAnalytical(refLink, partnerId, date) {
+async function updateOrInsertPartnersAnalytical(refLink, name, partnerId, date) {
 	const { data: selectUniqueFromAnalitica } = await supabase
 		.from("PartnersAnalyticalTable")
 		.select("unique")
-		.match({ date: date, partnerId: partnerId, refLink: refLink });
+		.match({ date: date, name: name, partnerId: partnerId, refLink: refLink });
 
 	if (selectUniqueFromAnalitica.length === 0) {
 		await supabase
 			.from("PartnersAnalyticalTable")
-			.insert({ refLink: refLink, partnerId: partnerId, unique: 1 });
+			.insert({ refLink: refLink, name: name, partnerId: partnerId, unique: 1 });
 	} else {
 		await supabase
 			.from("PartnersAnalyticalTable")
 			.update({ unique: selectUniqueFromAnalitica[0].unique + 1 })
-			.match({ date: date, partnerId: partnerId, refLink: refLink });
+			.match({ date: date, partnerId: partnerId, name: name, refLink: refLink });
 	}
 }

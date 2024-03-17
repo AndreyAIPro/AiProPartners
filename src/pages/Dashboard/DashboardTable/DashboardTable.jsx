@@ -60,13 +60,13 @@ export default function DashboardTable() {
 					<div className="flex h-fit flex-nowrap py-1 align-middle">
 						<div>Подробные данные статистики</div>
 						<div className="flex flex-nowrap ">
-							<div className="px-3 ">
+							{/* <div className="px-3 ">
 								<Select
 									defaultValue="Общая статистика"
 									onChange={handleChange}
 									options={[...statisticAll]}
 								/>
-							</div>
+							</div> */}
 							<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
 								<div className="flex items-center  justify-center pr-2">
 									Выбрать диапазон дат
@@ -86,14 +86,14 @@ export default function DashboardTable() {
 			>
 				<div>
 					<div className="flex flex-nowrap pb-3">
-						<div className="pr-5">
+						{/* <div className="pr-5">
 							<Select
 								defaultValue="Страна"
 								onChange={handleChange}
 								options={[...countries]}
 								size="small"
 							/>
-						</div>
+						</div> */}
 						<div className="pr-5">
 							<Select
 								defaultValue="Субаккаунт"
@@ -102,14 +102,14 @@ export default function DashboardTable() {
 								size="small"
 							/>
 						</div>
-						<div className="pr-5">
+						{/* <div className="pr-5">
 							<Select
 								defaultValue="Офер"
 								onChange={handleChange}
 								options={[...ofers]}
 								size="small"
 							/>
-						</div>
+						</div> */}
 						<div className="pl-6">
 							<Button size="small" shape="round">
 								Обновить

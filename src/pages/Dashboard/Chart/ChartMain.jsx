@@ -44,7 +44,6 @@ export default function ChartMain(params) {
 		row.totalIncome = +(row.incomeFirst * 0.3 + row.incomeOther * 0.15).toFixed(
 			2,
 		);
-		console.log(typeof row.totalIncome);
 
 		return row;
 	});
@@ -130,9 +129,9 @@ export default function ChartMain(params) {
 						<div className="flex flex-nowrap ">
 							<div className="px-3">
 								<Select
-									defaultValue="Общая статистика"
+									defaultValue="Субаккаунт"
 									onChange={handleChange}
-									options={[...statisticAll]}
+									options={[...subAccounts]}
 									size="small"
 								/>
 							</div>
@@ -144,11 +143,16 @@ export default function ChartMain(params) {
 									size="small"
 								/>
 							</div>
+							<div className="pl-6">
+						<Button size="small" shape="round">
+							Обновить
+						</Button>
+					</div>
 						</div>
 					</div>
 				}
 			>
-				<div className="flex flex-nowrap pb-3">
+				{/* <div className="flex flex-nowrap pb-3">
 					<div className="pr-5">
 						<Select
 							defaultValue="Страна"
@@ -158,12 +162,7 @@ export default function ChartMain(params) {
 						/>
 					</div>
 					<div className="pr-5">
-						<Select
-							defaultValue="Субаккаунт"
-							onChange={handleChange}
-							options={[...subAccounts]}
-							size="small"
-						/>
+						
 					</div>
 					<div className="pr-5">
 						<Select
@@ -178,11 +177,11 @@ export default function ChartMain(params) {
 							Обновить
 						</Button>
 					</div>
-				</div>
+				</div> */}
 				<div>
 					{/** Chart HERE*/}
 					<Line {...chartConfig2} />
-					<div className="px-2 py-2">
+					{/* <div className="px-2 py-2">
 						<Checkbox className="pr-4">Уники</Checkbox>
 						<Checkbox className="pr-4">Регистрации</Checkbox>
 						<Checkbox className="pr-4">Подтвержденные рег.</Checkbox>
@@ -191,7 +190,7 @@ export default function ChartMain(params) {
 						<Checkbox className="pr-4">Уникальные покупки в $</Checkbox>
 						<Checkbox className="pr-4">CR2, %</Checkbox>
 						<Checkbox className="pr-4">Доход, $</Checkbox>
-					</div>
+					</div> */}
 				</div>
 			</Plate>
 		</>

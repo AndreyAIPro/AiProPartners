@@ -117,7 +117,7 @@ const RefTable = () => {
 							{accountRef}
 						</div>
 					</div>
-					<RefItem data={rows} />
+					<RefItem data={data} />
 				</div>
 			</div>
 		</div>
