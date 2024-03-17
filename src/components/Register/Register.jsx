@@ -16,12 +16,7 @@ export default function Register() {
 	const [showMessagewithErrorPhone, setShowMessagewithErrorPhone] =
 		useState(false);
 	const [formChange, setFormChange] = useState(true);
-	let { refid } = useParams();
-	const [ refLinkId, setRefLinkId] = useState("");
-
-	useEffect(() => {
-		setRefLinkId(refid);
-	  }, [refid]);
+	const { refid } = useParams();
 
 	return (
 		<Form
