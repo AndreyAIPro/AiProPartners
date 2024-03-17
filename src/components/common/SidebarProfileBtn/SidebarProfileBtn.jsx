@@ -1,5 +1,3 @@
-
-
 import { NavLink } from "react-router-dom";
 import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
 import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
@@ -13,6 +11,7 @@ const SidebarProfileBtn = () => {
 	const { logout } = useLogout();
 	const { user } = useUser();
 	const userData = user.user_metadata;
+
 	return (
 		<div className={styles.btn}>
 			<div className={styles.btn__profile}>
