@@ -1,10 +1,11 @@
-/** @format */
+
 
 import { NavLink } from "react-router-dom";
 
-const LandingButton = ({ label, href, isBorder, isYellow, dataAos,isMobileStart }) => {
+const LandingButton = ({ label, href, isBorder, isYellow, dataAos,isMobileStart, onClick }) => {
 	return (
 		<NavLink
+			onClick={onClick}
 			to={href}
 			className=
 				{`${isBorder

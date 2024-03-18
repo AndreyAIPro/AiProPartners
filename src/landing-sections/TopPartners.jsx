@@ -1,4 +1,4 @@
-/** @format */
+
 
 import TopPartnersList from '../components/TopPartnersList/TopPartnersList';
 import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';

@@ -1,4 +1,4 @@
-/** @format */
+
 
 const LandingPartnersListItem = ({ title, subtext, image, dataAos }) => {
 	return (

@@ -8,8 +8,8 @@ function FormRegisterPartOne({
 	phone,
 	setPhone,
 	setFormChange,
-	showMessagewithErrorPhone,
 	checkedValidatePhoneNumber,
+	showMessagewithErrorPhone,
 }) {
 	const inputNickname = useRef();
 	const inputEmail = useRef();
@@ -73,10 +73,21 @@ function FormRegisterPartOne({
 			)}
 			<Form.Item
 				name="password"
+				className="mb-[40px]"
 				rules={[
 					{
 						required: true,
-						message: "Please input your password!",
+						message: "Пожалуйста, введите ваш пароль!",
+					},
+					{
+						min: 8,
+						message: "Введите не менее 8 символов!",
+					},
+					{
+						pattern:
+							/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+						message:
+							"Пароль должен содержать заглавные и строчные буквы, цифры и символы!",
 					},
 				]}
 			>
@@ -87,8 +98,8 @@ function FormRegisterPartOne({
 					type="primary"
 					className="bg-[#1677FF]"
 					onClick={() => {
-						checkedValidatePhoneNumber();
 						checkInputValues();
+						checkedValidatePhoneNumber();
 					}}
 				>
 					<div className="font-bold text-[#fff]">Далее</div>
@@ -100,7 +111,7 @@ function FormRegisterPartOne({
 		if (
 			inputNickname.current.input.value.length !== 0 &&
 			inputEmail.current.input.value.length !== 0 &&
-			inputPassword.current.input.value.length >= 3
+			inputPassword.current.input.value.length >= 8
 		) {
 			setFormChange(false);
 		}

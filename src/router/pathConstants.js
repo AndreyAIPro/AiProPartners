@@ -1,5 +1,3 @@
-/** @format */
-
 const PathConstants = {
 	HOME: "/",
 	DASHBOARD: "/dashboard",
@@ -10,6 +8,11 @@ const PathConstants = {
 	LOGIN: "/login",
 	SIGNUP: "/signup",
 	PREFERENCES: "/preferences",
+	RESET_PASSWORD: "/resetpassword",
+	PASSWORD_RECOVERY: "/passwordrecovery",
+	PARTNERREFLINK: "/reflink",
+	PARTNERSHIP_AGREEMENT: "/partnershipAgreement",
+	REFCODE: "/:refid",
 };
 
 export default PathConstants;

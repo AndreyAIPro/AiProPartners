@@ -1,4 +1,4 @@
-/** @format */
+
 
 module.exports = {
 	root: true,

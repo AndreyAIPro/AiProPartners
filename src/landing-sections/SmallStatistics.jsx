@@ -1,4 +1,4 @@
-/** @format */
+
 
 import SmallStatisticsItem from "../components/common/SmallStatisticsItem/SmallStatisticsItem";
 import { statistics } from "../data/landingData";

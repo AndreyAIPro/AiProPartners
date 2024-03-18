@@ -1,11 +1,11 @@
-/** @format */
+
 
 import { howStart } from '../../../data/landingData';
 
 const HowStartItem = ({ title, icon, index, dataAos }) => {
 	return (
 		<li
-			// data-aos={dataAos}
+			data-aos={dataAos}	
 			id={title}
 			className={`relative text-white flex flex-col items-center gap-8 w-screen max-w-[265px]
 			how-start-after how-start-before

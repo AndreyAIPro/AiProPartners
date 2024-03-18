@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { howStart } from '../../data/landingData';
 import HowStartItem from '../common/HowStartItem/HowStartItem';

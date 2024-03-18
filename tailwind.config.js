@@ -47,7 +47,7 @@ export default {
 				"article-text": "#DFBAF4",
 				"in-touch-bg": "#381851",
 				"in-touch-border": "#1A1A1A",
-				"table-header": "#3C006B"
+				"table-header": "#3C006B",
 			},
 			backgroundImage: {
 				"reuse-bg": "url('./assets/images/landing/reuse-bg.svg')",
@@ -65,7 +65,9 @@ export default {
 				"in-touch": 'url("./assets/images/landing/alwaysInTouch/vectors.svg")',
 				"mobile-footer": 'url("./assets/images/landing/mobile/footer.svg")',
 			},
+			width: {
+				"sidebar-width": "319px",
+			},
 		},
 	},
-	plugins: [],
 };

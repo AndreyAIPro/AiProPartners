@@ -1,4 +1,4 @@
-/** @format */
+
 
 const TopPartnersItem = ({ icon, profit, registrations, sales, dataAos }) => {
 	const groupBlock = [

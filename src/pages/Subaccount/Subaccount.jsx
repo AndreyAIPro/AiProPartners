@@ -1,11 +1,11 @@
 import SubaccountTable from "./SubaccountTable/SubaccountTable";
 
-/** @format */
+
 
 const Subaccount = () => {
     return (
-        <>
-            <div className="flex-1 flex-col justify-start">
+        
+            <article className="flex-1 flex-col px-4 justify-start">
                 <h2 className="text-title px-4 py-6  font-bold">Субаккаунт</h2>
                 <div className="flex flex-row">
                     <div className="w-[455px]">
@@ -28,8 +28,7 @@ const Subaccount = () => {
                         <SubaccountTable />
                     </div>
                 </div>
-            </div>
-        </>
+            </article>
     );
 };
 
