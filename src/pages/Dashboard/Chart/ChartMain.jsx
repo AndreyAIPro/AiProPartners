@@ -50,59 +50,59 @@ export default function ChartMain(params) {
 
 	const testData = [];
 	const testConfig = analTableData?.map((line) => {
-		testData.push({
-			date: line.date,
-			value: line.unique,
-			category: "Уники",
-		});
-		testData.push({
-			date: line.date,
-			value: line.percentCTR,
-			category: "CTR, %",
-		});
-		testData.push({
-			date: line.date,
-			value: line.cr2,
-			category: "CR2, %",
-		});
-		testData.push({
-			date: line.date,
-			value: line.cr3,
-			category: "CR3, %",
-		});
+		testData.push(
+			{
+				date: line.date,
+				value: line.unique,
+				category: "Уники",
+			},
+			{
+				date: line.date,
+				value: line.getClients,
+				category: "Регистрации",
+			},
+			{
+				date: line.date,
+				value: line.percentCTR,
+				category: "CTR, %",
+			},
+			{
+				date: line.date,
+				value: line.cr2,
+				category: "CR2, %",
+			},
+			{
+				date: line.date,
+				value: line.cr3,
+				category: "CR3, %",
+			},
+			{
+				date: line.date,
+				value: line.firstBuy,
+				category: "Первичные покупки",
+			},
 
-		testData.push({
-			date: line.date,
-			value: line.firstBuy,
-			category: "First buy",
-		});
-		testData.push({
-			date: line.date,
-			value: line.getClients,
-			category: "getClients",
-		});
-		testData.push({
-			date: line.date,
-			value: line.otherBuy,
-			category: "Other buy",
-		});
-
-		testData.push({
-			date: line.date,
-			value: line.to,
-			category: "TO",
-		});
-		testData.push({
-			date: line.date,
-			value: line.totalIncome,
-			category: "Доход",
-		});
-
-		testData.push({
-			date: line.date,
-			value: line.uos,
-			category: "UOS",
-		});
+			{
+				date: line.date,
+				value: line.otherBuy,
+				category: "Вторичные покупки",
+			},
+			{
+				date: line.date,
+				value: line.to,
+				category: "TO",
+			},
+			{
+				date: line.date,
+				value: line.uos,
+				category: "UOS",
+			},
+			{
+				date: line.date,
+				value: line.totalIncome,
+				category: "Доход",
+			},
+		);
 	});
 
 	const chartConfig2 = {
@@ -113,9 +113,6 @@ export default function ChartMain(params) {
 		sizeField: "5",
 		shapeField: "trail",
 		theme: "classicDark",
-		title: "this is ttitle",
-		legendFilter: "false",
-		legend: { size: true, legendFilter: "false" },
 		colorField: "category",
 		animate: { enter: { type: "growInX", duration: 600 } },
 	};
