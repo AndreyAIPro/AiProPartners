@@ -36,15 +36,13 @@ export function SubaccountItem({
 			<td className={"border-2 border-gray p-1 px-2"}>
 				<div className="flex justify-between">
 					{name}
-					{userId != refLink ? (
+					{userId != refLink && (
 						<img
 							className="mx-2 cursor-pointer p-1"
 							src={editIcon}
 							alt="edit"
 							onClick={onEditClick}
 						></img>
-					) : (
-						""
 					)}
 				</div>
 			</td>
@@ -76,15 +74,13 @@ export function SubaccountItem({
 			</td>
 			<td className="min-w-7">
 				<div className="flex justify-center">
-					{userId != refLink ? (
+					{userId != refLink && (
 						<img
 							className=" cursor-pointer self-center"
 							src={deleteIcon}
 							alt="delete"
 							onClick={onDeleteClick}
 						></img>
-					) : (
-						""
 					)}
 				</div>
 			</td>
