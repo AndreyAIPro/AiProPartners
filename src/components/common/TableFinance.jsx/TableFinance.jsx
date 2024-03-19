@@ -4,10 +4,9 @@ import {
 	getPaginationRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 // import mData from "../../../data/dataForTable.json";
 
-import DateFilter from "./../FiltersForTable/DateFilter";
 import FiltersTable from "../FiltersForTable/FiltersTable";
 
 const TableFinance = () => {

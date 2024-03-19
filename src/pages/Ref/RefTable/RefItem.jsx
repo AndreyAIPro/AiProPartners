@@ -5,6 +5,8 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 
+import { ReactComponent as NoData } from "../../../assets/images/Icons aipro partners/no-data-icon.svg";
+
 export function RefItem({ data }) {
 	const columns = [
 		{
@@ -63,7 +65,7 @@ export function RefItem({ data }) {
 						))}
 				</tbody>
 			</table>
-			{data.length > 10 && (
+			{data.length > 10 ? (
 				<div className={`mt-3 text-center`}>
 					<button
 						className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
@@ -94,6 +96,11 @@ export function RefItem({ data }) {
 					>
 						{">>"}
 					</button>
+				</div>
+			) : (
+				<div className="flex flex-col items-center border-[1px] border-gray  py-10">
+					<NoData />
+					<p className="font-nunito-sans text-gray">No data</p>
 				</div>
 			)}
 		</>
