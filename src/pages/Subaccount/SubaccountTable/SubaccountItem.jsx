@@ -18,7 +18,13 @@ const handleRef = (refLink) => {
 	message.success("Ссылка скопирована в кеш");
 };
 
-export function SubaccountItem({ name, refLink, onEditClick, onDeleteClick }) {
+export function SubaccountItem({
+	name,
+	refLink,
+	onEditClick,
+	onDeleteClick,
+	userId,
+}) {
 	const fullRef =
 		window.location.protocol +
 		"//" +
@@ -30,12 +36,16 @@ export function SubaccountItem({ name, refLink, onEditClick, onDeleteClick }) {
 			<td className={"border-2 border-gray p-1 px-2"}>
 				<div className="flex justify-between">
 					{name}
-					<img
-						className="mx-2 cursor-pointer p-1"
-						src={editIcon}
-						alt="edit"
-						onClick={onEditClick}
-					></img>
+					{userId != refLink ? (
+						<img
+							className="mx-2 cursor-pointer p-1"
+							src={editIcon}
+							alt="edit"
+							onClick={onEditClick}
+						></img>
+					) : (
+						""
+					)}
 				</div>
 			</td>
 			<td className={"border-2 border-gray p-1 px-2"}>
@@ -66,12 +76,16 @@ export function SubaccountItem({ name, refLink, onEditClick, onDeleteClick }) {
 			</td>
 			<td className="min-w-7">
 				<div className="flex justify-center">
-					<img
-						className=" cursor-pointer self-center"
-						src={deleteIcon}
-						alt="delete"
-						onClick={onDeleteClick}
-					></img>
+					{userId != refLink ? (
+						<img
+							className=" cursor-pointer self-center"
+							src={deleteIcon}
+							alt="delete"
+							onClick={onDeleteClick}
+						></img>
+					) : (
+						""
+					)}
 				</div>
 			</td>
 		</tr>

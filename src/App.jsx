@@ -66,6 +66,10 @@ function App() {
 			element: <Auth />,
 		},
 		{
+			path: PathConstants.HOME + PathConstants.REFCODE,
+			element: <Landing />,
+		},
+		{
 			path: PathConstants.PARTNERSHIP_AGREEMENT,
 			element: <PartnershipAgreement />,
 		},

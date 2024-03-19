@@ -31,7 +31,7 @@ export const columns = [
 		key: "unique",
 	},
 	{
-		title: "Рег",
+		title: "Регистрации",
 		dataIndex: "getClients",
 		key: "getClients",
 	},
@@ -42,12 +42,22 @@ export const columns = [
 		key: "percentCTR",
 	},
 	{
-		title: "First buy",
+		title: "CR2",
+		dataIndex: "cr2",
+		key: "cr2",
+	},
+	{
+		title: "CR3",
+		dataIndex: "cr3",
+		key: "cr3",
+	},
+	{
+		title: "Первичные покупки",
 		dataIndex: "firstBuy",
 		key: "firstBuy",
 	},
 	{
-		title: "Other buy",
+		title: "Вторичные покупки",
 		dataIndex: "otherBuy",
 		key: "otherBuy",
 	},
@@ -61,16 +71,7 @@ export const columns = [
 		dataIndex: "uos",
 		key: "uos",
 	},
-	{
-		title: "CR2",
-		dataIndex: "cr2",
-		key: "cr2",
-	},
-	{
-		title: "CR3",
-		dataIndex: "cr3",
-		key: "cr3",
-	},
+
 	{
 		title: "Дохід",
 		dataIndex: "totalIncome",
