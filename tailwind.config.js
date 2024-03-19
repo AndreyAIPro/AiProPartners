@@ -4,7 +4,7 @@
  */
 
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: ["./index.html", "./src/*\*/*.{js,ts,jsx,tsx}"],
 	theme: {
 		width: {
 			"sidebar-width": "319px",
@@ -67,5 +67,10 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('postcss-import'),
+    	require('postcss-nested'), // Додайте цей рядок для вкладення
+    	require('tailwindcss'),
+    	require('autoprefixer'),
+	],
 };
