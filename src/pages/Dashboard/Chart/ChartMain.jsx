@@ -177,7 +177,7 @@ export default function ChartMain(params) {
 				</div> */}
 				<div>
 					{/** Chart HERE*/}
-					<Line {...chartConfig2} />
+					<Line {...chartConfig2} className="chart-container" />
 					{/* <div className="px-2 py-2">
 						<Checkbox className="pr-4">Уники</Checkbox>
 						<Checkbox className="pr-4">Регистрации</Checkbox>
