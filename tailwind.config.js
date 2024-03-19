@@ -4,7 +4,7 @@
  */
 
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: ["./index.html", "./src/*\*/*.{js,ts,jsx,tsx}"],
 	theme: {
 		width: {
 			"sidebar-width": "319px",
@@ -70,4 +70,5 @@ export default {
 			},
 		},
 	},
+	plugins: [],
 };
