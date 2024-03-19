@@ -1,15 +1,22 @@
-import React, { useState } from "react";
-import copy from "copy-to-clipboard";
+import React, { useState, useEffect } from "react";
+
 import "./SubaccountTable.scss";
-import editIcon from "../../../assets/images/Icons aipro partners/edit.svg";
-import deleteIcon from "../../../assets/images/Icons aipro partners/delete.svg";
+
 import Modal from "../SubaccountModal/SubaccountModal";
-import { CopyOutlined } from "@ant-design/icons";
-import { message } from "antd";
+
+import { useUser } from "../../../hooks/useUser";
+import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
+import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
+import { SubaccountItem } from "./SubaccountItem";
+import {
+	deleteSubaccount,
+	editSubaccountName,
+} from "../../../utils/supabaseUtils";
 
 const SubaccountTable = () => {
-	// variable that hold all rows
-	const [rows, setRows] = useState([]);
+	const { user } = useUser();
+	const { data: subaccountRefLinks } = useSelectSubAccountRefLinks(user?.id);
+	const { setCreateSubAccountLink } = useCreateSubaccountLinks();
 	//Holds account name
 	const [accountName, setAccountName] = useState("");
 	// Holds row key
@@ -17,63 +24,46 @@ const SubaccountTable = () => {
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
-	const [ref, setRef] = useState("REF PLACEHOLDER");
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
 	};
-
-	//function that puts ref to the ref state
-	const handleRef = (row) => {
-		const refToCopy = row.ref;
-		copy(refToCopy);
-		message.success("Ссылка скопирована в кеш");
+	const handleDeleteClick = (rowData) => {
+		setSelectedRow(rowData);
+		setDeleteModalVisible(true);
+	};
+	const handleEditClick = (rowData) => {
+		setSelectedRow(rowData);
+		setIsModalVisible(true);
 	};
 
 	//adding new row to the table
 	const addRow = () => {
-		if (accountName.length !== 0) {
-			const newRow = {
-				id: rows.length + 1,
-				className: "border-2 border-gray p-1 px-2",
-				accountName: accountName,
-				ref: ref,
-			};
-			setRows([...rows, newRow]);
+		if (accountName.length) {
+			setCreateSubAccountLink(accountName);
+
 			setAccountName("");
-			// setRef("");
 		}
 	};
 	const handleDelete = () => {
-		if (selectedRow && selectedRow.id) {
-			const updatedRows = rows.filter((row) => row.id !== selectedRow.id);
-			setRows(updatedRows);
+		if (selectedRow) {
+			deleteSubaccount(selectedRow.refLink);
+
 			setDeleteModalVisible(false); // Close delete confirmation modal after deletion
 		}
-	};
-	const openDeleteModal = (row) => {
-		setSelectedRow(row);
-		setDeleteModalVisible(true);
 	};
 
 	const hideDeleteModal = () => {
 		setDeleteModalVisible(false); // Hide delete confirmation modal
 	};
 
-	const handleEdit = (row) => {
-		setSelectedRow(row); // Set the selected row for editing
-		setAccountName(row.accountName);
-
-		// Set the accountName state with the current account name
-		setIsModalVisible(true); // Show the edit modal
-	};
 	const handleFormSubmit = () => {
-		const updatedRow = rows.map((row) =>
-			row.id === selectedRow.id ? { ...row, accountName: accountName } : row,
-		);
-		setRows(updatedRow);
+		if (accountName.length !== 0) {
+			editSubaccountName(selectedRow.refLink, accountName);
+		}
+
 		setIsModalVisible(false); // Hide the modal
 		setAccountName("");
 	};
@@ -146,42 +136,25 @@ const SubaccountTable = () => {
 						<table className="w-[100%] bg-black">
 							<thead>
 								<tr>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Название Субаккаунта
 									</th>
-									<th className="table-gradient w-[40%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
 										Ссылка
 									</th>
 									<td className=" "></td>
 								</tr>
 							</thead>
 							<tbody>
-								{rows.map((row) => (
-									<tr key={row.id}>
-										<td className={row.className}>{row.accountName}</td>
-										<td className={row.className}>{row.ref}</td>
-										<td className="flex justify-evenly border-none p-1">
-											<img
-												className="mx-2 cursor-pointer p-1"
-												src={editIcon}
-												alt="edit"
-												onClick={() => handleEdit(row)}
-											></img>
-											<img
-												className="mx-2 cursor-pointer"
-												src={deleteIcon}
-												alt="delete"
-												onClick={() => openDeleteModal(row)}
-											></img>
-											<span
-												className="mx-2 flex cursor-pointer p-1"
-												onClick={() => handleRef(row)}
-												alt="Copy"
-											>
-												<CopyOutlined />
-											</span>
-										</td>
-									</tr>
+								{subaccountRefLinks?.map((row, index) => (
+									<SubaccountItem
+										key={index}
+										name={row.name}
+										refLink={row.refLink}
+										onEditClick={() => handleEditClick(row)}
+										onDeleteClick={() => handleDeleteClick(row)}
+										userId={user?.id}
+									/>
 								))}
 							</tbody>
 						</table>

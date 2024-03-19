@@ -1,4 +1,4 @@
-/** @format */
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,6 +10,9 @@ import PathConstants from "./router/pathConstants";
 import routes from "./router/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import RefLink from "./pages/RefLink/RefLink";
+import Landing from "./pages/Landing/Landing";
+import PartnershipAgreement from "./pages/PartnershipAgreement/PartnershipAgreement";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -35,18 +38,41 @@ function App() {
 			element: <Auth />,
 		},
 		{
+			path: PathConstants.HOME,
+			element: <Landing />,
+		},
+		{
 			path: PathConstants.SIGNUP,
 			element: <Auth />,
 		},
 		{
 			path: PathConstants.RESET_PASSWORD,
-			element: <ResetPassword />,	
+			element: <ResetPassword />,
 		},
 		{
 			path: PathConstants.PASSWORD_RECOVERY,
 			element: <ResetPassword />,
-			
-		}
+		},
+		{
+			path: PathConstants.PARTNERREFLINK + PathConstants.REFCODE,
+			element: <RefLink />,
+		},
+		{
+			path: PathConstants.LOGIN + PathConstants.REFCODE,
+			element: <Auth />,
+		},
+		{
+			path: PathConstants.SIGNUP + PathConstants.REFCODE,
+			element: <Auth />,
+		},
+		{
+			path: PathConstants.HOME + PathConstants.REFCODE,
+			element: <Landing />,
+		},
+		{
+			path: PathConstants.PARTNERSHIP_AGREEMENT,
+			element: <PartnershipAgreement />,
+		},
 	]);
 
 	return (

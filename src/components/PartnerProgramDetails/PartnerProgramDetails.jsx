@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { partnerProgramData } from "../../data/landingData";
 import PartnerProgramItem from "../common/PartnerProgramItem/PartnerProgramItem";

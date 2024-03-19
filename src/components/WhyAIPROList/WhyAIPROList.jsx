@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { whyAIPRO } from '../../data/landingData';
 import WhyAIPROListItem from '../common/WhyAIPROListItem/WhyAIPROListItem';

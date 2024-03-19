@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { alwaysInTouch } from '../../data/landingData';
 import AlwaysInTouchItem from '../common/AlwaysInTouchItem/AlwaysInTouchItem';
