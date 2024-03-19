@@ -153,6 +153,7 @@ const SubaccountTable = () => {
 										refLink={row.refLink}
 										onEditClick={() => handleEditClick(row)}
 										onDeleteClick={() => handleDeleteClick(row)}
+										userId={user?.id}
 									/>
 								))}
 							</tbody>
