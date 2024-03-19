@@ -1,5 +1,5 @@
 import { Button, ConfigProvider, theme } from "antd";
-export default function backToPrevious(params) {
+export default function backToPrevious() {
 	return (
 		<div className="flex flex-col justify-center  bg-primary align-middle">
 			<h2 className="text-center text-title font-bold">Ошибка 404</h2>

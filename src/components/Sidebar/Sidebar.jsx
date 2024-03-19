@@ -1,10 +1,10 @@
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar/RightSidebar";
 
-const Sidebar = (props) => {
+const Sidebar = ({ isLeftSidebar, openModal }) => {
 	return (
 		<div className="sticky flex flex-col bg-secondary">
-			{props.isLeftSidebar ? <LeftSidebar /> : <RightSidebar />}
+			{isLeftSidebar ? <LeftSidebar openModal={openModal} /> : <RightSidebar />}
 		</div>
 	);
 };
