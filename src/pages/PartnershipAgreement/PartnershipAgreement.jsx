@@ -14,7 +14,7 @@ const PartnershipAgreement = () => {
 					<option value="UA">UA</option>
 				</select>
 			</div>
-			<div className=" px-24 py-20 text-white">
+			{/* <div className=" px-24 py-20 text-white">
 				<a
 					href="/"
 					className="flex items-center gap-6"
@@ -22,8 +22,8 @@ const PartnershipAgreement = () => {
 					<BackButton />
 					<p className="font-nunito-sans text-text1 ">Назад</p>
 				</a>
-			</div>
-			<h2 className="mb-10 px-24 font-nunito-sans text-title font-medium uppercase text-white">
+			</div> */}
+			<h2 className="mb-10 px-24 font-nunito-sans text-title font-medium uppercase text-white" style={{margin:"2rem"}}>
 				Партнерское Соглашение
 			</h2>
 			{dataForPartnershipAgreement.map((partner) => (
