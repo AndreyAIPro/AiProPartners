@@ -6,7 +6,7 @@ const PrivateLayout = () => {
 	return (
 		<>
 			{user && (
-				<div className="height-full flex justify-between bg-primary text-white">
+				<div className="flex h-full justify-between bg-primary text-white max-xl:w-[1280px]">
 					<Sidebar isLeftSidebar />
 					<Outlet />
 					<Sidebar />

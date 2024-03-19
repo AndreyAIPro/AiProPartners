@@ -1,16 +1,9 @@
-import { Checkbox, Select, Button } from "antd";
 import { Line } from "@ant-design/plots";
-import Plate from "../../Preferences/Plate/Plate";
-import {
-	periodType,
-	statisticAll,
-	countries,
-	subAccounts,
-	ofers,
-	chartConfig,
-} from "../DataDashboard/ChartData";
+import { Button, Select } from "antd";
 import { useSelectAnalTable } from "../../../hooks/useSelectAnalTable";
 import { useUser } from "../../../hooks/useUser";
+import Plate from "../../Preferences/Plate/Plate";
+import { periodType, subAccounts } from "../DataDashboard/ChartData";
 
 export default function ChartMain(params) {
 	const handleChange = (value) => {

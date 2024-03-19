@@ -1,16 +1,10 @@
-import {
-	subAccounts,
-	countries,
-	statisticAll,
-	columns,
-	ofers,
-} from "../DataDashboard/TableData";
-import { Select, DatePicker, Button, Table } from "antd";
+import { Button, DatePicker, Select, Table } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import Plate from "../../Preferences/Plate/Plate";
-import { useUser } from "../../../hooks/useUser";
 import { useSelectAnalTable } from "../../../hooks/useSelectAnalTable";
+import { useUser } from "../../../hooks/useUser";
+import Plate from "../../Preferences/Plate/Plate";
+import { columns, subAccounts } from "../DataDashboard/TableData";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 

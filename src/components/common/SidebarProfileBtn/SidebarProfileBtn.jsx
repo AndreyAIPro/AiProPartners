@@ -1,15 +1,16 @@
-import { Button, ConfigProvider, Popconfirm, theme } from "antd";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as ExitIcon } from "../../../assets/images/Icons aipro partners/exit.svg";
 import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
+
+import { useState } from "react";
 import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
-import { useLogout } from "../../../hooks/useLogout";
 import { useUser } from "../../../hooks/useUser";
+import LogoutModal from "../../../utils/LogoutModal/LogoutModal";
 import styles from "./sidebar-profile-btn.module.scss";
 
 const SidebarProfileBtn = () => {
-	const { logout } = useLogout();
 	const { user } = useUser();
+	const [openModal, setOpenModal] = useState(false);
 	const userData = user.user_metadata;
 
 	return (
@@ -20,38 +21,21 @@ const SidebarProfileBtn = () => {
 					{userData.fullName}
 				</h3>
 			</div>
-			<div className="flex flex-row items-center justify-center ">
-				<ConfigProvider
-					theme={{
-						algorithm: theme.darkAlgorithm,
-					}}
-					className="max-xl:hidden"
+			<div className="flex flex-row items-center justify-center max-xl:flex-col-reverse max-xl:gap-5">
+				<button
+					onClick={() => setOpenModal(true)}
+					className="relative flex flex-row-reverse "
 				>
-					<Popconfirm
-						title="Хотите выйти ?"
-						onConfirm={logout}
-						okText="Да"
-						cancelText="Нет"
-						placement="left"
-					>
-						<Button
-							style={{
-								paddingLeft: " 2px",
-								paddingRight: "2px",
-								borderColor: "#0e0e0e",
-							}}
-						>
-							<ExitIcon />
-						</Button>
-					</Popconfirm>
-				</ConfigProvider>
+					<ExitIcon />
+					<LogoutModal active={openModal} setActive={setOpenModal} />
+				</button>
 
 				<NavLink
 					to="/preferences"
 					className={({ isActive }) =>
 						!isActive
-							? "settings__btn ml-2 h-[25px] w-[25px] border-[5px]"
-							: `settings__btn active ml-2 h-[25px] w-[25px] border-[5px]`
+							? "settings__btn ml-2 h-[25px] w-[25px]"
+							: `settings__btn active ml-2 h-[25px] w-[25px]`
 					}
 				>
 					<SettingsIcon className={styles.svgIcon} />

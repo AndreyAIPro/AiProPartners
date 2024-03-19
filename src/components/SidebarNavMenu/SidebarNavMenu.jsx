@@ -20,11 +20,17 @@ const navItemsData = [
 	{ icon: <FinancesIcon />, name: "Финансы", href: PathConstants.FINANCES },
 ];
 
-const SidebarNavMenu = () => {
+const SidebarNavMenu = ({ isExpandedSidebar }) => {
 	return (
-		<nav className="w-full mt-[30px] flex flex-col items-center justify-center">
+		<nav className="w-full mt-[30px] flex flex-col items-center justify-center max-lg:mt-5">
 			{navItemsData.map((item, i) => {
-				return <SidebarNavItem key={i} {...item} />;
+				return (
+					<SidebarNavItem
+						isExpandedSidebar={isExpandedSidebar}
+						key={i}
+						{...item}
+					/>
+				);
 			})}
 		</nav>
 	);
