@@ -13,6 +13,7 @@ const PathConstants = {
 	PARTNERREFLINK: "/reflink",
 	PARTNERSHIP_AGREEMENT: "/partnershipAgreement",
 	REFCODE: "/:refid",
+	PAGENOTFOUND: "*",
 };
 
 export default PathConstants;

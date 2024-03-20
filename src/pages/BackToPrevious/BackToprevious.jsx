@@ -1,5 +1,8 @@
 import { Button, ConfigProvider, theme } from "antd";
 export default function backToPrevious() {
+	const handleGoBack = () => {
+		window.history.back();
+	};
 	return (
 		<div className="flex flex-col justify-center  bg-primary align-middle">
 			<h2 className="text-center text-title font-bold">Ошибка 404</h2>
@@ -19,11 +22,7 @@ export default function backToPrevious() {
 						},
 					}}
 				>
-					<Button
-						shape="round"
-						className="bg-[#24A1E0]"
-						onClick={console.log("click")}
-					>
+					<Button shape="round" className="bg-[#24A1E0]" onClick={handleGoBack}>
 						Назад
 					</Button>
 				</ConfigProvider>
