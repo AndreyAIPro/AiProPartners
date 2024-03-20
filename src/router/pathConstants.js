@@ -1,5 +1,5 @@
 const PathConstants = {
-	HOME: "/",
+	HOME: "/home",
 	DASHBOARD: "/dashboard",
 	SUBACCOUNT: "/subaccount",
 	REF: "/ref",
@@ -13,7 +13,6 @@ const PathConstants = {
 	PARTNERREFLINK: "/reflink",
 	PARTNERSHIP_AGREEMENT: "/partnershipAgreement",
 	REFCODE: "/:refid",
-	PAGENOTFOUND: "*",
 };
 
 export default PathConstants;

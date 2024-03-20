@@ -1,10 +1,12 @@
 import { Button, ConfigProvider, theme } from "antd";
+
 export default function backToPrevious() {
 	const handleGoBack = () => {
 		window.history.back();
 	};
+
 	return (
-		<div className="flex flex-col justify-center  bg-primary align-middle">
+		<div className="flex h-[100vh] w-[100%]  flex-col justify-center bg-primary align-middle text-white">
 			<h2 className="text-center text-title font-bold">Ошибка 404</h2>
 			<p className="p-3 text-center  text-text2">
 				Упс, такой страницы не существует

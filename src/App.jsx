@@ -29,6 +29,10 @@ function App() {
 
 	const router = createBrowserRouter([
 		{
+			path: "*",
+			element: <BackToPrevious />,
+		},
+		{
 			element: <PrivateLayout />,
 			children: routes,
 		},
@@ -71,10 +75,6 @@ function App() {
 		{
 			path: PathConstants.PARTNERSHIP_AGREEMENT,
 			element: <PartnershipAgreement />,
-		},
-		{
-			path: "*",
-			element: <BackToPrevious />,
 		},
 	]);
 
