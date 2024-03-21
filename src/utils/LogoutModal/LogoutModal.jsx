@@ -10,12 +10,12 @@ const LogoutModal = ({ active, setActive }) => {
 		>
 			<h3>Вы уверены что хотите выйти?</h3>
 			<div className="flex gap-8 text-text2 ">
-				{/* <button className="hover:text-light-blue" onClick={logout}>
+				<button className="hover:text-light-blue" onClick={logout}>
 					Да
-				</button> */}
-				{/* <button className="hover:text-light-blue" onClick={setActive(false)}>
+				</button>
+				<button className="hover:text-light-blue" onClick={setActive(false)}>
 					Нет
-				</button> */}
+				</button>
 			</div>
 		</div>
 	);

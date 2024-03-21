@@ -71,7 +71,6 @@ export default function DashboardTable() {
 										size="small"
 										variant={false}
 										placeholder={["Начало", "Конец"]}
-										onChange={(_, info) => console.log(info)}
 									/>
 								</div>
 							</div>

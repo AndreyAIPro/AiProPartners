@@ -21,10 +21,10 @@ const SidebarProfileBtn = () => {
 					{userData.fullName}
 				</h3>
 			</div>
-			<div className="flex flex-row items-center justify-center max-xl:flex-col-reverse max-xl:gap-5">
+			<div className="flex flex-col items-center justify-center gap-4 max-xl:flex-col-reverse max-xl:gap-5">
 				<button
 					onClick={() => setOpenModal(true)}
-					className="relative flex flex-row-reverse "
+					className="relative mr-[-7px] flex flex-row-reverse"
 				>
 					<ExitIcon />
 					<LogoutModal active={openModal} setActive={setOpenModal} />
@@ -34,8 +34,8 @@ const SidebarProfileBtn = () => {
 					to="/preferences"
 					className={({ isActive }) =>
 						!isActive
-							? "settings__btn ml-2 h-[25px] w-[25px]"
-							: `settings__btn active ml-2 h-[25px] w-[25px]`
+							? "settings__btn h-[25px] w-[25px]"
+							: `settings__btn active h-[25px] w-[25px]`
 					}
 				>
 					<SettingsIcon className={styles.svgIcon} />

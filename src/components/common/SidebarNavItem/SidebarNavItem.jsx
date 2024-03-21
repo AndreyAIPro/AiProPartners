@@ -13,7 +13,7 @@ const SidebarNavItem = ({ href, name, icon, isExpandedSidebar }) => {
 		>
 			{icon}
 			<span
-				className={`${isExpandedSidebar ? "hidden opacity-0" : "flex text-right opacity-100 transition-opacity delay-100 ease-out"}`}
+				className={`${isExpandedSidebar ? "max-xl:opacity-0" : "flex text-right transition-opacity delay-100 ease-out max-xl:opacity-100"}`}
 			>
 				{name}
 			</span>
