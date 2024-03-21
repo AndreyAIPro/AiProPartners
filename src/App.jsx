@@ -1,5 +1,3 @@
-
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -13,6 +11,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import RefLink from "./pages/RefLink/RefLink";
 import Landing from "./pages/Landing/Landing";
 import PartnershipAgreement from "./pages/PartnershipAgreement/PartnershipAgreement";
+import BackToPrevious from "./pages/BackToPrevious/BackToprevious";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -29,6 +28,10 @@ function App() {
 	});
 
 	const router = createBrowserRouter([
+		{
+			path: "*",
+			element: <BackToPrevious />,
+		},
 		{
 			element: <PrivateLayout />,
 			children: routes,

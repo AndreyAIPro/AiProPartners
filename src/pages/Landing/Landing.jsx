@@ -1,5 +1,3 @@
-
-
 import { useParams } from "react-router-dom";
 import LandingNav from "../../components/LandingNav/LandingNav";
 import {
@@ -21,7 +19,7 @@ import { useUser } from "../../hooks/useUser";
 const Landing = () => {
 	const { user } = useUser();
 	const { refid } = useParams();
-	const refLink = refid === undefined ? "" : "/" + refid;
+	const refLink = refid === undefined ? "" : "/home" + refid;
 
 	return (
 		<main className="overflow-hidden bg-dark-blue">
@@ -37,7 +35,7 @@ const Landing = () => {
 			<Enjoy user={user} refLink={refLink} />
 			<WhyAIPRO />
 			<HowStart />
-			<PartnerProgram  user={user} refLink={refLink} />
+			<PartnerProgram user={user} refLink={refLink} />
 			<AlwaysInTouch />
 			<Footer />
 		</main>

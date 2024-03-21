@@ -23,6 +23,7 @@ const routes = [
 	{
 		path: PathConstants.FINANCES,
 		element: <Finances />,
+
 		children: [
 			{
 				index: true,
@@ -45,6 +46,7 @@ const routes = [
 	{
 		path: PathConstants.STUDY,
 		element: <Study />,
+
 		children: [
 			{
 				index: true,
