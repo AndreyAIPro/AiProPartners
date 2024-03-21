@@ -21,7 +21,7 @@ export default function Rules({ openModal, closeModal }) {
 					onCancel={closeModal}
 					onOk={closeModal}
 					centered
-					width={"50%"}
+					width={"75%"}
 					footer={null}
 				>
 					<div className="flex flex-col justify-center  bg-primary align-middle">
