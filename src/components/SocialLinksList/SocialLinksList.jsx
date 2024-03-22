@@ -8,16 +8,22 @@ const Links = [
 	{ icon: <FacebookIcon />, href: "#" },
 ];
 
-const SocialLinksList = () => {
+const SocialLinksList = ({ isExpandedRightSidebar }) => {
 	return (
-		<ul className="w-full flex items-center justify-around gap-5 px-5">
-			{Links.map((link, i) => (
-				<a key={i} href={link.href}>
-					{link.icon}
-				</a>
-			))}
-			<p className="text-text4 font-normal">Подписывайся на нас в соцсетях</p>
-		</ul>
+		<>
+			<ul
+				className={`w-full mt-[55px] flex items-center justify-around gap-5 px-5 max-xl:mt-[300px] ${isExpandedRightSidebar ? "max-xl:flex-row" : "max-xl:flex-col"}`}
+			>
+				{Links.map((link, i) => (
+					<a key={i} href={link.href}>
+						{link.icon}
+					</a>
+				))}
+				<p className="text-wrap text-text4 font-normal max-xl:hidden">
+					Подписывайся на нас в соцсетях
+				</p>
+			</ul>
+		</>
 	);
 };
 

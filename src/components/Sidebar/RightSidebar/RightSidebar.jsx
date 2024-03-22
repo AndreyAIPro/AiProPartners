@@ -14,16 +14,17 @@ const RightSidebar = () => {
 
 	return (
 		<aside
-			className={`w-full sticky top-0 flex min-h-dvh max-w-[319px] flex-col gap-[50px] p-5 max-xl:gap-5 max-xl:px-[10px] max-xl:py-5 ${isExpandedRightSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} transition-all`}
+			className={`w-full sticky top-0 flex min-h-dvh max-w-[319px] flex-col gap-[50px] p-5 max-xl:gap-5 max-xl:px-[10px] max-xl:py-5 ${isExpandedRightSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
-			<BalanceArticle />
+			<BalanceArticle isExpandedRightSidebar={isExpandedRightSidebar} />
 			<button
-				className={`w-full mt-5 hidden rotate-180 pl-5 ${isExpandedRightSidebar ? "max-xl:justify-center" : "max-xl:justify-start"} items-center max-xl:flex`}
+				className={`w-full mt-5 hidden rotate-180 pl-5 ${isExpandedRightSidebar ? "max-xl:justify-center" : "max-xl:justify-star rotate-0 pl-5"} items-center transition-all max-xl:flex`}
 				onClick={() => handleClick()}
 			>
 				<Arrow />
 			</button>
-			<SidebarProfileBtn />
+			<SidebarProfileBtn isExpandedRightSidebar={isExpandedRightSidebar} />
+
 			<SocialLinksList />
 		</aside>
 	);

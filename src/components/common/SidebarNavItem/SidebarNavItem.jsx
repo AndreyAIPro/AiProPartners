@@ -1,22 +1,19 @@
 import { NavLink } from "react-router-dom";
 
-const SidebarNavItem = ({ href, name, icon, isExpandedSidebar }) => {
+const SidebarNavItem = ({ href, name, icon }) => {
 	return (
 		<NavLink
 			to={href}
-			className="max-w-sidebar-width w-full height-[70px] color-white flex items-center gap-5 p-5 text-left text-text1 no-underline"
+			className="max-w-sidebar-width w-full height-[70px] color-white flex items-center justify-start gap-5 p-5 text-text1 no-underline"
 			style={({ isActive }) => {
 				return {
 					backgroundColor: isActive ? "#24a1e0" : null,
 				};
 			}}
 		>
-			{icon}
-			<span
-				className={`${isExpandedSidebar ? "max-xl:opacity-0" : "flex text-right transition-opacity delay-100 ease-out max-xl:opacity-100"}`}
-			>
-				{name}
-			</span>
+			<span>{icon}</span>
+
+			<span className="flex text-right">{name}</span>
 		</NavLink>
 	);
 };
