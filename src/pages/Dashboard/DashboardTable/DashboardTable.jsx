@@ -1,4 +1,4 @@
-import { subAccounts, columns } from "../DataDashboard/TableData";
+import { columns } from "../DataDashboard/TableData";
 import { Select, DatePicker, Button, Table } from "antd";
 import dayjs from "dayjs";
 
@@ -13,25 +13,30 @@ const { RangePicker } = DatePicker;
 
 export default function DashboardTable() {
 	const { user } = useUser();
-
 	const { data: analTable } = useSelectAnalTable(user?.id);
 	const [dateRange, setDateRange] = useState(null);
 	const [refNames, setRefNames] = useState([]);
+	const [selectedRefName, setSelectedRefName] = useState(null);
+
 	const disabledDates = () => {
-		// Extract date values from analTable data
 		const dates = analTable?.map((row) => dayjs(row.date).format("YYYY-MM-DD"));
-		// Return a function to disable dates not in the analTable
+
 		return (current) => {
 			const formattedDate = current.format("YYYY-MM-DD");
 			return !dates.includes(formattedDate);
 		};
 	};
-	// const handleSubAccountChange = (value) => {
-	// 	setSelectedSubAccount(value);
-	// };
 
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
+	};
+	const handleRefNameChange = (value) => {
+		if (value === "all") {
+			// If "Show all data" option is selected, set filteredData to all data
+			setFilteredData(analTableData);
+		} else {
+			setSelectedRefName(value); // Update selectedRefName when a new option is selected
+		}
 	};
 	useEffect(() => {
 		if (analTable) {
@@ -40,11 +45,18 @@ export default function DashboardTable() {
 				new Set(analTable.map((row) => row.refName)),
 			);
 			setRefNames(uniqueRefNames);
+			// Set the initial selected refName to the first unique refName if available
+			if (uniqueRefNames.length > 0) {
+				setSelectedRefName(uniqueRefNames[0]);
+			}
+			// const firstTimeTable = analTableData?.filter(
+			// 	(row) => row.refName === uniqueRefNames[0],
+			// );
+			// setFilteredData(firstTimeTable);
+			setFilteredData(analTableData);
 		}
-
-		setFilteredData(analTableData);
 	}, [analTable]);
-	console.log(refNames);
+
 	const analTableData = analTable?.map((row, index) => {
 		row.key = index;
 		if (row.firstBuy && row.otherBuy) {
@@ -72,21 +84,21 @@ export default function DashboardTable() {
 	const applyFilters = () => {
 		let filteredData = analTableData;
 
-		// if (selectedSubAccount) {
-		//   filteredData = filteredData.filter(
-		//     (row) => row.subAccount === selectedSubAccount
-		//   );
-		// }
-
 		if (dateRange && dateRange.length === 2) {
 			const [startDate, endDate] = dateRange;
 			filteredData = filteredData.filter((row) =>
 				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
 			);
 		}
+		// Filter by selected refName
+		if (selectedRefName) {
+			filteredData = filteredData.filter(
+				(row) => row.refName === selectedRefName,
+			);
+		}
 		setFilteredData(filteredData);
 	};
-	console.log(analTableData);
+
 	return (
 		<>
 			<Plate
@@ -98,7 +110,7 @@ export default function DashboardTable() {
 								<div className="flex items-center  justify-center pr-2">
 									Выбрать диапазон дат
 								</div>
-								<div className=" flex">
+								<div className=" ml-3 flex pl-2">
 									<RangePicker
 										disabledDate={disabledDates()}
 										size="small"
@@ -116,9 +128,15 @@ export default function DashboardTable() {
 					<div className="flex flex-nowrap pb-3">
 						<div className="pr-5">
 							<Select
-								defaultValue={refNames.length > 0 ? refNames[0] : "Субаккаунт"}
-								options={refNames.map((name) => ({ label: name, value: name }))}
+								defaultValue={"Выберите Субаккаунт"}
+								options={[
+									{ label: "Показать все данные", value: "all" },
+									...refNames.map((name) => ({ label: name, value: name })),
+								]}
 								size="small"
+								onChange={handleRefNameChange}
+								defaultActiveFirstOption={true}
+								style={{ width: "12rem" }}
 							/>
 						</div>
 
@@ -130,12 +148,15 @@ export default function DashboardTable() {
 					</div>
 				</div>
 				{/** TABLE HERE */}
-				<Table
-					dataSource={filteredData}
-					columns={columns}
-					size="small"
-					pagination={true}
-				></Table>
+				<div className="flex-1">
+					<Table
+						dataSource={filteredData}
+						columns={columns}
+						size="small"
+						pagination={true}
+						scroll={{ x: 1000 }}
+					></Table>
+				</div>
 			</Plate>
 		</>
 	);

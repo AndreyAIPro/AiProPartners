@@ -1,4 +1,3 @@
-import { Button, ConfigProvider, theme } from "antd";
 import TelegramLink from "../../common/TelegramLink";
 import SidebarNavMenu from "../../SidebarNavMenu";
 import SocialLinksList from "../../SocialLinksList";
