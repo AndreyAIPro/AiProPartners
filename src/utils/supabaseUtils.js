@@ -153,7 +153,7 @@ export default async function createSubAccountLink(subAccountName) {
 	await supabase.from("PartnersRefLinks").insert({ name: subAccountName });
 }
 
-export async function editSubaccountName(refLink, name) {
+export async function editSubaccountName({refLink, name}) {
 	await supabase
 		.from("PartnersRefLinks")
 		.update({ name: name })

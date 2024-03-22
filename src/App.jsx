@@ -29,6 +29,10 @@ function App() {
 
 	const router = createBrowserRouter([
 		{
+			path: PathConstants.DEFAULT,
+			element: <Landing />,
+		},
+		{
 			path: "*",
 			element: <BackToPrevious />,
 		},

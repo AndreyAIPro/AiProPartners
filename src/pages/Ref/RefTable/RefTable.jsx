@@ -4,7 +4,6 @@ import { useUser } from "../../../hooks/useUser";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
-import { creatDefultRefLink } from "../../../utils/supabaseUtils";
 import { RefItem } from "./RefItem";
 
 const RefTable = () => {
@@ -31,11 +30,11 @@ const RefTable = () => {
 	// const [accountName, setAccountName] = useState("");
 	const link =
 		window.location.hostname === "localhost"
-			? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434"
+			? "http://localhost:5173/home/50c7bc72-944f-4647-ba70-f59eeab96434"
 			: window.location.protocol +
 				"//" +
 				window.location.hostname +
-				"/reflink/" +
+				"/home/" +
 				user.id;
 	const [accountRef, setAccountRef] = useState(link);
 	// // Holds row key

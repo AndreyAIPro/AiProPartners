@@ -1,4 +1,5 @@
 const PathConstants = {
+	DEFAULT: "/",
 	HOME: "/home",
 	DASHBOARD: "/dashboard",
 	SUBACCOUNT: "/subaccount",
