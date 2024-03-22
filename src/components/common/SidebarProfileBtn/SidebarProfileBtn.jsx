@@ -1,61 +1,50 @@
-import { Button, ConfigProvider, Popconfirm, theme } from "antd";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as ExitIcon } from "../../../assets/images/Icons aipro partners/exit.svg";
 import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
+
+import { useState } from "react";
 import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
-import { useLogout } from "../../../hooks/useLogout";
 import { useUser } from "../../../hooks/useUser";
+import LogoutModal from "../../../utils/LogoutModal/LogoutModal";
 import styles from "./sidebar-profile-btn.module.scss";
 
-const SidebarProfileBtn = () => {
-	const { logout } = useLogout();
+const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
+	const [openModal, setOpenModal] = useState(false);
 	const userData = user.user_metadata;
 
 	return (
-		<div className="w-full flex h-full max-h-10 items-center justify-between max-xl:flex-col">
-			<div className="flex items-center gap-[10px] max-xl:hidden">
+		<div className="w-full flex h-full max-h-10 items-center justify-between max-xl:flex-col max-xl:gap-2">
+			<div
+				className={`flex items-center gap-[10px] ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
+			>
 				<ProfilePlaceholder />
-				<h3 className="text-[20px] font-normal leading-7">
+				<h3
+					className={`text-[20px] font-normal leading-7 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
+				>
 					{userData.fullName}
 				</h3>
 			</div>
-			<div className="flex flex-row items-center justify-center ">
-				<ConfigProvider
-					theme={{
-						algorithm: theme.darkAlgorithm,
-					}}
-					className="max-xl:hidden"
-				>
-					<Popconfirm
-						title="Хотите выйти ?"
-						onConfirm={logout}
-						okText="Да"
-						cancelText="Нет"
-						placement="left"
-					>
-						<Button
-							style={{
-								paddingLeft: " 2px",
-								paddingRight: "2px",
-								borderColor: "#0e0e0e",
-							}}
-						>
-							<ExitIcon />
-						</Button>
-					</Popconfirm>
-				</ConfigProvider>
-
+			<div
+				className={`max-xl:w-full flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "mt-10 max-xl:flex-col" : null}`}
+			>
 				<NavLink
 					to="/preferences"
 					className={({ isActive }) =>
 						!isActive
-							? "settings__btn ml-2 h-[25px] w-[25px] border-[5px]"
-							: `settings__btn active ml-2 h-[25px] w-[25px] border-[5px]`
+							? "settings__btn h-[25px] w-[25px]"
+							: `settings__btn active h-[25px] w-[25px]`
 					}
 				>
 					<SettingsIcon className={styles.svgIcon} />
 				</NavLink>
+				<button
+					onClick={() => setOpenModal(true)}
+					className="relative mr-[-7px] flex flex-row-reverse"
+				>
+					<ExitIcon />
+					<LogoutModal active={openModal} setActive={setOpenModal} />
+				</button>
 			</div>
 		</div>
 	);

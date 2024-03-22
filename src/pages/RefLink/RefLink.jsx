@@ -5,7 +5,7 @@ async function responseRefClickEvent(){
   const { refid } = useParams();
   const { ip } = await (await fetch('https://api.ipify.org?format=json')).json()
   checkRefLink(refid, ip);
-  window.location.replace("https://ai-pro.company/signup/"+refid);
+  window.location.replace("https://ai-pro.company/"+refid);
 }
 
 const RefLink = () => {

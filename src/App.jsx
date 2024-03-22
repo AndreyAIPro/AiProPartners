@@ -1,17 +1,17 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import Auth from "./pages/Auth/Auth";
-import PathConstants from "./router/pathConstants";
-import routes from "./router/routes";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import RefLink from "./pages/RefLink/RefLink";
+import BackToPrevious from "./pages/BackToPrevious/BackToprevious";
 import Landing from "./pages/Landing/Landing";
 import PartnershipAgreement from "./pages/PartnershipAgreement/PartnershipAgreement";
-import BackToPrevious from "./pages/BackToPrevious/BackToprevious";
+import RefLink from "./pages/RefLink/RefLink";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import PathConstants from "./router/pathConstants";
+import routes from "./router/routes";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -28,6 +28,10 @@ function App() {
 	});
 
 	const router = createBrowserRouter([
+		{
+			path: PathConstants.DEFAULT,
+			element: <Landing />,
+		},
 		{
 			path: "*",
 			element: <BackToPrevious />,

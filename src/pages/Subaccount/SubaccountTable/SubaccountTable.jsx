@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "./SubaccountTable.scss";
 
@@ -8,10 +8,8 @@ import { useUser } from "../../../hooks/useUser";
 import { useCreateSubaccountLinks } from "../../../hooks/useCreateSubaccountLinks";
 import { useSelectSubAccountRefLinks } from "../../../hooks/useSelectSubaccountLinks";
 import { SubaccountItem } from "./SubaccountItem";
-import {
-	deleteSubaccount,
-	editSubaccountName,
-} from "../../../utils/supabaseUtils";
+import { useDeleteSubaccount } from "../../../hooks/useDeleteSubaccount";
+import { useRenameSubaccount } from "../../../hooks/useRenameSubaccount";
 
 const SubaccountTable = () => {
 	const { user } = useUser();
@@ -19,16 +17,22 @@ const SubaccountTable = () => {
 	const { setCreateSubAccountLink } = useCreateSubaccountLinks();
 	//Holds account name
 	const [accountName, setAccountName] = useState("");
+	const [renameAccountName, setRenameAccountName] = useState("");
 	// Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
+	const {delSubaccount} = useDeleteSubaccount(); 
+	const {renameSubaccount} = useRenameSubaccount(); 
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
 	const handleNewSubaccount = (e) => {
 		setAccountName(e.target.value);
+	};
+	const handleNewRenameSubaccount = (e) => {
+		setRenameAccountName(e.target.value);
 	};
 	const handleDeleteClick = (rowData) => {
 		setSelectedRow(rowData);
@@ -49,7 +53,7 @@ const SubaccountTable = () => {
 	};
 	const handleDelete = () => {
 		if (selectedRow) {
-			deleteSubaccount(selectedRow.refLink);
+			delSubaccount(selectedRow.refLink);
 
 			setDeleteModalVisible(false); // Close delete confirmation modal after deletion
 		}
@@ -60,12 +64,13 @@ const SubaccountTable = () => {
 	};
 
 	const handleFormSubmit = () => {
-		if (accountName.length !== 0) {
-			editSubaccountName(selectedRow.refLink, accountName);
+		let ThisRefLink = selectedRow.refLink;
+		if (renameAccountName.length !== 0) {
+			renameSubaccount({refLink: ThisRefLink, name: renameAccountName});
 		}
 
 		setIsModalVisible(false); // Hide the modal
-		setAccountName("");
+		setRenameAccountName("");
 	};
 
 	return (
@@ -80,9 +85,9 @@ const SubaccountTable = () => {
 				<input
 					name="accountName"
 					type="text"
-					onChange={handleNewSubaccount}
+					onChange={handleNewRenameSubaccount}
 					className="w-full my-5 h-full rounded-md px-2 text-title3  text-black"
-					value={accountName}
+					value={renameAccountName}
 				/>
 				<button
 					className="rounded-full  bg-light-blue px-8 py-2 "

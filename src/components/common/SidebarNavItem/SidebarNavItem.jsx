@@ -4,15 +4,16 @@ const SidebarNavItem = ({ href, name, icon }) => {
 	return (
 		<NavLink
 			to={href}
-			className="max-w-sidebar-width w-full height-[70px] color-white flex items-center gap-5 p-5 text-left text-text1 no-underline"
+			className="max-w-sidebar-width w-full height-[70px] color-white flex items-center justify-start gap-5 p-5 text-text1 no-underline"
 			style={({ isActive }) => {
 				return {
-					backgroundColor: isActive ? "#24a1e0" : "",
+					backgroundColor: isActive ? "#24a1e0" : null,
 				};
 			}}
 		>
-			{icon}
-			<span className="max-xl:hidden">{name}</span>
+			<span>{icon}</span>
+
+			<span className="flex text-right">{name}</span>
 		</NavLink>
 	);
 };
