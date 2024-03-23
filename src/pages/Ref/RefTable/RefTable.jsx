@@ -36,7 +36,7 @@ const RefTable = () => {
 				window.location.hostname +
 				"/home/" +
 				user.id;
-	const [accountRef, setAccountRef] = useState(link);
+	const [accountRef, setAccountRef] = useState(user.id);
 	// // Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
 	// //holds state of modal window false = invisible
@@ -106,7 +106,7 @@ const RefTable = () => {
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
 							<button
-								onClick={() => handleCopyToClipboard(accountRef)}
+								onClick={() => handleCopyToClipboard(link)}
 								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
 							>
 								Скопировать реферальную ссылку

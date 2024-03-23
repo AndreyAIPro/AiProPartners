@@ -125,13 +125,15 @@ const SubaccountTable = () => {
 							type="text"
 							onChange={handleNewSubaccount}
 							placeholder="Назовите Субаккаунт"
-							className="w-full flex-1 rounded-md px-2 text-text2 text-black "
+							className="w-full rounded-md px-2 text-text2 text-black"
 							value={accountName}
+							style={{width: "15rem"}}
 						/>
 						<div className="flex justify-center px-3">
 							<button
 								className="custom-button text-nowrap rounded-full"
 								onClick={addRow}
+								style={{width: "12rem"}}
 							>
 								Создать Субаккаунт
 							</button>
@@ -141,10 +143,10 @@ const SubaccountTable = () => {
 						<table className="w-[100%] bg-black">
 							<thead>
 								<tr>
-									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4" style={{width: "10rem"}}>
 										Название Субаккаунта
 									</th>
-									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4">
+									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4" style={{width: "15rem"}}>
 										Ссылка
 									</th>
 									<td className=" "></td>

@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import Community from "../components/common/Community/Community";
 import UsuallyArticles from "../components/common/UsuallyArticles/UsuallyArticles";
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -7,7 +8,6 @@ import Study from "../pages/Study/Study";
 import Subaccount from "../pages/Subaccount/Subaccount";
 import PathConstants from "./pathConstants";
 import Preferences from "../pages/Preferences/Preferences";
-import { Navigate } from "react-router-dom";
 import Withdrawal from "./../components/common/Withdrawal/Withdrawal";
 import TableFinance from "../components/common/TableFinance.jsx/TableFinance";
 

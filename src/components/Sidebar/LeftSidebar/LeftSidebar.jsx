@@ -29,7 +29,7 @@ const LeftSidebar = () => {
 			<SidebarNavMenu />
 
 			<button className="h-[90px] p-[20px]">
-				<div className="flex items-center gap-[1.25rem]">
+				<div className="flex items-center gap-[1.25rem]" style={{fontSize:"20px"}}>
 					<RulesIcon />
 					<p
 						className={`${isExpandedLeftSidebar ? "max-xl:hidden" : null} "text-text1"`}
@@ -39,12 +39,12 @@ const LeftSidebar = () => {
 				</div>
 			</button>
 
-			<TelegramLink />
+			{/* <TelegramLink />
 
 			<span className="max-xl:hidden">
 				<SocialLinksList />
 			</span>
-			<Rules />
+			<Rules /> */}
 		</aside>
 	);
 };

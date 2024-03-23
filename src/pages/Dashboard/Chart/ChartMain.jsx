@@ -1,17 +1,43 @@
+import { Select, Button, DatePicker } from "antd";
 import { Line } from "@ant-design/plots";
-import { Button, Select } from "antd";
+import Plate from "../../Preferences/Plate/Plate";
+import { useState, useEffect } from "react";
 import { useSelectAnalTable } from "../../../hooks/useSelectAnalTable";
 import { useUser } from "../../../hooks/useUser";
-import Plate from "../../Preferences/Plate/Plate";
-import { periodType, subAccounts } from "../DataDashboard/ChartData";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+
+dayjs.extend(isBetween);
+const { RangePicker } = DatePicker;
 
 export default function ChartMain(params) {
-	const handleChange = (value) => {
-		console.log(`selected ${value}`);
-	};
 	const { user } = useUser();
-
 	const { data: analTable } = useSelectAnalTable(user?.id);
+	const [dateRange, setDateRange] = useState(null);
+	const [refNames, setRefNames] = useState([]);
+	const [selectedRefName, setSelectedRefName] = useState(null);
+	const [filteredData, setFilteredData] = useState([]);
+	const disabledDates = () => {
+		const dates = analTable?.map((row) => dayjs(row.date).format("YYYY-MM-DD"));
+
+		return (current) => {
+			const formattedDate = current.format("YYYY-MM-DD");
+			return !dates.includes(formattedDate);
+		};
+	};
+	const filterData = (tableData, startDate, endDate, refName) => {
+		let filteredData = tableData;
+		if (startDate && endDate) {
+			filteredData = filteredData.filter((row) =>
+				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
+			);
+		}
+		if (refName) {
+			filteredData = filteredData.filter((row) => row.refName === refName);
+		}
+		return filteredData;
+	};
+
 	const analTableData = analTable?.map((row, index) => {
 		row.key = index;
 		if (row.firstBuy && row.otherBuy) {
@@ -19,7 +45,7 @@ export default function ChartMain(params) {
 		} else {
 			row.percentCTR = 0;
 		}
-		// row.percentCTR = ((row.unique / row.getClients) * 100).toFixed(2) + "%";
+
 		row.to = row.firstBuy + row.otherBuy;
 		row.uos = +(row.incomeFirst + row.incomeOther).toFixed(2);
 		if (row.firstBuy && row.getClients) {
@@ -27,13 +53,13 @@ export default function ChartMain(params) {
 		} else {
 			row.cr2 = 0;
 		}
-		// row.cr2 = ((row.firstBuy / row.getClients)).toFixed(2) + "%";
+
 		if (row.firstBuy && row.otherBuy) {
 			row.cr3 = +((row.firstBuy / row.otherBuy) * 100).toFixed(2);
 		} else {
 			row.cr3 = 0;
 		}
-		// row.cr3 = ((row.firstBuy / row.otherBuy)).toFixed(2) + "%";
+
 		row.totalIncome = +(row.incomeFirst * 0.3 + row.incomeOther * 0.15).toFixed(
 			2,
 		);
@@ -42,7 +68,7 @@ export default function ChartMain(params) {
 	});
 
 	const testData = [];
-	const testConfig = analTableData?.map((line) => {
+	const testConfig = filteredData?.map((line) => {
 		testData.push(
 			{
 				date: line.date,
@@ -97,8 +123,38 @@ export default function ChartMain(params) {
 			},
 		);
 	});
+	console.log(testData);
 
-	const chartConfig2 = {
+	const handleDateRangeChange = (dates) => {
+		setDateRange(dates);
+	};
+	const handleRefNameChange = (value) => {
+		setSelectedRefName(value); // Update selectedRefName when a new option is selected
+	};
+
+	useEffect(() => {
+		if (analTable) {
+			const uniqueRefNames = Array.from(
+				new Set(analTable.map((row) => row.refName)),
+			);
+			setRefNames(uniqueRefNames);
+			if (uniqueRefNames.length > 0) {
+				setSelectedRefName(uniqueRefNames[0]);
+			}
+			// Filter data initially by the first unique refName
+			const initialRefName = uniqueRefNames[0];
+			const initialFilteredData = filterData(
+				analTableData,
+				null,
+				null,
+				initialRefName,
+			);
+
+			setFilteredData(initialFilteredData);
+		}
+	}, [analTable]);
+
+	const chartConfig = {
 		data: testData,
 
 		xField: "date",
@@ -108,6 +164,33 @@ export default function ChartMain(params) {
 		theme: "classicDark",
 		colorField: "category",
 		animate: { enter: { type: "growInX", duration: 600 } },
+	};
+	// const applyFilters = () => {
+	// 	let filteredData = analTableData;
+
+	// 	if (dateRange && dateRange.length === 2) {
+	// 		const [startDate, endDate] = dateRange;
+	// 		filteredData = filteredData.filter((row) =>
+	// 			dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
+	// 		);
+	// 	}
+	// 	// Filter by selected refName
+	// 	if (selectedRefName) {
+	// 		filteredData = filteredData.filter(
+	// 			(row) => row.refName === selectedRefName,
+	// 		);
+	// 	}
+	// 	setFilteredData(filteredData);
+	// };
+	const applyFilters = () => {
+		// Filter data based on date range and selected refName
+		const filteredData = filterData(
+			analTable,
+			dateRange[0],
+			dateRange[1],
+			selectedRefName,
+		);
+		setFilteredData(filteredData);
 	};
 
 	return (
@@ -119,22 +202,35 @@ export default function ChartMain(params) {
 						<div className="flex flex-nowrap ">
 							<div className="px-3">
 								<Select
-									defaultValue="Субаккаунт"
-									onChange={handleChange}
-									options={[...subAccounts]}
+									defaultValue={"Выберите Субаккаунт"}
+									options={refNames.map((name) => ({
+										label: name,
+										value: name,
+									}))}
 									size="small"
+									onChange={handleRefNameChange}
+									defaultActiveFirstOption={true}
+									style={{ width: "12rem" }}
 								/>
 							</div>
-							<div>
-								<Select
-									defaultValue="Тип периода"
-									onChange={handleChange}
-									options={[...periodType]}
-									size="small"
-								/>
+							<div className="flex flex-nowrap ">
+								<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
+									<div className="flex items-center  justify-center pr-2">
+										Выбрать диапазон дат
+									</div>
+									<div className=" ml-3 flex pl-2">
+										<RangePicker
+											disabledDate={disabledDates()}
+											size="small"
+											variant={false}
+											placeholder={["Начало", "Конец"]}
+											onChange={handleDateRangeChange}
+										/>
+									</div>
+								</div>
 							</div>
 							<div className="pl-6">
-								<Button size="small" shape="round">
+								<Button shape="round" onClick={applyFilters}>
 									Обновить
 								</Button>
 							</div>
@@ -142,45 +238,9 @@ export default function ChartMain(params) {
 					</div>
 				}
 			>
-				{/* <div className="flex flex-nowrap pb-3">
-					<div className="pr-5">
-						<Select
-							defaultValue="Страна"
-							onChange={handleChange}
-							options={[...countries]}
-							size="small"
-						/>
-					</div>
-					<div className="pr-5">
-						
-					</div>
-					<div className="pr-5">
-						<Select
-							defaultValue="Офер"
-							onChange={handleChange}
-							options={[...ofers]}
-							size="small"
-						/>
-					</div>
-					<div className="pl-6">
-						<Button size="small" shape="round">
-							Обновить
-						</Button>
-					</div>
-				</div> */}
 				<div>
 					{/** Chart HERE*/}
-					<Line {...chartConfig2} className="chart-container" />
-					{/* <div className="px-2 py-2">
-						<Checkbox className="pr-4">Уники</Checkbox>
-						<Checkbox className="pr-4">Регистрации</Checkbox>
-						<Checkbox className="pr-4">Подтвержденные рег.</Checkbox>
-						<Checkbox className="pr-4">CTR, %</Checkbox>
-						<Checkbox className="pr-4">Уникальные покупки</Checkbox>
-						<Checkbox className="pr-4">Уникальные покупки в $</Checkbox>
-						<Checkbox className="pr-4">CR2, %</Checkbox>
-						<Checkbox className="pr-4">Доход, $</Checkbox>
-					</div> */}
+					<Line {...chartConfig} className="chart-container" />
 				</div>
 			</Plate>
 		</>

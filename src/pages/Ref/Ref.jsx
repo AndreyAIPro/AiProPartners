@@ -49,7 +49,7 @@ const Ref = () => {
 							</button>
 						</div> */}
 				</div>
-				<div className="flex-1">
+				<div className="flex-1" style={{width: "40rem"}}>
 					<RefTable />
 				</div>
 			</div>

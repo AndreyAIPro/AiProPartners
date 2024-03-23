@@ -73,7 +73,7 @@ export const columns = [
 	},
 
 	{
-		title: "Дохід",
+		title: "Доход",
 		dataIndex: "totalIncome",
 		key: "totalIncome",
 	},
