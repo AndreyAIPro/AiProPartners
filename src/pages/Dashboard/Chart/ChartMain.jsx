@@ -68,7 +68,7 @@ export default function ChartMain(params) {
 	});
 
 	const testData = [];
-	const testConfig = analTableData?.map((line) => {
+	const testConfig = filteredData?.map((line) => {
 		testData.push(
 			{
 				date: line.date,
@@ -123,6 +123,7 @@ export default function ChartMain(params) {
 			},
 		);
 	});
+	console.log(testData);
 
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
@@ -154,7 +155,7 @@ export default function ChartMain(params) {
 	}, [analTable]);
 
 	const chartConfig = {
-		data: filteredData,
+		data: testData,
 
 		xField: "date",
 		yField: "value",
