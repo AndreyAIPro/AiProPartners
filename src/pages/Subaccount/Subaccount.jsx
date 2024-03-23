@@ -3,9 +3,11 @@ import SubaccountTable from "./SubaccountTable/SubaccountTable";
 const Subaccount = () => {
 	return (
 		<article className="flex-1 flex-col justify-start px-4">
+			<div style={{display:"flex", flexWrap:"wrap"}}> 
 			<h2 className="px-4 py-6 text-title  font-bold">Субаккаунт</h2>
 			<div className="flex flex-row">
-				<div className="w-[455px]">
+				
+				<div className="">
 					<p className="px-4 py-2 text-title2 ">
 						<b>Субаккаунт (ссылка для субаккаунта)</b>- это ссылка которая
 						позволяет вам:
@@ -26,6 +28,7 @@ const Subaccount = () => {
 				<div className="flex-1 ">
 					<SubaccountTable />
 				</div>
+			</div>
 			</div>
 		</article>
 	);

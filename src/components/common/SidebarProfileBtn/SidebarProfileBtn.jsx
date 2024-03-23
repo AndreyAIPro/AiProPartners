@@ -11,7 +11,7 @@ import styles from "./sidebar-profile-btn.module.scss";
 const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
 	const [openModal, setOpenModal] = useState(false);
-	const userData = user.user_metadata;
+	const {fullName} = user.user_metadata;
 
 	return (
 		<div className="w-full flex h-full max-h-10 items-center justify-between max-xl:flex-col max-xl:gap-2">
@@ -22,7 +22,7 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				<h3
 					className={`text-[20px] font-normal leading-7 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
 				>
-					{userData.fullName}
+					{fullName}
 				</h3>
 			</div>
 			<div
