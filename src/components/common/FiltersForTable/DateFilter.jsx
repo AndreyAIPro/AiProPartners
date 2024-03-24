@@ -6,9 +6,17 @@ dayjs.extend(customParseFormat);
 
 const { RangePicker } = DatePicker;
 
-const DateFilter = () => {
+const DateFilter = ({ filterByDate }) => {
 	const disabledDate = (current) => {
 		return current && current < dayjs().endOf("day");
+	};
+
+	const handleDateChange = (dates) => {
+		if (dates && dates.length === 2) {
+			const startDate = dayjs(dates[0]).startOf("day").toDate();
+			const endDate = dayjs(dates[1]).endOf("day").toDate();
+			filterByDate(startDate, endDate);
+		}
 	};
 
 	return (
@@ -21,6 +29,7 @@ const DateFilter = () => {
 					}}
 				>
 					<RangePicker
+						onChange={handleDateChange}
 						className="bg-secondary  text-white"
 						disabledDate={disabledDate}
 						size="small"

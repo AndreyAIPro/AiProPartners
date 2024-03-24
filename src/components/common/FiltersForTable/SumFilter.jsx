@@ -1,19 +1,31 @@
-import { useState } from "react"
+import { useState } from "react";
 
-const SumFilter = () => {
-  const [changeSum, setChangeSum] = useState(false);
-  return (
-    <div >
-      <button
-      onClick={() => setChangeSum(!changeSum)}
-      className="hover:bg-light-blue rounded-md border-2 border-light-blue px-4 py-1 font-nunito-sans flex gap-2">
-        Сумма
-      { changeSum ? <p>{'↑'}</p> :
-      <p>{'↓'}</p>}
-      </button>
+const SumFilter = ({ data, onDataChange }) => {
+	const [ascending, setAscending] = useState(true);
 
-   </div>
-  )
-}
+	const sortBySum = () => {
+		const sortedBySum = data.slice().sort((a, b) => {
+			if (ascending) {
+				return a.sum - b.sum;
+			} else {
+				return b.sum - a.sum;
+			}
+		});
+		onDataChange(sortedBySum);
+		setAscending(!ascending);
+	};
 
-export default SumFilter
+	return (
+		<div>
+			<button
+				onClick={sortBySum}
+				className="flex gap-2 rounded-md border-2 border-light-blue px-4 py-1 font-nunito-sans hover:bg-light-blue"
+			>
+				Сумма
+				{ascending ? <p>{"↑"}</p> : <p>{"↓"}</p>}
+			</button>
+		</div>
+	);
+};
+
+export default SumFilter;
