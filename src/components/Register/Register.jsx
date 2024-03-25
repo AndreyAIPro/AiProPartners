@@ -12,6 +12,7 @@ export default function Register() {
 	const [phone, setPhone] = useState("");
 	const isValid = isPhoneValid(phone);
 	const [isFinallyForm, setIsFanillyForm] = useState(true);
+	const [isWait, setIsWait] = useState(false);
 	const [messageApi, contextHolder] = message.useMessage();
 	const [showMessagewithErrorPhone, setShowMessagewithErrorPhone] =
 		useState(false);
@@ -27,7 +28,7 @@ export default function Register() {
 			onFinish={onFinish}
 			autoComplete="off"
 		>
-			{isFinallyForm ? (
+			{!isWait ? isFinallyForm ? (
 				<>
 					<div className="mb-[25px] text-center text-[40px] font-bold">
 						Создание аккаунта
@@ -73,15 +74,17 @@ export default function Register() {
 						</p>
 					</p>
 				</div>
-			)}
+			): ""}
 		</Form>
 	);
 
 	function onFinish(values) {
-		const returnedTarget = Object.assign({refLink: refid}, values);
+		setIsWait(true)
+		let returnedTarget = Object.assign({refLink: refid}, values);
 		signup(returnedTarget, {
 			onSuccess: () => {
 				setIsFanillyForm(false);
+				setIsWait(false)
 			},
 			onError: (err) => {
 				messageApi.open({
@@ -89,6 +92,7 @@ export default function Register() {
 					duration: 5,
 					content: err.message,
 				});
+				setIsWait(false)
 			},
 		});
 	}
