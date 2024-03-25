@@ -2,7 +2,6 @@ import { useUser } from "../../../hooks/useUser";
 
 const BalanceArticle = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
-	console.log(user);
 	const { money } = user.user_metadata;
 
 	return (
@@ -11,7 +10,7 @@ const BalanceArticle = ({ isExpandedRightSidebar }) => {
 				$
 			</span>
 			<p
-				className={`${isExpandedRightSidebar ? "hidden" : "visible"} visible flex flex-col justify-center text-[16px]`}
+				className={`${isExpandedRightSidebar ? "hidden" : "flex"} visible flex flex-col justify-center text-[16px]`}
 			>
 				Текущий баланс
 				<span id="currentCash">{money + " $"}</span>

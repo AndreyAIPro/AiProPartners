@@ -26,7 +26,7 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full mt-6 flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-5"}`}
+				className={`max-xl:w-full flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
 			>
 				<NavLink
 					to="/preferences"

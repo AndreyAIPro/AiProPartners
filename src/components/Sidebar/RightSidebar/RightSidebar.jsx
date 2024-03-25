@@ -5,7 +5,7 @@ import BalanceArticle from "../../common/BalanceArticle";
 import SidebarProfileBtn from "../../common/SidebarProfileBtn";
 
 const RightSidebar = () => {
-	const [isExpandedRightSidebar, setIsExpandedRightSidebar] = useState(true);
+	const [isExpandedRightSidebar, setIsExpandedRightSidebar] = useState(false);
 
 	const handleClick = () =>
 		isExpandedRightSidebar

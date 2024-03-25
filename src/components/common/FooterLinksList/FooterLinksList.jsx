@@ -1,14 +1,9 @@
-
-
-import { footerLinks } from '../../../data/landingData';
-import FooterLinksItem from '../FooterLinksItem/FooterLinksItem';
+import { footerLinks } from "../../../data/landingData";
+import FooterLinksItem from "../FooterLinksItem/FooterLinksItem";
 
 const FooterLinksList = () => {
 	return (
-		<ul
-			className='flex gap-[50px] max-[1200px]:flex-col max-[1200px]:items-center max-[1200px]:gap-[15px]'
-			data-aos='fade-up'
-		>
+		<ul className="flex gap-[50px] max-[1200px]:flex-col max-[1200px]:items-center max-[1200px]:gap-[15px]">
 			{footerLinks.map((links, index) => (
 				<FooterLinksItem key={index} {...links} />
 			))}
