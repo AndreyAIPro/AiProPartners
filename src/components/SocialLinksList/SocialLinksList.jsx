@@ -12,7 +12,7 @@ const SocialLinksList = ({ isExpandedRightSidebar }) => {
 	return (
 		<>
 			<ul
-				className={`w-full mt-[55px] flex items-center justify-around gap-5 px-5 max-xl:mt-[300px] ${isExpandedRightSidebar ? "max-xl:flex-row" : "max-xl:flex-col"}`}
+				className={`w-full mt-[55px] flex items-center justify-around gap-5 px-5 max-xl:mt-[300px] ${isExpandedRightSidebar ? "max-xl:flex-row" : "max-xl:flex-col"} xl:hidden`}
 			>
 				{Links.map((link, i) => (
 					<a key={i} href={link.href}>

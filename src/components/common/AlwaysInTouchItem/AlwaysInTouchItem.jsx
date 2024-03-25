@@ -1,17 +1,14 @@
-
-
-import { NavLink } from 'react-router-dom';
-import { alwaysInTouch } from '../../../data/landingData';
+import { alwaysInTouch } from "../../../data/landingData";
 
 const AlwaysInTouchItem = ({ href, text, icon, index }) => {
 	return (
 		<li
-			className={`flex items-center justify-center text-white w-[330px] py-[35px] border border-in-touch-border border-y-0 ${index == alwaysInTouch.length ? 'border-r-0 max-md:border-b-0' : index == 1 ? 'border-l-0 max-md:border-t-0' : null} max-md:border max-md:border-x-0 `}
+			className={`flex w-[330px] items-center justify-center border border-y-0 border-in-touch-border py-[35px] text-white ${index == alwaysInTouch.length ? "border-r-0 hover:rounded-r-[20px] max-md:border-b-0" : index == 1 ? "border-l-0 hover:rounded-l-[20px] max-md:border-t-0" : null} hover:cursor-pointer hover:bg-indigo-950 max-md:border max-md:border-x-0`}
 		>
-			<NavLink to={href} className='flex gap-x-3'>
+			<a href={href} className="flex gap-x-3">
 				<img src={icon} alt={text} />
 				{text}
-			</NavLink>
+			</a>
 		</li>
 	);
 };

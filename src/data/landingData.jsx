@@ -1,5 +1,3 @@
-
-
 export const statistics = [
 	{ statistic: "Стран для трафика", value: 164 },
 	{ statistic: "Выплат в месяц", value: "$9,063,816" },
@@ -110,7 +108,7 @@ export const whyAIPRO = [
 
 export const howStart = [
 	{
-		title: "Зарегистрируйтесь в AIPRO",
+		title: "Зарегистрируйтесь в AIPRO PARTNERS",
 		icon: "src/assets/images/landing/howStart/account.svg",
 	},
 	{
@@ -182,12 +180,12 @@ export const partnerProgramTable = [
 
 export const alwaysInTouch = [
 	{
-		href: "#",
-		text: "aipro@gmail.com",
+		href: "mailto:support@ai-pro.company",
+		text: "support@ai-pro.company",
 		icon: "src/assets/images/landing/alwaysInTouch/email.svg",
 	},
 	{
-		href: "#",
+		href: "https://t.me/aipro_manager",
 		text: "@aipro_partners",
 		icon: "src/assets/images/landing/alwaysInTouch/telegram.svg",
 	},

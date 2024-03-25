@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { RulesIcon } from "../../../assets/images/navIcons";
 import { ReactComponent as Arrow } from "../../../assets/images/sidebar-arrow.svg";
-import Rules from "../../../utils/Rules/Rules";
 import SidebarNavMenu from "../../SidebarNavMenu";
-import SocialLinksList from "../../SocialLinksList";
-import TelegramLink from "../../common/TelegramLink";
 import LeftSidebarHeader from "./LeftSidebarHeader";
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ openModal }) => {
 	const [isExpandedLeftSidebar, setIsExpandedLeftSidebar] = useState(true);
 
 	const handleClick = () =>
@@ -28,8 +25,11 @@ const LeftSidebar = () => {
 			</button>
 			<SidebarNavMenu />
 
-			<button className="h-[90px] p-[20px]">
-				<div className="flex items-center gap-[1.25rem]" style={{fontSize:"20px"}}>
+			<button onClick={openModal} className="h-[90px] p-[20px]">
+				<div
+					className="flex items-center gap-[1.25rem]"
+					style={{ fontSize: "20px" }}
+				>
 					<RulesIcon />
 					<p
 						className={`${isExpandedLeftSidebar ? "max-xl:hidden" : null} "text-text1"`}

@@ -10,8 +10,8 @@ import styles from "./sidebar-profile-btn.module.scss";
 
 const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
+	const { fullName } = user.user_metadata;
 	const [openModal, setOpenModal] = useState(false);
-	const {fullName} = user.user_metadata;
 
 	return (
 		<div className="w-full flex h-full max-h-10 items-center justify-between max-xl:flex-col max-xl:gap-2">
@@ -26,7 +26,7 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "mt-10 max-xl:flex-col" : null}`}
+				className={`max-xl:w-full mt-6 flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-5"}`}
 			>
 				<NavLink
 					to="/preferences"
@@ -43,8 +43,8 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 					className="relative mr-[-7px] flex flex-row-reverse"
 				>
 					<ExitIcon />
-					<LogoutModal active={openModal} setActive={setOpenModal} />
 				</button>
+				<LogoutModal active={openModal} onClose={() => setOpenModal(false)} />
 			</div>
 		</div>
 	);

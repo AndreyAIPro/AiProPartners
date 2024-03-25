@@ -1,17 +1,16 @@
-
-import AlwaysInTouchList from '../components/AlwaysInTouchList/AlwaysInTouchList';
-import LandingSectionHeading from '../components/common/LandingSectionHeading/LandingSectionHeading';
+import AlwaysInTouchList from "../components/AlwaysInTouchList/AlwaysInTouchList";
+import LandingSectionHeading from "../components/common/LandingSectionHeading/LandingSectionHeading";
 
 const AlwaysInTouch = () => {
 	return (
-		<section className='pt-[151px] bg-reuse-bg flex flex-col gap-6 items-center relative h-[382px] w-full after:h-full after:max-h-[180px] after:w-full after:bg-in-touch after:bg-no-repeat after:bg-center after:absolute max-md:h-fit max-md:pb-14 max-md:bg-mobile-footer max-md:bg-no-repeat max-md:bg-cover'>
+		<div className="w-full relative flex h-[382px] flex-col items-center gap-6 bg-in-touch pt-[151px] max-md:h-fit max-md:bg-mobile-footer max-md:bg-cover max-md:bg-no-repeat max-md:pb-14">
 			<LandingSectionHeading
-				title='Всегда на связи'
+				title="Всегда на связи"
 				isUpper
-				dataAos='fade-left'
+				dataAos="fade-left"
 			/>
 			<AlwaysInTouchList />
-		</section>
+		</div>
 	);
 };
 
