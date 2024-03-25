@@ -14,7 +14,7 @@ const LeftSidebar = ({ openModal }) => {
 
 	return (
 		<aside
-			className={`w-full sticky top-0 max-w-[319px] ${isExpandedLeftSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
+			className={`sticky top-0 w-[319px] max-w-[319px] ${isExpandedLeftSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
 			<LeftSidebarHeader />
 			<button
