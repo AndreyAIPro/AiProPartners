@@ -18,7 +18,9 @@ export default function ChartMain(params) {
 	const [selectedRefName, setSelectedRefName] = useState(null);
 	const [filteredData, setFilteredData] = useState([]);
 	const disabledDates = () => {
-		const dates = analTable?.map((row) => dayjs(row.date).format("YYYY-MM-DD"));
+		const dates = analTableData?.map((row) =>
+			dayjs(row.date).format("YYYY-MM-DD"),
+		);
 
 		return (current) => {
 			const formattedDate = current.format("YYYY-MM-DD");
@@ -68,7 +70,7 @@ export default function ChartMain(params) {
 	});
 
 	const testData = [];
-	const testConfig = filteredData?.map((line) => {
+	filteredData?.map((line) => {
 		testData.push(
 			{
 				date: line.date,
@@ -123,7 +125,6 @@ export default function ChartMain(params) {
 			},
 		);
 	});
-	console.log(testData);
 
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
@@ -165,74 +166,75 @@ export default function ChartMain(params) {
 		colorField: "category",
 		animate: { enter: { type: "growInX", duration: 600 } },
 	};
-	// const applyFilters = () => {
-	// 	let filteredData = analTableData;
-
-	// 	if (dateRange && dateRange.length === 2) {
-	// 		const [startDate, endDate] = dateRange;
-	// 		filteredData = filteredData.filter((row) =>
-	// 			dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
-	// 		);
-	// 	}
-	// 	// Filter by selected refName
-	// 	if (selectedRefName) {
-	// 		filteredData = filteredData.filter(
-	// 			(row) => row.refName === selectedRefName,
-	// 		);
-	// 	}
-	// 	setFilteredData(filteredData);
-	// };
 	const applyFilters = () => {
-		// Filter data based on date range and selected refName
-		const filteredData = filterData(
-			analTable,
-			dateRange[0],
-			dateRange[1],
-			selectedRefName,
-		);
+		let filteredData = analTableData;
+
+		if (dateRange && dateRange.length === 2) {
+			const [startDate, endDate] = dateRange;
+			filteredData = filteredData.filter((row) =>
+				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
+			);
+		}
+		// Filter by selected refName
+		if (selectedRefName) {
+			filteredData = filteredData.filter(
+				(row) => row.refName === selectedRefName,
+			);
+		}
 		setFilteredData(filteredData);
 	};
+	// const applyFilters = () => {
+	// 	// Filter data based on date range and selected refName
+	// 	const filteredData = filterData(
+	// 		analTable,
+	// 		dateRange[0],
+	// 		dateRange[1],
+	// 		selectedRefName,
+	// 	);
+	// 	setFilteredData(filteredData);
+	// };
 
 	return (
 		<>
 			<Plate
 				title={
-					<div className="flex flex-nowrap ">
-						<div>Подробные данные статистики</div>
-						<div className="flex flex-nowrap ">
-							<div className="px-3">
-								<Select
-									defaultValue={"Выберите Субаккаунт"}
-									options={refNames.map((name) => ({
-										label: name,
-										value: name,
-									}))}
-									size="small"
-									onChange={handleRefNameChange}
-									defaultActiveFirstOption={true}
-									style={{ width: "12rem" }}
-								/>
-							</div>
+					<div className="flex flex-col  ">
+						<div className="pb-3">Подробные данные статистики</div>
+						<div>
 							<div className="flex flex-nowrap ">
-								<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
-									<div className="flex items-center  justify-center pr-2">
-										Выбрать диапазон дат
-									</div>
-									<div className=" ml-3 flex pl-2">
-										<RangePicker
-											disabledDate={disabledDates()}
-											size="small"
-											variant={false}
-											placeholder={["Начало", "Конец"]}
-											onChange={handleDateRangeChange}
-										/>
+								<div className="pr-2">
+									<Select
+										defaultValue={"Выберите Субаккаунт"}
+										options={refNames.map((name) => ({
+											label: name,
+											value: name,
+										}))}
+										onChange={handleRefNameChange}
+										defaultActiveFirstOption={true}
+										style={{ width: "12rem" }}
+									/>
+								</div>
+								<div className="flex flex-nowrap ">
+									<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
+										<div className="flex items-center  justify-center pr-2">
+											Выбрать диапазон дат
+										</div>
+										<div className=" ml-3 flex pl-2">
+											<RangePicker
+												disabledDate={disabledDates()}
+												size="small"
+												variant={false}
+												placeholder={["Начало", "Конец"]}
+												onChange={handleDateRangeChange}
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div className="pl-6">
-								<Button shape="round" onClick={applyFilters}>
-									Обновить
-								</Button>
+								<div className="pl-6">
+									<Button shape="round" onClick={applyFilters}>
+										Обновить
+									</Button>
+								</div>
 							</div>
 						</div>
 					</div>
