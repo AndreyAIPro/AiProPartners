@@ -68,7 +68,7 @@ export default function ChartMain(params) {
 	});
 
 	const testData = [];
-	const testConfig = filteredData?.map((line) => {
+	filteredData?.map((line) => {
 		testData.push(
 			{
 				date: line.date,
@@ -123,7 +123,6 @@ export default function ChartMain(params) {
 			},
 		);
 	});
-	console.log(testData);
 
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
