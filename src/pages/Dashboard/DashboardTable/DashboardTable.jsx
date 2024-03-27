@@ -147,7 +147,7 @@ export default function DashboardTable() {
 					</div>
 				</div>
 				{/** TABLE HERE */}
-				<div className="flex-1">
+				<div className="w-full">
 					<Table
 						dataSource={filteredData}
 						columns={columns}

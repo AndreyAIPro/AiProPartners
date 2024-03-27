@@ -14,19 +14,21 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const [openModal, setOpenModal] = useState(false);
 
 	return (
-		<div className="w-full flex h-full max-h-10 items-center justify-between max-xl:flex-col max-xl:gap-2">
+		<div
+			className={`w-full flex h-full max-h-10  items-center justify-between  max-xl:gap-2  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
+		>
 			<div
-				className={`flex items-center gap-[10px] ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
+				className={`flex scale-75 items-center gap-[10px] 2xl:scale-100 ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
 			>
 				<ProfilePlaceholder />
 				<h3
-					className={`text-[20px] font-normal leading-7 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
+					className={`text-[1rem] font-normal leading-7 2xl:text-[20px] ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
 				>
 					{fullName}
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full flex items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
+				className={`max-xl:w-full flex scale-75 items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
 			>
 				<NavLink
 					to="/preferences"

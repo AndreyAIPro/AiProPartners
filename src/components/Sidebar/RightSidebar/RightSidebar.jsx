@@ -14,7 +14,7 @@ const RightSidebar = () => {
 
 	return (
 		<aside
-			className={`w-full sticky top-0 flex min-h-dvh max-w-[319px] flex-col gap-[50px] p-5 max-xl:gap-5 max-xl:px-[10px] max-xl:py-5 ${isExpandedRightSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
+			className={`sticky top-0 flex  min-h-dvh w-[18vw] max-w-[319px] flex-col gap-[50px] p-5 max-xl:gap-5 max-xl:px-[10px] max-xl:py-5 ${isExpandedRightSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
 			<BalanceArticle isExpandedRightSidebar={isExpandedRightSidebar} />
 			<button

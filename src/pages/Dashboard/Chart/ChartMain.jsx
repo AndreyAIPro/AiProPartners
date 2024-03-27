@@ -202,7 +202,7 @@ export default function ChartMain(params) {
 						<div className="pb-3">Подробные данные статистики</div>
 						<div>
 							<div className="flex flex-nowrap ">
-								<div className="pr-2">
+								<div className="pr-2 ">
 									<Select
 										defaultValue={"Выберите Субаккаунт"}
 										options={refNames.map((name) => ({

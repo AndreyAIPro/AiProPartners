@@ -13,7 +13,7 @@ const PrivateLayout = () => {
 	return (
 		<>
 			{user && (
-				<div className="flex h-full justify-between bg-primary text-white max-xl:w-[1280px]">
+				<div className=" w-full flex  h-full bg-primary text-white">
 					<Rules openModal={isModalOpen} closeModal={closeModal} />
 					<Sidebar isLeftSidebar openModal={() => setIsModalOpen(true)} />
 					<Outlet />

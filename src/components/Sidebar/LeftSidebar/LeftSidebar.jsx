@@ -14,26 +14,24 @@ const LeftSidebar = ({ openModal }) => {
 
 	return (
 		<aside
-			className={`sticky top-0 w-[319px] max-w-[319px] ${isExpandedLeftSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
+			className={`sticky top-0 w-[18vw] max-w-[319px] ${isExpandedLeftSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
 			<LeftSidebarHeader />
 			<button
-				className={`w-full mt-5 hidden ${isExpandedLeftSidebar ? "max-xl:justify-center" : "rotate-180 pl-5 max-xl:justify-start"} items-center max-xl:flex`}
+				className={`w-full hidden h-3  ${isExpandedLeftSidebar ? "max-xl:justify-center" : "rotate-180 pl-5 max-xl:justify-start"} items-center max-xl:flex`}
 				onClick={() => handleClick()}
 			>
 				<Arrow />
 			</button>
 			<SidebarNavMenu />
 
-			<button onClick={openModal} className="h-[90px] p-[20px]">
-				<div
-					className="flex items-center gap-[1.25rem]"
-					style={{ fontSize: "20px" }}
-				>
-					<RulesIcon />
-					<p
-						className={`${isExpandedLeftSidebar ? "max-xl:hidden" : null} "text-text1"`}
-					>
+			<button
+				onClick={openModal}
+				className="h-[4rem]  px-[1.2rem] 2xl:h-[90px]"
+			>
+				<div className="flex items-center gap-[1.25rem] text-text3 2xl:text-text1">
+					<RulesIcon style={{ fontSize: "20px" }} />
+					<p className={`${isExpandedLeftSidebar ? "max-xl:hidden" : ""} `}>
 						Правила
 					</p>
 				</div>
