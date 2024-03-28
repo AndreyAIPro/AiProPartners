@@ -15,10 +15,10 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 
 	return (
 		<div
-			className={`w-full flex h-full max-h-10  items-center justify-between  max-xl:gap-2  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
+			className={`w-full flex h-full max-h-10 items-center justify-between pt-6  max-xl:gap-2  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
 		>
 			<div
-				className={`flex scale-75 items-center gap-[10px] 2xl:scale-100 ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
+				className={`flex scale-75 items-center gap-[10px]  2xl:scale-100 ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
 			>
 				<ProfilePlaceholder />
 				<h3

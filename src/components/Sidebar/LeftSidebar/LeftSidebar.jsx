@@ -3,6 +3,7 @@ import { RulesIcon } from "../../../assets/images/navIcons";
 import { ReactComponent as Arrow } from "../../../assets/images/sidebar-arrow.svg";
 import SidebarNavMenu from "../../SidebarNavMenu";
 import LeftSidebarHeader from "./LeftSidebarHeader";
+import SocialLinksList from "../../SocialLinksList";
 
 const LeftSidebar = ({ openModal }) => {
 	const [isExpandedLeftSidebar, setIsExpandedLeftSidebar] = useState(true);
@@ -36,13 +37,9 @@ const LeftSidebar = ({ openModal }) => {
 					</p>
 				</div>
 			</button>
-
-			{/* <TelegramLink />
-
-			<span className="max-xl:hidden">
+			<div className="max-xl:hidden">
 				<SocialLinksList />
-			</span>
-			<Rules /> */}
+			</div>
 		</aside>
 	);
 };

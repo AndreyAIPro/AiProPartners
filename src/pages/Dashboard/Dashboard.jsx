@@ -56,9 +56,7 @@ const Charts = () => {
 	return (
 		<>
 			<div className="w-[60vw] flex-1 ">
-				<h2 className="px-4 py-3 text-title3 font-bold xl:text-title2 2xl:py-6">
-					Dashboard
-				</h2>
+				<h2 className="px-4 py-3 text-title font-bold 2xl:py-6 ">Dashboard</h2>
 				<div className="w-full flex  justify-between space-x-3">
 					{/* Плашки*/}
 					<div className=" flex-1  pl-2">
