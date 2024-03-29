@@ -12,9 +12,11 @@ const DateFilter = () => {
 	};
 
 	return (
-		<div className="flex flex-col flex-nowrap rounded-md border-[1px] border-white">
-			<div className="pt-2 text-center">Выбрать диапазон дат</div>
-			<div className="  pt-2">
+		<div className="flex  flex-row flex-nowrap rounded-md border-2 py-1  pl-2 ">
+			<div className="flex items-center justify-center text-nowrap pr-2">
+				Выбрать диапазон дат
+			</div>
+			<div>
 				<ConfigProvider
 					theme={{
 						algorithm: theme.darkAlgorithm,

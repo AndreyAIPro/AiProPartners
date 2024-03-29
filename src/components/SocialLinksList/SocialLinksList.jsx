@@ -10,20 +10,20 @@ const Links = [
 
 const SocialLinksList = ({ isExpandedRightSidebar }) => {
 	return (
-		<>
+		<div className="mt-[55px] flex">
 			<ul
-				className={`w-full mt-[55px] flex items-center justify-around gap-5 px-5 max-xl:mt-[300px] ${isExpandedRightSidebar ? "max-xl:flex-row" : "max-xl:flex-col"} xl:hidden`}
+				className={`w-full  flex  justify-around gap-5 px-5  ${isExpandedRightSidebar ? "max-xl:flex-col" : "max-xl:flex-row"} `}
 			>
 				{Links.map((link, i) => (
 					<a key={i} href={link.href}>
 						{link.icon}
 					</a>
 				))}
-				<p className="text-wrap text-text4 font-normal max-xl:hidden">
-					Подписывайся на нас в соцсетях
-				</p>
 			</ul>
-		</>
+			<p className=" text-wrap text-text4 font-normal max-2xl:hidden ">
+				Подписывайся на нас в соцсетях
+			</p>
+		</div>
 	);
 };
 

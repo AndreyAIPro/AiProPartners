@@ -23,8 +23,8 @@ const SubaccountTable = () => {
 	//holds state of modal window false = invisible
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false); // State for delete confirmation modal
 	// holds Ref
-	const {delSubaccount} = useDeleteSubaccount(); 
-	const {renameSubaccount} = useRenameSubaccount(); 
+	const { delSubaccount } = useDeleteSubaccount();
+	const { renameSubaccount } = useRenameSubaccount();
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	// function that puts new Account name to accountName
@@ -66,7 +66,7 @@ const SubaccountTable = () => {
 	const handleFormSubmit = () => {
 		let ThisRefLink = selectedRow.refLink;
 		if (renameAccountName.length !== 0) {
-			renameSubaccount({refLink: ThisRefLink, name: renameAccountName});
+			renameSubaccount({ refLink: ThisRefLink, name: renameAccountName });
 		}
 
 		setIsModalVisible(false); // Hide the modal
@@ -74,7 +74,7 @@ const SubaccountTable = () => {
 	};
 
 	return (
-		<div className={"w-full "}>
+		<div className={"w-full flex-1"}>
 			{/* Edit Modal */}
 			<Modal
 				title="Редактировать"
@@ -120,33 +120,32 @@ const SubaccountTable = () => {
 			</Modal>
 			<div className="w-full  ">
 				<div className="w-full flex  flex-col content-end ">
-					<div className="w-full my-3 flex flex-1   ">
+					<div className="w-full my-3 flex h-5 flex-1   ">
 						<input
 							type="text"
 							onChange={handleNewSubaccount}
 							placeholder="Назовите Субаккаунт"
-							className="w-full rounded-md px-2 text-text2 text-black"
+							className="w-full h-[30px] flex-auto rounded-md px-2 text-text2 text-black"
 							value={accountName}
-							style={{width: "15rem"}}
 						/>
-						<div className="flex justify-center px-3">
+						<div className="  px-3">
 							<button
-								className="custom-button text-nowrap rounded-full"
+								className="custom-button flex h-[30px] items-center text-nowrap rounded-full"
 								onClick={addRow}
-								style={{width: "12rem"}}
+								style={{ width: "12rem" }}
 							>
 								Создать Субаккаунт
 							</button>
 						</div>
 					</div>
-					<div className=" ">
-						<table className="w-[100%] bg-black">
+					<div className="flex">
+						<table className="flex-1 bg-black">
 							<thead>
 								<tr>
-									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4" style={{width: "10rem"}}>
+									<th className="table-gradient  border-2 border-gray p-1 text-text4">
 										Название Субаккаунта
 									</th>
-									<th className="table-gradient w-[45%] border-2 border-gray p-1 text-text4" style={{width: "15rem"}}>
+									<th className="table-gradient  border-2 border-gray p-1 text-text4">
 										Ссылка
 									</th>
 									<td className=" "></td>

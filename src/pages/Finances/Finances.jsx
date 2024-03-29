@@ -5,8 +5,8 @@ const Finances = () => {
 	const location = useLocation();
 
 	return (
-		<section className="m-0 w-[1245px] py-8">
-			<h2 className=" font-nunito-sans text-title font-bold">Финансы</h2>
+		<section className="flex-1 flex-col justify-start px-4">
+			<h2 className=" px-4 py-3 text-title font-bold 2xl:py-6 ">Финансы</h2>
 			<div className="mt-5 flex gap-10 text-title2 ">
 				<Link
 					href="withdrawal"

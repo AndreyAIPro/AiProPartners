@@ -59,7 +59,7 @@ const Preferences = () => {
 				<div className="flex-1 flex-col ">
 					<h2 className=" mt-4 px-8 text-title font-bold ">Настройки</h2>
 
-					<div className="flex-1">
+					<div className="flex-1 px-3">
 						<Tabs defaultActiveKey="1" items={items} />
 					</div>
 				</div>
