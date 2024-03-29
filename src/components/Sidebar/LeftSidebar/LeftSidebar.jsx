@@ -19,7 +19,7 @@ const LeftSidebar = ({ openModal }) => {
 		>
 			<LeftSidebarHeader />
 			<button
-				className={`w-full hidden h-3  ${isExpandedLeftSidebar ? "max-xl:justify-center" : "rotate-180 pl-5 max-xl:justify-start"} items-center max-xl:flex`}
+				className={`w-full mt-2 hidden h-3 ${isExpandedLeftSidebar ? "max-xl:justify-center" : "rotate-180 pl-5 max-xl:justify-start"} items-center max-xl:flex`}
 				onClick={() => handleClick()}
 			>
 				<Arrow />

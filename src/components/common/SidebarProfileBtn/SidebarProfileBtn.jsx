@@ -15,10 +15,10 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 
 	return (
 		<div
-			className={`w-full flex h-full max-h-10 items-center justify-between pt-6  max-xl:gap-2  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
+			className={`w-full flex h-full max-h-10 items-center justify-between pt-6   xl:flex-row  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
 		>
 			<div
-				className={`flex scale-75 items-center gap-[10px]  2xl:scale-100 ${isExpandedRightSidebar ? "ml-[-10px] mt-5" : ""}`}
+				className={`flex scale-75 items-center justify-center gap-[10px] align-middle  2xl:scale-100 ${isExpandedRightSidebar ? " " : ""}`}
 			>
 				<ProfilePlaceholder />
 				<h3
@@ -28,7 +28,7 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full flex scale-75 items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5 max-xl:pr-5 2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
+				className={`max-xl:w-full flex scale-75 items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5  2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
 			>
 				<NavLink
 					to="/preferences"
@@ -46,7 +46,11 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				>
 					<ExitIcon />
 				</button>
-				<LogoutModal active={openModal} onClose={() => setOpenModal(false)} />
+				<LogoutModal
+					isExpandedRightSidebar={isExpandedRightSidebar}
+					active={openModal}
+					onClose={() => setOpenModal(false)}
+				/>
 			</div>
 		</div>
 	);

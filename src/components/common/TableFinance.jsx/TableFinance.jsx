@@ -8,6 +8,7 @@ import { useState } from "react";
 // import mData from "../../../data/dataForTable.json";
 
 import FiltersTable from "../FiltersForTable/FiltersTable";
+import Plate from "../../../pages/Preferences/Plate/Plate";
 
 const TableFinance = () => {
 	const data = [];
@@ -48,38 +49,29 @@ const TableFinance = () => {
 
 	return (
 		<>
-			<div className=" mb-10 mt-20 flex items-end  justify-between">
-				<FiltersTable />
-				<div>
-					<button className=" rounded-full border-2 border-light-blue px-4 font-nunito-sans hover:text-light-blue">
-						Обновить
-					</button>
-				</div>
-			</div>
-
-			<table className="min-w-full  border-[2px] border-gray">
-				<thead>
-					{table.getHeaderGroups().map((headerGroup) => (
-						<tr key={headerGroup.id} className="bg-gray">
-							{headerGroup.headers.map((header) => (
-								<th
-									key={header.id}
-									className="py-1 text-left font-nunito-sans text-text2 first:pl-4 last:pr-4 last:text-right"
-								>
-									{header.isPlaceholder
-										? null
-										: flexRender(
-												header.column.columnDef.header,
-												header.getContext(),
-											)}
-								</th>
-							))}
-						</tr>
-					))}
-				</thead>
-				<tbody className="relative  h-[150px] border-2 border-gray">
-					<tr>
-						<td className="absolute left-[580px] top-10 flex flex-col items-center ">
+			<Plate title={<FiltersTable />}>
+				<table className="min-w-full  border-[2px] border-gray">
+					<thead>
+						{table.getHeaderGroups().map((headerGroup) => (
+							<tr key={headerGroup.id} className="bg-gray">
+								{headerGroup.headers.map((header) => (
+									<th
+										key={header.id}
+										className="py-1 text-left font-nunito-sans text-text2 first:pl-4 last:pr-4 last:text-right"
+									>
+										{header.isPlaceholder
+											? null
+											: flexRender(
+													header.column.columnDef.header,
+													header.getContext(),
+												)}
+									</th>
+								))}
+							</tr>
+						))}
+					</thead>
+					<tbody className="  h-[150px] border-2 border-gray">
+						<div className="self-center">
 							<svg
 								width="64"
 								height="41"
@@ -103,11 +95,13 @@ const TableFinance = () => {
 									</g>
 								</g>
 							</svg>
-							<p className="font-nunito-sans text-gray">No data</p>
-						</td>
-					</tr>
+							<p className="font-nunito-sans text-gray">Де таблиця ?</p>
+						</div>
+						<tr className="">
+							<td className="  "></td>
+						</tr>
 
-					{/* {table
+						{/* {table
 						.getRowModel()
 						.rows.slice(0, getData)
 						.map((row) => (
@@ -124,9 +118,9 @@ const TableFinance = () => {
 								))}
 							</tr>
 						))} */}
-				</tbody>
-			</table>
-			{/* {getData == data.length ? (
+					</tbody>
+				</table>
+				{/* {getData == data.length ? (
 				<div className={`mt-3 text-center`}>
 					<button
 						className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
@@ -168,6 +162,7 @@ const TableFinance = () => {
 					</button>
 				</div>
 			)} */}
+			</Plate>
 		</>
 	);
 };

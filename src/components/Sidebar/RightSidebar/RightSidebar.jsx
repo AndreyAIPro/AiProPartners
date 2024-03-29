@@ -19,10 +19,14 @@ const RightSidebar = () => {
 			<div className="w-full">
 				<BalanceArticle isExpandedRightSidebar={isExpandedRightSidebar} />
 				<button
-					className={`w-full mt-5 hidden rotate-180 pl-5 ${isExpandedRightSidebar ? "max-xl:justify-center" : "max-xl:justify-star rotate-0 pl-5"} items-center transition-all max-xl:flex`}
+					className={`w-full mt-5 flex ${isExpandedRightSidebar ? "justify-center " : " justify-start "}	 transition-all xl:hidden`}
 					onClick={() => handleClick()}
 				>
-					<Arrow />
+					<div
+						className={`rotate-0  ${isExpandedRightSidebar ? "rotate-180 " : " justify-start pl-5"}`}
+					>
+						<Arrow />
+					</div>
 				</button>
 				<SidebarProfileBtn isExpandedRightSidebar={isExpandedRightSidebar} />
 			</div>

@@ -215,7 +215,7 @@ export default function ChartMain(params) {
 									/>
 								</div>
 								<div className="flex flex-nowrap ">
-									<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
+									<div className="flex flex-row flex-nowrap rounded-md  border-[1px] pl-2 text-text3    ">
 										<div className="flex items-center  justify-center pr-2">
 											Выбрать диапазон дат
 										</div>

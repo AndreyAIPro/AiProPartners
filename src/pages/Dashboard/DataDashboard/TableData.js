@@ -19,6 +19,7 @@ export const columns = [
 		title: "Дата",
 		dataIndex: "date",
 		key: "date",
+		fixed: true,
 	},
 	{
 		title: "Субакаунт",

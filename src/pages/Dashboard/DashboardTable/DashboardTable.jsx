@@ -122,20 +122,19 @@ export default function DashboardTable() {
 								style={{ width: "12rem" }}
 							/>
 						</div>
-						<div className="flex flex-nowrap ">
-							<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text4 ">
-								<div className="flex items-center  justify-center pr-2">
-									Выбрать диапазон дат
-								</div>
-								<div className=" ml-3 flex pl-2">
-									<RangePicker
-										disabledDate={disabledDates()}
-										size="small"
-										variant={false}
-										placeholder={["Начало", "Конец"]}
-										onChange={handleDateRangeChange}
-									/>
-								</div>
+
+						<div className="flex flex-row flex-nowrap rounded-md border-[1px] pl-2   text-text3 ">
+							<div className="flex items-center  justify-center pr-2">
+								Выбрать диапазон дат
+							</div>
+							<div className=" ml-3 flex pl-2">
+								<RangePicker
+									disabledDate={disabledDates()}
+									size="small"
+									variant={false}
+									placeholder={["Начало", "Конец"]}
+									onChange={handleDateRangeChange}
+								/>
 							</div>
 						</div>
 
