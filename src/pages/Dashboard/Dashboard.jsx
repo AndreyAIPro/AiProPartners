@@ -56,8 +56,8 @@ const Charts = () => {
 	return (
 		<>
 			<div className="w-[60vw] flex-1 ">
-				<h2 className="px-4 py-3 text-title font-bold 2xl:py-6 ">Dashboard</h2>
-				<div className="w-full flex  justify-between space-x-3">
+				<h2 className="px-8 py-3 text-title font-bold 2xl:py-6 ">Dashboard</h2>
+				<div className="w-full flex  justify-between space-x-3 px-1">
 					{/* Плашки*/}
 					<div className=" flex-1  pl-2">
 						<Clients uniquesA={uniquesA} uniquesG={0} />
@@ -73,8 +73,8 @@ const Charts = () => {
 					</div>
 				</div>
 				{/** Секция с графиками и таблицей */}
-				<div className="flex flex-1 flex-col items-center ">
-					<div className="dashboard-size-helper ">
+				<div className="flex flex-1 flex-col items-center px-3">
+					<div className="w-full ">
 						<ConfigProvider
 							theme={{
 								algorithm: theme.darkAlgorithm,
