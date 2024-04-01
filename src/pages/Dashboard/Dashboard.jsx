@@ -27,7 +27,7 @@ const Charts = () => {
 		shoppingA += (row.firstBuy || 0) + (row.otherBuy || 0);
 		balanceA += (row.incomeFirst || 0) * 0.3 + (row.incomeOther || 0) * 0.15;
 	});
-	
+
 	if (user?.id !== undefined) creatDefultRefLink(user.id);
 	const componentsConfg = {
 		components: {
@@ -55,35 +55,26 @@ const Charts = () => {
 
 	return (
 		<>
-			<div className="flex-1">
-				<h2 className="px-4 py-6 text-title font-bold ">Dashboard</h2>
-				<div className="flex flex-row justify-evenly p-2">
+			<div className="w-[60vw] flex-1 ">
+				<h2 className="px-8 py-3 text-title font-bold 2xl:py-6 ">Dashboard</h2>
+				<div className="w-full flex  justify-between space-x-3 px-1">
 					{/* Плашки*/}
-					<div className="mx-2 flex-1  ">
-						<Clients
-						uniquesA={uniquesA}
-						uniquesG={0} />
+					<div className=" flex-1  pl-2">
+						<Clients uniquesA={uniquesA} uniquesG={0} />
 					</div>
-					<div className="mx-2 flex-1  ">
-						<Registation
-						registrationA={registrationA}
-						registrationG={0} />
+					<div className=" flex-1  ">
+						<Registation registrationA={registrationA} registrationG={0} />
 					</div>
-					<div className="mx-2 flex-1  ">
-						<Purchase
-						shoppingA={shoppingA}
-						shoppingG={0} />{" "}
+					<div className=" flex-1  ">
+						<Purchase shoppingA={shoppingA} shoppingG={0} />{" "}
 					</div>
-					<div className="mx-2 flex-1  ">
-						<OverAllBalance
-						balanceA={balanceA}
-						balanceG={0} />
+					<div className=" flex-1  pr-2">
+						<OverAllBalance balanceA={balanceA} balanceG={0} />
 					</div>
-					
 				</div>
 				{/** Секция с графиками и таблицей */}
-				<div className="flex flex-1 flex-col items-center ">
-					<div className="dashboard-size-helper ">
+				<div className="flex flex-1 flex-col items-center px-3">
+					<div className="w-full ">
 						<ConfigProvider
 							theme={{
 								algorithm: theme.darkAlgorithm,

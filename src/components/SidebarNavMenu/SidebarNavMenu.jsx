@@ -22,7 +22,7 @@ const navItemsData = [
 
 const SidebarNavMenu = () => {
 	return (
-		<nav className="w-full mt-[30px] flex flex-col items-center justify-center max-lg:mt-5">
+		<nav className="w-full mt-[30px] flex flex-col items-center justify-center ">
 			{navItemsData.map((item, i) => {
 				return <SidebarNavItem key={i} {...item} />;
 			})}

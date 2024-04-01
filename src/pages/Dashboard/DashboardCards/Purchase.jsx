@@ -7,9 +7,11 @@ export default function Purchase({ shoppingA, shoppingG }) {
 			<Plate title={"Покупки"}>
 				<div className="py-2">
 					<div>
-						<p className="text-text3">Активный объем</p>
+						<p className="text-text4 2xl:text-text3">Активный объем</p>
 						<div className="flex flex-row">
-							<span className="px-1 text-text1">{shoppingA}</span>
+							<span className="px-1 text-text3 2xl:text-text1">
+								{shoppingA}
+							</span>
 							{/* <Statistic
 								value={11.28}
 								precision={2}
@@ -20,9 +22,11 @@ export default function Purchase({ shoppingA, shoppingG }) {
 						</div>
 					</div>
 					<div className="pt-2">
-						<p className="text-text3">Групповой объем</p>
+						<p className="text-text4 2xl:text-text3">Групповой объем</p>
 						<div className="flex flex-row">
-							<span className="px-1 text-text1">{shoppingG}</span>
+							<span className="px-1 text-text3 2xl:text-text1">
+								{shoppingG}
+							</span>
 							{/* <Statistic
 								value={9.3}
 								precision={2}

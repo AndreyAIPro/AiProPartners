@@ -112,7 +112,7 @@ export default function RegularPreferences(params) {
 
 	return (
 		<>
-			<div className="flex justify-evenly">
+			<div className="flex justify-evenly ">
 				<div className="preference-halfsizer  justify-center">
 					<Plate title={"Учетная запись"}>
 						<div className="w-full ">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import mData from "../../../data/dataForTable.json";
 import AllFiltersTable from "./../FiltersForTable/AllFiltersTable";
 import { ReactComponent as NoData } from "../../../assets/images/Icons aipro partners/no-data-icon.svg";
+import Plate from "../../../pages/Preferences/Plate/Plate";
 
 const TableFinance = () => {
 	const [sortingOption, setSortingOption] = useState("");
