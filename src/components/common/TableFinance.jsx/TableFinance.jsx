@@ -48,7 +48,7 @@ const TableFinance = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<div className=" mb-10 mt-20 flex items-end  justify-between">
 				<AllFiltersTable
 					value={sortingOption}
@@ -157,7 +157,7 @@ const TableFinance = () => {
 					<p className="font-nunito-sans text-gray">No data</p>
 				</div>
 			)}
-		</div>
+		</>
 	);
 };
 

@@ -12,16 +12,16 @@ const AllFiltersTable = ({
 	filterByDate,
 }) => {
 	return (
-		<div className="flex flex-wrap items-end gap-14 ">
+		<div className="flex flex-wrap items-end gap-6 ">
 			<DateFilter />
 			<SumFilter data={data} onDataChange={onDataChange} />
+			<CommentsFilter data={data} onDataChange={onDataChange} />
 			<PaymentFilter
 				value={value}
 				onChange={onChange}
 				data={data}
 				onDataChange={onDataChange}
 			/>
-			<CommentsFilter data={data} onDataChange={onDataChange} />
 			<StatusFilter
 				value={value}
 				onChange={onChange}

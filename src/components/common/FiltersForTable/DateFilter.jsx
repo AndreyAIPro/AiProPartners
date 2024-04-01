@@ -32,7 +32,7 @@ const DateFilter = ({ filterByDate }) => {
 				>
 					<RangePicker
 						onChange={handleDateChange}
-						className="bg-secondary  text-white"
+						className="bg-secondary  text-white "
 						disabledDate={disabledDate}
 						size="small"
 						variant={false}
