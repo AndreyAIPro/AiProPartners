@@ -26,8 +26,8 @@ function FormRegisterPartTwo({ formChange, setFormChange }) {
 						message: "Input at least 3 characters!",
 					},
 					{
-						max: 16,
-						message: "Input less then 16 symbol!",
+						max: 40,
+						message: "Input less then 40 symbol!",
 					},
 				]}
 			>
