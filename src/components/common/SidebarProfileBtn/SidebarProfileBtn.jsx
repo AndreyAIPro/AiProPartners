@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { ReactComponent as ExitIcon } from "../../../assets/images/Icons aipro partners/exit.svg";
 import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
-
+import { Typography } from "antd";
 import { useState } from "react";
 import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
 import { useUser } from "../../../hooks/useUser";
 import LogoutModal from "../../../utils/LogoutModal/LogoutModal";
 import styles from "./sidebar-profile-btn.module.scss";
+const { Text } = Typography;
 
 const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
@@ -18,17 +19,27 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 			className={`w-full flex h-full max-h-10 items-center justify-between pt-6   xl:flex-row  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
 		>
 			<div
-				className={`flex scale-75 items-center justify-center gap-[10px] align-middle  2xl:scale-100 ${isExpandedRightSidebar ? " " : ""}`}
+				className={`flex   items-center justify-start gap-1   ${isExpandedRightSidebar ? " " : ""}`}
 			>
 				<ProfilePlaceholder />
 				<h3
-					className={`text-[1rem] font-normal leading-7 2xl:text-[20px] ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
+					className={`flex text-text2 font-normal leading-7   2xl:text-text1 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
 				>
-					{fullName}
+					<Text
+						ellipsis
+						style={{
+							color: "white",
+							marginBottom: "0",
+							width: "9vw",
+							fontSize: "18px",
+						}}
+					>
+						{fullName}
+					</Text>
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full flex scale-75 items-center justify-center gap-4 max-xl:justify-end max-xl:gap-5  2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
+				className={`max-xl:w-full flex scale-75 items-center justify-center gap-2 max-xl:justify-end   2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
 			>
 				<NavLink
 					to="/preferences"
