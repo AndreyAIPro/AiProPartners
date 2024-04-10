@@ -97,7 +97,8 @@ export function RefItem({ data }) {
 						{">>"}
 					</button>
 				</div>
-			) : (
+			) : null}
+			{data.length > 0 ? null : (
 				<div className="flex flex-col items-center border-[1px] border-gray  py-10">
 					<NoData />
 					<p className="font-nunito-sans text-gray">No data</p>
