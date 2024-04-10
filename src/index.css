@@ -1,6 +1,4 @@
-
 @import "normalize.css";
-@import "./assets/styles/variable.css";
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 @tailwind base;
@@ -17,7 +15,7 @@
 }
 
 @layer components {
-	.w-full{
+	.w-full {
 		width: 100%;
 	}
 	.after {
@@ -25,26 +23,42 @@
 	}
 
 	.hero-after {
-		@apply after:absolute after:bottom-0 after:left-0 after:h-[500px] after:w-full after:bg-gradient-to-t after:from-dark-blue after:to-transparent max-lg:after:max-h-[752px] max-md:after:max-h-[541px] ;
+		@apply after:w-full after:absolute after:bottom-0 after:left-0 after:h-[500px] after:bg-gradient-to-t after:from-dark-blue after:to-transparent max-lg:after:max-h-[752px] max-md:after:max-h-[541px];
 	}
 
 	.hero-bg {
 		@apply bg-gradient-to-r from-[#7000ff] from-[1.33%] to-[#c000f0]  to-[96%];
 	}
-	
-	.how-start-after{
-		@apply after:w-[132px] after:h-4 after:top-[95px] after:bg-arrow-how-start after:absolute after:bg-center after:origin-left after:transform after:translate-x-[65px] after:z-10
+
+	.how-start-after {
+		@apply after:absolute after:top-[95px] after:z-10 after:h-4 after:w-[132px] after:origin-left after:translate-x-[65px] after:transform after:bg-arrow-how-start after:bg-center;
 	}
 
-	.how-start-before{
-		@apply before:w-[165px] before:h-4 before:top-[95px] before:bg-separator-how-start before:absolute before:bg-center before:origin-right before:transform before:translate-x-[-70px] before:bg-no-repeat before:z-10
+	.how-start-before {
+		@apply before:absolute before:top-[95px] before:z-10 before:h-4 before:w-[165px] before:origin-right before:translate-x-[-70px] before:transform before:bg-separator-how-start before:bg-center before:bg-no-repeat;
 	}
 }
+.settings__btn {
+	svg {
+		path {
+			fill: rgb(214, 214, 214);
+		}
+	}
+}
+
+/* .active {
+	svg {
+		path {
+			fill: #fff;
+		}
+	}
+} */
+
 .ant-form-item .ant-form-item-label {
 	padding-bottom: 0;
 }
 .preference-halfsizer {
-	width: 48%;
+	width: 49%;
 }
 .dashboard-size-helper {
 	width: 97%;
@@ -55,21 +69,21 @@
 ::-webkit-scrollbar {
 	width: 7px;
 	background-color: #0e0e0e;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px grey; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
 	border-radius: 3px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-	background: #230E32;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #230e32;
 	border-radius: 3px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-	background: #24A1E0; 
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #24a1e0;
+}

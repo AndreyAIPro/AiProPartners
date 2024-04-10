@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import "./RefTable.scss";
 import { useUser } from "../../../hooks/useUser";
-import {
-	flexRender,
-	getCoreRowModel,
-	getPaginationRowModel,
-	useReactTable,
-} from "@tanstack/react-table";
-import refData from "./../../../data/dataForRefTable";
 import { message } from "antd";
 import copy from "copy-to-clipboard";
 import { useSelectPartnersRefLinks } from "../../../hooks/useSelectPartnersRefLinks";
-import { creatDefultRefLink } from "../../../utils/supabaseUtils";
+import { RefItem } from "./RefItem";
 
 const RefTable = () => {
 	const [rows, setRows] = useState([
+		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
+		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
+		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
+		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
+		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
+		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
+		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
 		{ id: 1, accountID: "ID", partnerName: "Name PLACEHOLDER" },
 		{ id: 2, accountID: "ID 2", partnerName: "Name PLACEHOLDER 2" },
 	]);
@@ -27,13 +30,13 @@ const RefTable = () => {
 	// const [accountName, setAccountName] = useState("");
 	const link =
 		window.location.hostname === "localhost"
-			? "http://localhost:5173/reflink/50c7bc72-944f-4647-ba70-f59eeab96434"
+			? "http://localhost:5173/home/50c7bc72-944f-4647-ba70-f59eeab96434"
 			: window.location.protocol +
 				"//" +
 				window.location.hostname +
-				"/reflink/" +
+				"/home/" +
 				user.id;
-	const [accountRef, setAccountRef] = useState(link);
+	const [accountRef, setAccountRef] = useState(user.id);
 	// // Holds row key
 	const [selectedRow, setSelectedRow] = useState(null);
 	// //holds state of modal window false = invisible
@@ -91,29 +94,10 @@ const RefTable = () => {
 	//     setAccountName("");
 	// };
 
-	const columns = [
-		{
-			header: "ID партнера",
-			accessorKey: "refLink",
-		},
-		{
-			header: "Название партнера",
-			accessorKey: "name",
-		},
-	];
-
-	const table = useReactTable({
-		data,
-		columns,
-		getCoreRowModel: getCoreRowModel(),
-		getPaginationRowModel: getPaginationRowModel(),
-	});
 	const handleCopyToClipboard = (ref) => {
 		copy(ref);
 		message.success("Ref copied to clipboard");
 	};
-
-	if(user?.id !== undefined) creatDefultRefLink(user.id);
 
 	return (
 		<div className={"w-11/12 flex  justify-items-center "}>
@@ -122,7 +106,7 @@ const RefTable = () => {
 					<div className="my-6 flex justify-end  ">
 						<div className=" flex  justify-center  ">
 							<button
-								onClick={() => handleCopyToClipboard(accountRef)}
+								onClick={() => handleCopyToClipboard(link)}
 								className="custom-button w-fit text-nowrap rounded-l-md p-[10px] text-text3 "
 							>
 								Скопировать реферальную ссылку
@@ -132,80 +116,7 @@ const RefTable = () => {
 							{accountRef}
 						</div>
 					</div>
-					<table className="   min-w-full  border-[2px] border-gray">
-						<thead>
-							{table.getHeaderGroups().map((headerGroup) => (
-								<tr key={headerGroup.id} className="bg-gray">
-									{headerGroup.headers.map((header) => (
-										<th
-											key={header.id}
-											className="py-1 text-left font-nunito-sans text-text2 first:pl-4 last:pl-4 "
-										>
-											{header.isPlaceholder
-												? null
-												: flexRender(
-														header.column.columnDef.header,
-														header.getContext(),
-													)}
-										</th>
-									))}
-								</tr>
-							))}
-						</thead>
-						<tbody>
-							{table
-								.getRowModel()
-								.rows.slice(0, refData.length)
-								.map((row) => (
-									<tr key={row.id} className=" border-[1px] border-gray">
-										{row.getVisibleCells().map((cell) => (
-											<td
-												key={cell.id}
-												className={`text border-r-2 border-gray py-1 pl-4 font-nunito-sans text-text2`}
-											>
-												{flexRender(
-													cell.column.columnDef.cell,
-													cell.getContext(),
-												)}
-											</td>
-										))}
-									</tr>
-								))}
-						</tbody>
-					</table>
-					{refData.length > 10 && (
-						<div className={`mt-3 text-center`}>
-							<button
-								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
-								onClick={() => table.setPageIndex(0)}
-								disabled={!table.getCanPreviousPage()}
-							>
-								{"<<"}
-							</button>
-							<button
-								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanPreviousPage() && "disabled:opacity-25"}`}
-								onClick={() => table.previousPage()}
-								disabled={!table.getCanPreviousPage()}
-							>
-								Предыдущая страница
-							</button>
-
-							<button
-								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanNextPage() && "disabled:opacity-25"}`}
-								onClick={() => table.nextPage()}
-								disabled={!table.getCanNextPage()}
-							>
-								Следующая страница
-							</button>
-							<button
-								className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${!table.getCanNextPage() && "disabled:opacity-25"}`}
-								onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-								disabled={!table.getCanNextPage()}
-							>
-								{">>"}
-							</button>
-						</div>
-					)}
+					<RefItem data={data} />
 				</div>
 			</div>
 		</div>

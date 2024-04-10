@@ -85,9 +85,9 @@ function FormRegisterPartOne({
 					},
 					{
 						pattern:
-							/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+							/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]+$/,
 						message:
-							"Пароль должен содержать заглавные и строчные буквы, цифры и символы!",
+							"Пароль должен содержать заглавные[A-Z] и строчные буквы[a-z], цифры[0-9] и символы[@$!%*?&_-]!",
 					},
 				]}
 			>
@@ -108,13 +108,17 @@ function FormRegisterPartOne({
 		</div>
 	);
 	function checkInputValues() {
-		if (
-			inputNickname.current.input.value.length !== 0 &&
-			inputEmail.current.input.value.length !== 0 &&
-			inputPassword.current.input.value.length >= 8
-		) {
-			setFormChange(false);
-		}
+		const passwordValue = inputPassword.current.input.value;
+    	const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]+$/;
+
+    if (
+        inputNickname.current.input.value.length !== 0 &&
+        inputEmail.current.input.value.length !== 0 &&
+        passwordValue.length >= 8 &&
+        passwordPattern.test(passwordValue)
+    ) {
+        setFormChange(false);
+    }
 	}
 }
 

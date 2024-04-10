@@ -1,59 +1,67 @@
-
-
 import { NavLink } from "react-router-dom";
-import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
-import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
-import styles from "./sidebar-profile-btn.module.scss";
 import { ReactComponent as ExitIcon } from "../../../assets/images/Icons aipro partners/exit.svg";
-import { Popconfirm, ConfigProvider, theme, Button } from "antd";
-import { useLogout } from "../../../hooks/useLogout";
+import { ReactComponent as ProfilePlaceholder } from "../../../assets/images/profile-placeholder.svg";
+import { Typography } from "antd";
+import { useState } from "react";
+import { ReactComponent as SettingsIcon } from "../../../assets/images/settings-btn.svg";
 import { useUser } from "../../../hooks/useUser";
+import LogoutModal from "../../../utils/LogoutModal/LogoutModal";
+import styles from "./sidebar-profile-btn.module.scss";
+const { Text } = Typography;
 
-const SidebarProfileBtn = () => {
-	const { logout } = useLogout();
+const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
-	const userData = user.user_metadata;
-	return (
-		<div className={styles.btn}>
-			<div className={styles.btn__profile}>
-				<ProfilePlaceholder />
-				<h3>{userData.fullName}</h3>
-			</div>
-			<div className=" flex flex-row items-center justify-center ">
-				<ConfigProvider
-					theme={{
-						algorithm: theme.darkAlgorithm,
-					}}
-				>
-					<Popconfirm
-						title="Хотите выйти ?"
-						onConfirm={logout}
-						okText="Да"
-						cancelText="Нет"
-						placement="left"
-					>
-						<Button
-							style={{
-								paddingLeft: " 2px",
-								paddingRight: "2px",
-								borderColor: "#0e0e0e",
-							}}
-						>
-							<ExitIcon />
-						</Button>
-					</Popconfirm>
-				</ConfigProvider>
+	const { fullName } = user.user_metadata;
+	const [openModal, setOpenModal] = useState(false);
 
+	return (
+		<div
+			className={`w-full flex h-full max-h-10 items-center justify-between pt-6   xl:flex-row  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
+		>
+			<div
+				className={`flex   items-center justify-start gap-1   ${isExpandedRightSidebar ? " " : ""}`}
+			>
+				<ProfilePlaceholder />
+				<h3
+					className={`flex text-text2 font-normal leading-7   2xl:text-text1 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
+				>
+					<Text
+						ellipsis
+						style={{
+							color: "white",
+							marginBottom: "0",
+							width: "9vw",
+							fontSize: "18px",
+						}}
+					>
+						{fullName}
+					</Text>
+				</h3>
+			</div>
+			<div
+				className={`max-xl:w-full flex scale-75 items-center justify-center gap-2 max-xl:justify-end   2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
+			>
 				<NavLink
 					to="/preferences"
 					className={({ isActive }) =>
 						!isActive
-							? styles.settings__btn
-							: `${styles.settings__btn} ${styles.active}`
+							? "settings__btn h-[25px] w-[25px]"
+							: `settings__btn active h-[25px] w-[25px]`
 					}
 				>
 					<SettingsIcon className={styles.svgIcon} />
 				</NavLink>
+				<button
+					onClick={() => setOpenModal(true)}
+					className="relative mr-[-7px] flex flex-row-reverse"
+				>
+					<ExitIcon />
+				</button>
+				<LogoutModal
+					isExpandedRightSidebar={isExpandedRightSidebar}
+					active={openModal}
+					onClose={() => setOpenModal(false)}
+				/>
 			</div>
 		</div>
 	);

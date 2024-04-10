@@ -1,13 +1,10 @@
-
-
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar/RightSidebar";
-import { sidebar__wrapper as wrapper } from "./sidebar.module.scss";
 
-const Sidebar = (props) => {
+const Sidebar = ({ isLeftSidebar, openModal }) => {
 	return (
-		<div className={wrapper}>
-			{props.isLeftSidebar ? <LeftSidebar /> : <RightSidebar />}
+		<div className="sticky flex flex-col bg-secondary max-xl:relative">
+			{isLeftSidebar ? <LeftSidebar openModal={openModal} /> : <RightSidebar />}
 		</div>
 	);
 };

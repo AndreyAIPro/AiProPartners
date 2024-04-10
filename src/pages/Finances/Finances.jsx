@@ -1,37 +1,27 @@
-/**  @format */
-import { useState } from "react";
-import TableFinance from "./../../components/common/TableFinance.jsx/TableFinance";
-import "./finances.modal.css";
-import Withdrawal from "./../../components/common/Withdrawal/Withdrawal";
+import Link from "./../../components/common/NavLink/NavLink";
+import { Outlet, useLocation } from "react-router-dom";
 
 const Finances = () => {
-	const [changer, setChanger] = useState(false);
+	const location = useLocation();
 
 	return (
-		<section className="m-0 w-[1245px] py-8">
-			<h2 className=" font-nunito-sans text-title font-bold">Финансы</h2>
+		<section className="flex-1 flex-col justify-start px-4">
+			<h2 className=" px-4 py-3 text-title font-bold 2xl:py-6 ">Финансы</h2>
 			<div className="mt-5 flex gap-10 text-title2 ">
-				<button
-					className={`font-nunito-sans font-bold text-light-gray ${changer === true && "text-white"}`}
-					onClick={() => setChanger(!changer)}
-				>
-					Вывод средств
-				</button>
-
-				<button
-					className={`font-nunito-sans font-bold text-light-gray ${changer === false && "text-white"}`}
-					onClick={() => setChanger(!changer)}
-				>
-					Список транзакций
-				</button>
+				<Link
+					href="withdrawal"
+					title="Вывод средств"
+					path={location.pathname}
+					route={"finances"}
+				/>
+				<Link
+					href="transactionList"
+					title="Список транзакций"
+					path={location.pathname}
+					route={"finances"}
+				/>
 			</div>
-			{changer ? (
-				<Withdrawal />
-			) : (
-				<div className="m-6">
-					<TableFinance />
-				</div>
-			)}
+			<Outlet />
 		</section>
 	);
 };

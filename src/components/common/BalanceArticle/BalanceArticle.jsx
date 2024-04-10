@@ -1,19 +1,20 @@
 import { useUser } from "../../../hooks/useUser";
 
-
-
-const BalanceArticle = () => {
+const BalanceArticle = ({ isExpandedRightSidebar }) => {
 	const { user } = useUser();
-	const userData = user.user_metadata;
+	const { money } = user.user_metadata;
+
 	return (
-		<article className='h-[70px] font-nunito-sans bg-light-blue rounded-[10px] flex items-center gap-[10px] p-[10px]'>
-			<span className='h-[50px] w-[50px] rounded-[10px] text-light-blue font-[900] text-[24px] flex items-center justify-center bg-black font-nunito-sans'>
+		<article className="w-full flex h-[70px] items-center gap-[10px] overflow-hidden whitespace-nowrap rounded-[10px] bg-light-blue p-[10px]">
+			<span className="flex h-[50px] w-[50px] scale-90 items-center justify-center rounded-[10px] bg-black text-[24px] font-[900] text-light-blue 2xl:scale-100">
 				$
 			</span>
-			<p className='font-nunito-sans flex flex-col justify-center text-[16px] '>
+			<p
+				className={`${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}   flex-col justify-center text-[0.7rem] 2xl:text-[1rem]`}
+			>
 				Текущий баланс
-				<span id='currentCash' className='font-nunito-sans'>
-					0.11$
+				<span id="currentCash" className="pl-1">
+					{money + " $"}
 				</span>
 			</p>
 		</article>
