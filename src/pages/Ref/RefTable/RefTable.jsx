@@ -37,11 +37,11 @@ const RefTable = () => {
 	// const [accountName, setAccountName] = useState("");
 	const link =
 		window.location.hostname === "localhost"
-			? "http://localhost:5173/home/50c7bc72-944f-4647-ba70-f59eeab96434"
+			? "http://localhost:5173/50c7bc72-944f-4647-ba70-f59eeab96434"
 			: window.location.protocol +
 				"//" +
 				window.location.hostname +
-				"/home/" +
+				"/" +
 				user.id;
 	const [accountRef, setAccountRef] = useState(user.id);
 	// // Holds row key

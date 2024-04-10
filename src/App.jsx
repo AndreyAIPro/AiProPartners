@@ -73,7 +73,7 @@ function App() {
 			element: <Auth />,
 		},
 		{
-			path: PathConstants.HOME + PathConstants.REFCODE,
+			path: PathConstants.DEFAULT + PathConstants.REFCODE,
 			element: <Landing />,
 		},
 		{
