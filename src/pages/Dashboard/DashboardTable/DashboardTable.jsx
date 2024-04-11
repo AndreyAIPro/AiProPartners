@@ -15,8 +15,8 @@ export default function DashboardTable() {
 	const { user } = useUser();
 	const { data: analTable } = useSelectAnalTable(user?.id);
 	const [dateRange, setDateRange] = useState(null);
-	const [refNames, setRefNames] = useState([]);
-	const [selectedRefName, setSelectedRefName] = useState(null);
+	const [names, setNames] = useState([]);
+	const [selectedName, setSelectedName] = useState(null);
 
 	const disabledDates = () => {
 		const dates = analTable?.map((row) => dayjs(row.date).format("YYYY-MM-DD"));
@@ -30,27 +30,25 @@ export default function DashboardTable() {
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
 	};
-	const handleRefNameChange = (value) => {
+	const handleNameChange = (value) => {
 		if (value === "all") {
 			// If "Show all data" option is selected, set filteredData to all data
 			setFilteredData(analTableData);
 		} else {
-			setSelectedRefName(value); // Update selectedRefName when a new option is selected
+			setSelectedName(value); // Update selectedName when a new option is selected
 		}
 	};
 	useEffect(() => {
 		if (analTable) {
-			// Extract unique refName values
-			const uniqueRefNames = Array.from(
-				new Set(analTable.map((row) => row.refName)),
-			);
-			setRefNames(uniqueRefNames);
-			// Set the initial selected refName to the first unique refName if available
-			if (uniqueRefNames.length > 0) {
-				setSelectedRefName(uniqueRefNames[0]);
+			// Extract unique Name values
+			const uniqueNames = Array.from(new Set(analTable.map((row) => row.name)));
+			setNames(uniqueNames);
+			// Set the initial selected Name to the first unique Name if available
+			if (uniqueNames.length > 0) {
+				setSelectedName(uniqueNames[0]);
 			}
 			// const firstTimeTable = analTableData?.filter(
-			// 	(row) => row.refName === uniqueRefNames[0],
+			// 	(row) => row.name === uniqueNames[0],
 			// );
 			// setFilteredData(firstTimeTable);
 			setFilteredData(analTableData);
@@ -90,11 +88,9 @@ export default function DashboardTable() {
 				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
 			);
 		}
-		// Filter by selected refName
-		if (selectedRefName) {
-			filteredData = filteredData.filter(
-				(row) => row.refName === selectedRefName,
-			);
+		// Filter by selected Name
+		if (selectedName) {
+			filteredData = filteredData.filter((row) => row.name === selectedName);
 		}
 		setFilteredData(filteredData);
 	};
@@ -115,9 +111,9 @@ export default function DashboardTable() {
 								defaultValue={"Выберите Субаккаунт"}
 								options={[
 									{ label: "Показать все данные", value: "all" },
-									...refNames.map((name) => ({ label: name, value: name })),
+									...names.map((name) => ({ label: name, value: name })),
 								]}
-								onChange={handleRefNameChange}
+								onChange={handleNameChange}
 								defaultActiveFirstOption={true}
 								style={{ width: "12rem" }}
 							/>

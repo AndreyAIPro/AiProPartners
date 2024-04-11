@@ -14,9 +14,10 @@ export default function ChartMain(params) {
 	const { user } = useUser();
 	const { data: analTable } = useSelectAnalTable(user?.id);
 	const [dateRange, setDateRange] = useState(null);
-	const [refNames, setRefNames] = useState([]);
-	const [selectedRefName, setSelectedRefName] = useState(null);
+	const [names, setNames] = useState([]);
+	const [selectedName, setSelectedName] = useState(null);
 	const [filteredData, setFilteredData] = useState([]);
+	console.log(analTable);
 	const disabledDates = () => {
 		const dates = analTableData?.map((row) =>
 			dayjs(row.date).format("YYYY-MM-DD"),
@@ -27,15 +28,15 @@ export default function ChartMain(params) {
 			return !dates.includes(formattedDate);
 		};
 	};
-	const filterData = (tableData, startDate, endDate, refName) => {
+	const filterData = (tableData, startDate, endDate, name) => {
 		let filteredData = tableData;
 		if (startDate && endDate) {
 			filteredData = filteredData.filter((row) =>
 				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
 			);
 		}
-		if (refName) {
-			filteredData = filteredData.filter((row) => row.refName === refName);
+		if (name) {
+			filteredData = filteredData.filter((row) => row.name === name);
 		}
 		return filteredData;
 	};
@@ -129,26 +130,24 @@ export default function ChartMain(params) {
 	const handleDateRangeChange = (dates) => {
 		setDateRange(dates);
 	};
-	const handleRefNameChange = (value) => {
-		setSelectedRefName(value); // Update selectedRefName when a new option is selected
+	const handleNameChange = (value) => {
+		setSelectedName(value); // Update selectedName when a new option is selected
 	};
 
 	useEffect(() => {
 		if (analTable) {
-			const uniqueRefNames = Array.from(
-				new Set(analTable.map((row) => row.refName)),
-			);
-			setRefNames(uniqueRefNames);
-			if (uniqueRefNames.length > 0) {
-				setSelectedRefName(uniqueRefNames[0]);
+			const uniqueNames = Array.from(new Set(analTable.map((row) => row.name)));
+			setNames(uniqueNames);
+			if (uniqueNames.length > 0) {
+				setSelectedName(uniqueNames[0]);
 			}
-			// Filter data initially by the first unique refName
-			const initialRefName = uniqueRefNames[0];
+			// Filter data initially by the first unique Name
+			const initialName = uniqueNames[0];
 			const initialFilteredData = filterData(
 				analTableData,
 				null,
 				null,
-				initialRefName,
+				initialName,
 			);
 
 			setFilteredData(initialFilteredData);
@@ -175,21 +174,19 @@ export default function ChartMain(params) {
 				dayjs(row.date).isBetween(startDate, endDate, null, "[]"),
 			);
 		}
-		// Filter by selected refName
-		if (selectedRefName) {
-			filteredData = filteredData.filter(
-				(row) => row.refName === selectedRefName,
-			);
+		// Filter by selected Name
+		if (selectedName) {
+			filteredData = filteredData.filter((row) => row.name === selectedName);
 		}
 		setFilteredData(filteredData);
 	};
 	// const applyFilters = () => {
-	// 	// Filter data based on date range and selected refName
+	// 	// Filter data based on date range and selected Name
 	// 	const filteredData = filterData(
 	// 		analTable,
 	// 		dateRange[0],
 	// 		dateRange[1],
-	// 		selectedRefName,
+	// 		selectedName,
 	// 	);
 	// 	setFilteredData(filteredData);
 	// };
@@ -205,11 +202,11 @@ export default function ChartMain(params) {
 								<div className="pr-2 ">
 									<Select
 										defaultValue={"Выберите Субаккаунт"}
-										options={refNames.map((name) => ({
+										options={names.map((name) => ({
 											label: name,
 											value: name,
 										}))}
-										onChange={handleRefNameChange}
+										onChange={handleNameChange}
 										defaultActiveFirstOption={true}
 										style={{ width: "12rem" }}
 									/>
