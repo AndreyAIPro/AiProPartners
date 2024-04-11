@@ -15,11 +15,11 @@ const LeftSidebar = ({ openModal }) => {
 
 	return (
 		<aside
-			className={`sticky top-0 w-[18vw] max-w-[319px] ${isExpandedLeftSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
+			className={`sticky top-0 w-[18vw] max-w-[319px] ${isExpandedLeftSidebar ? "max-2xl:max-w-[90px]" : "max-2xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
 			<LeftSidebarHeader />
 			<button
-				className={`w-full mt-2 hidden h-3 ${isExpandedLeftSidebar ? "max-xl:justify-center" : "rotate-180 pl-5 max-xl:justify-start"} items-center max-xl:flex`}
+				className={`w-full mt-2 flex h-3 ${isExpandedLeftSidebar ? "max-2xl:justify-center" : "rotate-180 pl-5 max-2xl:justify-start"} items-center 2xl:hidden`}
 				onClick={() => handleClick()}
 			>
 				<Arrow />
@@ -32,12 +32,12 @@ const LeftSidebar = ({ openModal }) => {
 			>
 				<div className="flex items-center gap-[1.25rem] text-text3 2xl:text-text1">
 					<RulesIcon style={{ fontSize: "20px" }} />
-					<p className={`${isExpandedLeftSidebar ? "max-xl:hidden" : ""} `}>
+					<p className={`${isExpandedLeftSidebar ? "max-2xl:hidden" : ""} `}>
 						Правила
 					</p>
 				</div>
 			</button>
-			<div className="max-xl:hidden">
+			<div className="max-2xl:hidden">
 				<SocialLinksList />
 			</div>
 		</aside>

@@ -10,7 +10,7 @@ const BalanceArticle = ({ isExpandedRightSidebar }) => {
 				$
 			</span>
 			<p
-				className={`${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}   flex-col justify-center text-[0.7rem] 2xl:text-[1rem]`}
+				className={`${isExpandedRightSidebar ? "max-2xl:hidden" : "max-2xl:flex"}   flex-col justify-center text-[0.7rem] 2xl:text-[1rem]`}
 			>
 				Текущий баланс
 				<span id="currentCash" className="pl-1">
