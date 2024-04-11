@@ -1,7 +1,7 @@
 import { ConfigProvider, theme } from "antd";
 
 import { useUser } from "../../hooks/useUser";
-import { creatDefultRefLink } from "../../utils/supabaseUtils";
+import { checkPartnerToPartnerRefLink, creatDefultRefLink } from "../../utils/supabaseUtils";
 import {
 	Clients,
 	OverAllBalance,
@@ -16,6 +16,8 @@ const Charts = () => {
 	// Chart config
 	const { user } = useUser();
 	const { data: analTable } = useSelectAnalTable(user?.id);
+	//console.log()
+	user !== undefined? checkPartnerToPartnerRefLink(user.user_metadata.refLink, user.id, user.user_metadata?.fullName) : ""
 	let uniquesA = 0,
 		registrationA = 0,
 		shoppingA = 0,
