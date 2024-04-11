@@ -16,14 +16,14 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 
 	return (
 		<div
-			className={`w-full flex h-full max-h-10 items-center justify-between pt-6   xl:flex-row  2xl:scale-100 ${isExpandedRightSidebar ? "flex-col" : ""}`}
+			className={`w-full flex h-full max-h-10 items-center justify-between pt-6   2xl:scale-100  2xl:flex-row ${isExpandedRightSidebar ? "flex-col" : ""}`}
 		>
 			<div
 				className={`flex   items-center justify-start gap-1   ${isExpandedRightSidebar ? " " : ""}`}
 			>
 				<ProfilePlaceholder />
 				<h3
-					className={`flex text-text2 font-normal leading-7   2xl:text-text1 ${isExpandedRightSidebar ? "max-xl:hidden" : "max-xl:flex"}`}
+					className={`flex text-text2 font-normal leading-7   2xl:text-text1 ${isExpandedRightSidebar ? "max-2xl:hidden" : "max-2xl:flex"}`}
 				>
 					<Text
 						ellipsis
@@ -39,7 +39,7 @@ const SidebarProfileBtn = ({ isExpandedRightSidebar }) => {
 				</h3>
 			</div>
 			<div
-				className={`max-xl:w-full flex scale-75 items-center justify-center gap-2 max-xl:justify-end   2xl:scale-100 ${isExpandedRightSidebar ? "max-xl:mt-10 max-xl:flex-col" : "mt-0"}`}
+				className={`max-xl:w-full flex scale-75 items-center justify-center gap-2 max-2xl:justify-end   2xl:scale-100 ${isExpandedRightSidebar ? "max-2xl:mt-10 max-2xl:flex-col" : "mt-0"}`}
 			>
 				<NavLink
 					to="/preferences"

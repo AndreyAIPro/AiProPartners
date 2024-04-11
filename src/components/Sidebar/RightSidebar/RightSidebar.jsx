@@ -5,7 +5,7 @@ import BalanceArticle from "../../common/BalanceArticle";
 import SidebarProfileBtn from "../../common/SidebarProfileBtn";
 
 const RightSidebar = () => {
-	const [isExpandedRightSidebar, setIsExpandedRightSidebar] = useState(false);
+	const [isExpandedRightSidebar, setIsExpandedRightSidebar] = useState(true);
 
 	const handleClick = () =>
 		isExpandedRightSidebar
@@ -14,12 +14,12 @@ const RightSidebar = () => {
 
 	return (
 		<aside
-			className={`gap=[0px] sticky top-0  flex h-[100vh] w-[18vw] max-w-[319px] flex-col items-center justify-between p-5 max-xl:gap-5 max-xl:px-[10px] max-xl:py-5 2xl:gap-[50px] ${isExpandedRightSidebar ? "max-xl:max-w-[90px]" : "max-xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
+			className={`gap=[0px] sticky top-0  flex h-[100vh] w-[18vw] max-w-[319px] flex-col items-center justify-between p-5 max-2xl:gap-5 max-2xl:px-[10px] max-2xl:py-5 2xl:gap-[50px] ${isExpandedRightSidebar ? "max-2xl:max-w-[90px]" : "max-2xl:max-w-[319px]"} overflow-hidden whitespace-nowrap transition-all`}
 		>
 			<div className="w-full">
 				<BalanceArticle isExpandedRightSidebar={isExpandedRightSidebar} />
 				<button
-					className={`w-full mt-5 flex ${isExpandedRightSidebar ? "justify-center " : " justify-start "}	 transition-all xl:hidden`}
+					className={`w-full mt-5 flex ${isExpandedRightSidebar ? "justify-center " : " justify-start "}	 transition-all 2xl:hidden`}
 					onClick={() => handleClick()}
 				>
 					<div
@@ -30,7 +30,7 @@ const RightSidebar = () => {
 				</button>
 				<SidebarProfileBtn isExpandedRightSidebar={isExpandedRightSidebar} />
 			</div>
-			<div className="xl:hidden">
+			<div className="2xl:hidden">
 				<SocialLinksList isExpandedRightSidebar={isExpandedRightSidebar} />
 			</div>
 		</aside>

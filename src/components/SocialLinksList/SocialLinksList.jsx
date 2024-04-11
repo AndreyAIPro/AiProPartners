@@ -12,7 +12,7 @@ const SocialLinksList = ({ isExpandedRightSidebar }) => {
 	return (
 		<div className="mt-[55px] flex">
 			<ul
-				className={`w-full  flex  justify-around gap-5 px-5  ${isExpandedRightSidebar ? "max-xl:flex-col" : "max-xl:flex-row"} `}
+				className={`w-full  flex  justify-around gap-5 px-5  ${isExpandedRightSidebar ? "max-2xl:flex-col" : "max-2xl:flex-row"} `}
 			>
 				{Links.map((link, i) => (
 					<a key={i} href={link.href}>
