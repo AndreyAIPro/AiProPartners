@@ -200,9 +200,16 @@ export async function checkRefLink(refId, ipAddress) {
 	await supabase.from("RefClickLogs").insert({ refLink: refId, ip: ipAddress });
 }
 
-export async function checkPartnerToPartnerRefLink(refLinkFromData){
-	if(refLinkFromData == null) return
-	
+export async function checkPartnerToPartnerRefLink(refLink, authId, authName){
+	const { data: RefRegPartnerLogs } = await supabase
+		.from("RefRegPartnerLogs")
+		.select("*")
+		.match({ accountID: authId, refLink: refLink});
+	if(RefRegPartnerLogs.length !== 0) return
+
+	await supabase
+		.from("RefRegPartnerLogs")
+		.insert({ accountID: authId, refLink: refLink, partnerName: authName});
 }
 
 //NOT EXPORT
