@@ -2,12 +2,14 @@ import { useState } from "react";
 import mData from "../../../data/dataForTable.json";
 import AllFiltersTable from "./../FiltersForTable/AllFiltersTable";
 import { ReactComponent as NoData } from "../../../assets/images/Icons aipro partners/no-data-icon.svg";
-import Plate from "../../../pages/Preferences/Plate/Plate";
+import { useSelectMoneyHistory } from "../../../hooks/useSelectMoneyHistory";
+import { useUser } from "../../../hooks/useUser";
 
 const TableFinance = () => {
+	const { user } = useUser();
 	const [sortingOption, setSortingOption] = useState("");
 	const [data, setData] = useState(mData);
-	const [moreData, setMoreData] = useState(0);
+	const {data: MoneyHistory, refetch} = useSelectMoneyHistory(user?.id)
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const totalPages = Math.ceil(data.length / 10);
@@ -58,7 +60,7 @@ const TableFinance = () => {
 					filterByDate={filterByDate}
 				/>
 				<div>
-					<button className=" rounded-full border-2 border-light-blue px-4 font-nunito-sans hover:text-light-blue">
+					<button className=" rounded-full border-2 border-light-blue px-4 font-nunito-sans hover:text-light-blue" onClick={refetch}>
 						Обновить
 					</button>
 				</div>
@@ -84,31 +86,31 @@ const TableFinance = () => {
 					</tr>
 				</thead>
 				<tbody className=" border-gray">
-					{currentItems.splice(0, moreData).map((items, i) => (
+					{MoneyHistory?.map((items, i) => (
 						<tr key={i} className="border-[1px]  border-gray">
 							<td className="border-r-[1px] border-gray px-4 py-2">
-								{items.date}
+								{items.created_at}
 							</td>
 							<td className="border-r-[1px] border-gray px-4"> {items.sum}</td>
 							<td className="border-r-[1px] border-gray px-4">
-								{items.withdrawal}
+								{items.money}
 							</td>
 							<td className="border-r-[1px] border-gray px-4">
-								{items.comments}
+								{items.description}
 							</td>
 							<td
-								className={`border-r-[1px] border-gray px-4 text-end ${items.status === "Успешно" ? "text-green" : items.status === "В обработке" ? "text-blue" : "text-red"}`}
+								className={`border-r-[1px] border-gray px-4 text-end ${items.status === true ? "text-green" : items.status === false ? "text-blue" : "text-red"}`}
 							>
-								{items.status}
+								{items.status? "Успешно" : "В обработке"}
 							</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
-			{moreData > 4 && (
-				<div className={`mt-6 text-center ${moreData > 5 && "hidden"}`}>
+			{MoneyHistory > 4 && (
+				<div className={`mt-6 text-center ${MoneyHistory > 5 && "hidden"}`}>
 					<button
-						onClick={() => setMoreData(11)}
+						//onClick={() => setMoreData(11)}
 						className="rounded-full bg-light-blue px-12 py-2 font-nunito-sans text-text2"
 					>
 						Загрузить ещё...
@@ -116,9 +118,9 @@ const TableFinance = () => {
 				</div>
 			)}
 
-			{moreData > 10 && (
+			{MoneyHistory > 10 && (
 				<div>
-					<div className={`mt-3 text-center ${moreData === 4 && "hidden"}`}>
+					<div className={`mt-3 text-center ${MoneyHistory === 4 && "hidden"}`}>
 						<button
 							className={` mx-3 mt-3 rounded-md border-2 p-2 font-nunito-sans font-bold enabled:hover:bg-light-blue ${currentPage === 1 && "disabled:opacity-25"}`}
 							onClick={goToFirstPage}
@@ -151,7 +153,7 @@ const TableFinance = () => {
 					</div>
 				</div>
 			)}
-			{moreData === 0 && (
+			{MoneyHistory === 0 && (
 				<div className="flex flex-col items-center border-[1px] border-gray  py-10">
 					<NoData />
 					<p className="font-nunito-sans text-gray">No data</p>

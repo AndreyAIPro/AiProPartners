@@ -170,6 +170,15 @@ export async function getAnalTable(partnerId) {
 	return PartnersAnalyticalTable;
 }
 
+export async function getMoneyHistory(partnerId) {
+	const { data: MoneyHistory } = await supabase
+		.from("MoneyHistory")
+		.select("*")
+		.eq("authId", partnerId);
+
+	return MoneyHistory;
+}
+
 //CLIENT REFLINK ON CLICK
 export async function checkRefLink(refId, ipAddress) {
 	const nowDate = new Date();
